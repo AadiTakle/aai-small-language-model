@@ -15,3 +15,6 @@ adapters/
 
 # Cursor local config
 .cursor/
+
+# Downloaded third-party datasets (regenerated; attributed in docs)
+data/external/
