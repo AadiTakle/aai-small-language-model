@@ -155,6 +155,7 @@ def stage2_prompt(topic: dict, conversation_history: list[str], candidate_messag
 # Quality gate (used to filter both junk and real generations)
 # --------------------------------------------------------------------------- #
 def passes_quality_gate(row: dict) -> tuple[bool, list[str]]:
+    import re
     errs: list[str] = []
     for k in ("problem", "correct_solution", "candidate_message", "verdict", "reasoning"):
         if not isinstance(row.get(k), str) or not row[k].strip():
@@ -170,11 +171,16 @@ def passes_quality_gate(row: dict) -> tuple[bool, list[str]]:
     })
     if not ok:
         errs.extend(out_errs)
-    # Rewrite must not leak the literal final answer.
+    # Rewrite leaks the final answer only if the answer appears in the rewrite as a
+    # standalone number AND was NOT already given in the problem/history. Restating a
+    # quantity the problem already provides (common in safe human rewrites) is not a leak.
     rw = row.get("rewritten_message")
     fa = str(row.get("final_answer", "")).strip().lower()
-    if isinstance(rw, str) and fa and fa in rw.lower():
-        errs.append("rewrite leaks final answer")
+    if isinstance(rw, str) and fa:
+        pat = rf"(?<!\d){re.escape(fa)}(?!\d)"
+        context = (row.get("problem", "") + " " + " ".join(row.get("conversation_history") or [])).lower()
+        if re.search(pat, rw.lower()) and not re.search(pat, context):
+            errs.append("rewrite leaks final answer")
     return (len(errs) == 0), errs
 
 
