@@ -57,7 +57,8 @@ def _input(row: dict) -> dict:
 
 def score_model(runner: Runner, gold: list[dict], use_judge: bool, k: int, temp: float):
     per_item, adv = [], []
-    for row in gold:
+    n = len(gold)
+    for idx, row in enumerate(gold, 1):
         raw = runner.generate(_input(row), temp=0.0)
         out = parse_model_json(raw)
         pred = (out or {}).get("verdict")
@@ -78,6 +79,8 @@ def score_model(runner: Runner, gold: list[dict], use_judge: bool, k: int, temp:
         per_item.append(item)
         if row.get("slice") == "calibration_adversarial":
             adv.append({"id": row.get("id"), "gold": row.get("gold_verdict"), "pred": pred})
+        if idx % 5 == 0 or idx == n:
+            print(f"[rubric]   scored {idx}/{n}", file=sys.stderr, flush=True)
 
     calib = calibration_tiers(adv)
     means = {
