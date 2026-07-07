@@ -1,10 +1,10 @@
 ## Code navigation (token efficiency)
 
-Prefer semantic tools over reading whole files or broad grepping:
+Prefer scoped tools over broad grepping:
 
-- **Serena (MCP)** — for code symbols. Use `find_symbol` to fetch a single function/class body, `find_referencing_symbols` to see callers, and `replace_symbol_body` for targeted edits, instead of `Read`-ing an entire file. Serena is backed by a real language server, so it is precise.
 - **graphify** — for architecture/relationship questions across the repo (see below), before falling back to `grep`/`glob`.
-- Full-file `Read` is still fine for small files or when you genuinely need the whole thing (e.g. a short script or doc).
+- Full-file `Read` is fine here — this is a small codebase (a handful of Python files), so reading a whole module is cheap.
+- **Serena/MCP was removed** (2026-07-07): its always-on language server (pyright) cost ~16GB RAM and competed with local MLX training, for negligible benefit at this scale. Do **not** re-add it unless the codebase grows large enough to justify it.
 
 ## graphify
 
