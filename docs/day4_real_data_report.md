@@ -41,3 +41,21 @@ Real human-labeled data has clear value (in-distribution gains are large and the
 
 ## Next step (not yet run) — v4 augmentation
 **Augment, don't replace:** full 700 synthetic **+** real MRBench/MathDial. This keeps the original distribution (protects verdict/seed performance) while adding real label quality and real safe rewrites to target the two gaps. Also worth: validating the "To some extent → mismatched" mapping against a sample of seed-labeled cases, and evaluating v4 on the seed anchor first before trusting in-distribution gains.
+
+## v4 result — augmentation worked (the ship candidate)
+v4 = full 700 synthetic + 479 MRBench + 155 MathDial (1,334 raw → 914 train / 114 valid / 115 test), same fixed hyperparameters. Trained stably (val loss flat ~0.25, no overfit spike unlike v3's 0.355).
+
+**Seed gold (n=10, the clean cross-version anchor) — v4 beats every prior version on every criterion:**
+
+| Criterion | base | v2 | v3 | **v4** |
+|---|---|---|---|---|
+| Verdict correctness | 1.30 | 1.70 | 0.90 | **1.80** |
+| Grounded reasoning | 1.20 | 1.60 | 1.60 | **1.80** |
+| Rewrite safety | 1.67 | 1.50 | 1.60 | **1.71** |
+| Schema compliance | 1.60 | 2.00 | 2.00 | **2.00** |
+| Calibration robustness | 1.00 | 1.00 | 1.00 | **2.00** |
+| Consistency | 1.60 | 1.80 | 1.60 | **1.80** |
+
+v3's verdict regression (0.90, 4 tier-0 boundary crossings) is resolved — v4 verdict 1.80 with only 1 tier-0. Rewrite safety (1.71) and calibration (2.00) are the best of any version. **v4 holdout (n=115)** confirms it generalizes: verdict 1.12→1.85, calibration 0.80→1.60, rewrite safety 1.40→1.56, robustness 0.80→1.60, spec adherence 1.43→1.92.
+
+**Conclusion:** augmentation (real data *added to*, not *replacing*, the synthetic distribution) kept the original capability **and** delivered the target-gap gains (calibration 1.00→2.00, rewrite safety to its best). v4 is the ship candidate. Remaining relative weak spot: rewrite safety on the broad holdout (1.56) — still the hardest behavior, a candidate for DPO on the real Expert-vs-leaky rewrite pairs.

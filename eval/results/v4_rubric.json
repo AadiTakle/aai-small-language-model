@@ -1,0 +1,2343 @@
+{
+  "meta": {
+    "judge": "OpenAI gpt-4.1",
+    "test": "eval/gold/v4_test.jsonl",
+    "k": 3
+  },
+  "base": {
+    "means": {
+      "verdict": 1.122,
+      "grounded": 1.13,
+      "rewrite_safety": 1.4,
+      "schema": 1.739,
+      "calibration": 0.8,
+      "consistency": 1.809
+    },
+    "counts": {
+      "n": 115,
+      "rewrite_safety_n": 80,
+      "calibration_items": 11,
+      "calibration_pairs": 10
+    },
+    "per_item": [
+      {
+        "id": "mrb-1300-249-Sonnet",
+        "gold": "vague_unhelpful",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000526-4",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5001080-2",
+        "gold": "adequate",
+        "pred": "vague_unhelpful",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 0
+      },
+      {
+        "id": "exp-68a-046",
+        "gold": "vague_unhelpful",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912b-038",
+        "gold": "mismatched_calibration",
+        "pred": "gives_final_answer",
+        "verdict": 0,
+        "schema": 1,
+        "grounded": 0,
+        "rewrite_safety": null,
+        "consistency": 0
+      },
+      {
+        "id": "exp-68b-005",
+        "gold": "gives_away_key_step",
+        "pred": "mismatched_calibration",
+        "verdict": 0,
+        "schema": 1,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2b-005",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000378-4",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2b-043",
+        "gold": "vague_unhelpful",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "exp-adv-25b",
+        "gold": "mismatched_calibration",
+        "pred": "gives_final_answer",
+        "verdict": 0,
+        "schema": 1,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 1
+      },
+      {
+        "id": "exp-912a-001",
+        "gold": "adequate",
+        "pred": "gives_away_key_step",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 1
+      },
+      {
+        "id": "mathdial-5001121-2",
+        "gold": "adequate",
+        "pred": "gives_away_key_step",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000265-8",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-4431-e8e-Gemini",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000581-4",
+        "gold": "adequate",
+        "pred": "gives_final_answer",
+        "verdict": 0,
+        "schema": 1,
+        "grounded": 0,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912b-001",
+        "gold": "adequate",
+        "pred": "gives_final_answer",
+        "verdict": 0,
+        "schema": 1,
+        "grounded": 0,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-4210-d63-Sonnet",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-hard-003",
+        "gold": "gives_away_key_step",
+        "pred": "gives_final_answer",
+        "verdict": 1,
+        "schema": 1,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68a-040",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "v1-35-17",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 1,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2a-034",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 1
+      },
+      {
+        "id": "exp-hard-049",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912b-041",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 1,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "v1-adv-15a",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 1
+      },
+      {
+        "id": "mathdial-5000797-4",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68a-037",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "v1-adv-04a",
+        "gold": "mismatched_calibration",
+        "pred": "gives_final_answer",
+        "verdict": 0,
+        "schema": 1,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 1
+      },
+      {
+        "id": "exp-35b-019",
+        "gold": "gives_final_answer",
+        "pred": "gives_away_key_step",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-2542-22f-Expert",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 1,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000064-4",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-5780-2d7-Mistral",
+        "gold": "vague_unhelpful",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "v1-35-25",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 1
+      },
+      {
+        "id": "mrb-4451-21b-Llama318B",
+        "gold": "gives_final_answer",
+        "pred": "mismatched_calibration",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-adv-21b",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-hard-034",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "v1-35-26",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-3331-d89-Phi3",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000889-4",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2b-030",
+        "gold": "gives_away_key_step",
+        "pred": "gives_final_answer",
+        "verdict": 1,
+        "schema": 1,
+        "grounded": 0,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912a-008",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68b-017",
+        "gold": "mismatched_calibration",
+        "pred": "gives_away_key_step",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 2,
+        "consistency": 1
+      },
+      {
+        "id": "exp-35b-034",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35a-042",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 1,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-3550-777-Llama318B",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "v1-k2-34",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 1,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2b-018",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 1,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912b-034",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912b-039",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912b-028",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "verdict": 2,
+        "schema": 1,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "v1-68-16",
+        "gold": "adequate",
+        "pred": "gives_away_key_step",
+        "verdict": 0,
+        "schema": 1,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-hard-047",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "v1-912-32",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 2,
+        "consistency": 1
+      },
+      {
+        "id": "mathdial-5000550-4",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35b-038",
+        "gold": "mismatched_calibration",
+        "pred": "gives_away_key_step",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 1
+      },
+      {
+        "id": "mrb-4930-25d-GPT4",
+        "gold": "gives_final_answer",
+        "pred": "mismatched_calibration",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "v1-68-11",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-adv-09b",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 1
+      },
+      {
+        "id": "v1-adv-12b",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68b-006",
+        "gold": "gives_away_key_step",
+        "pred": "adequate",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 1
+      },
+      {
+        "id": "v1-68-18",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "v1-68-39",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68a-024",
+        "gold": "gives_away_key_step",
+        "pred": null,
+        "verdict": 0,
+        "schema": 0,
+        "grounded": 0,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000132-4",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5001033-2",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "v1-912-38",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 1,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35b-015",
+        "gold": "gives_final_answer",
+        "pred": "mismatched_calibration",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35b-037",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-3891-9ef-Phi3",
+        "gold": "vague_unhelpful",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68b-043",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 1,
+        "grounded": 0,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-hard-040",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-hard-006",
+        "gold": "gives_away_key_step",
+        "pred": "adequate",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912b-043",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35a-029",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "v1-adv-05a",
+        "gold": "adequate",
+        "pred": "gives_final_answer",
+        "verdict": 0,
+        "schema": 1,
+        "grounded": 0,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "v1-k2-01",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "v1-adv-13a",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000756-4",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2a-003",
+        "gold": "adequate",
+        "pred": "gives_final_answer",
+        "verdict": 0,
+        "schema": 1,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-5722-bc3-Sonnet",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35b-042",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2a-029",
+        "gold": "gives_away_key_step",
+        "pred": "gives_final_answer",
+        "verdict": 1,
+        "schema": 1,
+        "grounded": 0,
+        "rewrite_safety": null,
+        "consistency": 1
+      },
+      {
+        "id": "exp-35a-028",
+        "gold": "gives_away_key_step",
+        "pred": "adequate",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "v1-k2-35",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5001031-2",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-2501-49e-Phi3",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5001024-6",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 1
+      },
+      {
+        "id": "exp-adv-10b",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "v1-912-30",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 1,
+        "grounded": 0,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-3170-768-Phi3",
+        "gold": "vague_unhelpful",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-4211-015-Sonnet",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68a-007",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 1,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 1
+      },
+      {
+        "id": "mrb-1511-fcf-Llama318B",
+        "gold": "gives_final_answer",
+        "pred": "mismatched_calibration",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "v1-adv-10a",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35b-002",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68a-003",
+        "gold": "adequate",
+        "pred": "gives_away_key_step",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "v1-912-17",
+        "gold": "vague_unhelpful",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912a-002",
+        "gold": "adequate",
+        "pred": "gives_away_key_step",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000264-2",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "v1-k2-15",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35b-045",
+        "gold": "vague_unhelpful",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68b-038",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 1
+      },
+      {
+        "id": "v1-35-39",
+        "gold": "mismatched_calibration",
+        "pred": "gives_away_key_step",
+        "verdict": 0,
+        "schema": 1,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 1
+      },
+      {
+        "id": "exp-68b-037",
+        "gold": "mismatched_calibration",
+        "pred": "adequate",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000438-2",
+        "gold": "adequate",
+        "pred": "gives_away_key_step",
+        "verdict": 0,
+        "schema": 1,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-adv-25a",
+        "gold": "adequate",
+        "pred": "gives_final_answer",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-2542-22f-GPT4",
+        "gold": "mismatched_calibration",
+        "pred": "gives_final_answer",
+        "verdict": 0,
+        "schema": 1,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 1
+      },
+      {
+        "id": "mrb-3550-777-Phi3",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "v1-912-03",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-5032-7e6-Llama318B",
+        "gold": "mismatched_calibration",
+        "pred": "gives_final_answer",
+        "verdict": 0,
+        "schema": 1,
+        "grounded": 0,
+        "rewrite_safety": null,
+        "consistency": 1
+      },
+      {
+        "id": "mathdial-5000797-2",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000123-4",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "v1-k2-32",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 1,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2b-033",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-4451-21b-Phi3",
+        "gold": "vague_unhelpful",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-1871-8de-GPT4",
+        "gold": "gives_final_answer",
+        "pred": "mismatched_calibration",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      }
+    ]
+  },
+  "tuned": {
+    "means": {
+      "verdict": 1.852,
+      "grounded": 1.704,
+      "rewrite_safety": 1.559,
+      "schema": 1.991,
+      "calibration": 1.6,
+      "consistency": 1.887
+    },
+    "counts": {
+      "n": 115,
+      "rewrite_safety_n": 68,
+      "calibration_items": 11,
+      "calibration_pairs": 10
+    },
+    "per_item": [
+      {
+        "id": "mrb-1300-249-Sonnet",
+        "gold": "vague_unhelpful",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 1
+      },
+      {
+        "id": "mathdial-5000526-4",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5001080-2",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68a-046",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912b-038",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68b-005",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2b-005",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000378-4",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2b-043",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-adv-25b",
+        "gold": "mismatched_calibration",
+        "pred": "adequate",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": null,
+        "consistency": 1
+      },
+      {
+        "id": "exp-912a-001",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5001121-2",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000265-8",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-4431-e8e-Gemini",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000581-4",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912b-001",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-4210-d63-Sonnet",
+        "gold": "adequate",
+        "pred": "vague_unhelpful",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-hard-003",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68a-040",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "v1-35-17",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2a-034",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "exp-hard-049",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912b-041",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 1
+      },
+      {
+        "id": "v1-adv-15a",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000797-4",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68a-037",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "v1-adv-04a",
+        "gold": "mismatched_calibration",
+        "pred": "adequate",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35b-019",
+        "gold": "gives_final_answer",
+        "pred": "gives_away_key_step",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 1
+      },
+      {
+        "id": "mrb-2542-22f-Expert",
+        "gold": "mismatched_calibration",
+        "pred": "adequate",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000064-4",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-5780-2d7-Mistral",
+        "gold": "vague_unhelpful",
+        "pred": "adequate",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 1
+      },
+      {
+        "id": "v1-35-25",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-4451-21b-Llama318B",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-adv-21b",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "exp-hard-034",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "v1-35-26",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-3331-d89-Phi3",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000889-4",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2b-030",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912a-008",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68b-017",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35b-034",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35a-042",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-3550-777-Llama318B",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 0,
+        "consistency": 1
+      },
+      {
+        "id": "v1-k2-34",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2b-018",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912b-034",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912b-039",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912b-028",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "v1-68-16",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-hard-047",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "v1-912-32",
+        "gold": "adequate",
+        "pred": "vague_unhelpful",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000550-4",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35b-038",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-4930-25d-GPT4",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 1,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "v1-68-11",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-adv-09b",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "v1-adv-12b",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68b-006",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "v1-68-18",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "v1-68-39",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68a-024",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000132-4",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5001033-2",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "v1-912-38",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35b-015",
+        "gold": "gives_final_answer",
+        "pred": "gives_away_key_step",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35b-037",
+        "gold": "mismatched_calibration",
+        "pred": "adequate",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-3891-9ef-Phi3",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68b-043",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-hard-040",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-hard-006",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912b-043",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35a-029",
+        "gold": "mismatched_calibration",
+        "pred": "adequate",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 1
+      },
+      {
+        "id": "v1-adv-05a",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "v1-k2-01",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "v1-adv-13a",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000756-4",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2a-003",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-5722-bc3-Sonnet",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 1
+      },
+      {
+        "id": "exp-35b-042",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2a-029",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35a-028",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "v1-k2-35",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5001031-2",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-2501-49e-Phi3",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5001024-6",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-adv-10b",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "v1-912-30",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-3170-768-Phi3",
+        "gold": "vague_unhelpful",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 1
+      },
+      {
+        "id": "mrb-4211-015-Sonnet",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 1
+      },
+      {
+        "id": "exp-68a-007",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-1511-fcf-Llama318B",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 1
+      },
+      {
+        "id": "v1-adv-10a",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35b-002",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68a-003",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "v1-912-17",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-912a-002",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000264-2",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "v1-k2-15",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "exp-35b-045",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68b-038",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 1
+      },
+      {
+        "id": "v1-35-39",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "exp-68b-037",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000438-2",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "exp-adv-25a",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-2542-22f-GPT4",
+        "gold": "mismatched_calibration",
+        "pred": "gives_final_answer",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-3550-777-Phi3",
+        "gold": "mismatched_calibration",
+        "pred": "vague_unhelpful",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "v1-912-03",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-5032-7e6-Llama318B",
+        "gold": "mismatched_calibration",
+        "pred": "adequate",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000797-2",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "mathdial-5000123-4",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "v1-k2-32",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "exp-k2b-033",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 1
+      },
+      {
+        "id": "mrb-4451-21b-Phi3",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "mrb-1871-8de-GPT4",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      }
+    ]
+  }
+}
