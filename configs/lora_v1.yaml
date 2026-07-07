@@ -1,0 +1,19 @@
+# QLoRA config for the v1 real dataset. Fixed, reasonable hyperparameters —
+# per the project rule, we iterate on DATA, not hyperparameters.
+# model / data / adapter_path / iters are passed on the CLI by the v1 runner
+# (iters is computed from dataset size for ~3-5 epochs).
+fine_tune_type: lora
+num_layers: 16
+batch_size: 4
+iters: 300
+val_batches: 10
+learning_rate: 1e-4
+steps_per_report: 20
+steps_per_eval: 100
+save_every: 150
+max_seq_length: 2048
+grad_checkpoint: true
+lora_parameters:
+  rank: 16
+  scale: 20.0
+  dropout: 0.05
