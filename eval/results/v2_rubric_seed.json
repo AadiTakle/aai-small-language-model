@@ -1,0 +1,243 @@
+{
+  "meta": {
+    "judge": "OpenAI gpt-4.1",
+    "test": "eval/gold/test.jsonl",
+    "k": 3
+  },
+  "base": {
+    "means": {
+      "verdict": 1.3,
+      "grounded": 1.2,
+      "rewrite_safety": 1.667,
+      "schema": 1.6,
+      "calibration": 1.0,
+      "consistency": 1.6
+    },
+    "counts": {
+      "n": 10,
+      "rewrite_safety_n": 6,
+      "calibration_items": 2,
+      "calibration_pairs": 2
+    },
+    "per_item": [
+      {
+        "id": "seed-01",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 1,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "seed-02",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "seed-03",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "verdict": 2,
+        "schema": 1,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "seed-04",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "seed-05",
+        "gold": "mismatched_calibration",
+        "pred": "gives_final_answer",
+        "verdict": 0,
+        "schema": 1,
+        "grounded": 0,
+        "rewrite_safety": null,
+        "consistency": 0
+      },
+      {
+        "id": "seed-06",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 1,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "seed-07",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "seed-08",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "seed-09",
+        "gold": "gives_final_answer",
+        "pred": "mismatched_calibration",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 0,
+        "rewrite_safety": 2,
+        "consistency": 1
+      },
+      {
+        "id": "seed-10",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 1
+      }
+    ]
+  },
+  "tuned": {
+    "means": {
+      "verdict": 1.7,
+      "grounded": 1.7,
+      "rewrite_safety": 1.5,
+      "schema": 2.0,
+      "calibration": 1.0,
+      "consistency": 1.9
+    },
+    "counts": {
+      "n": 10,
+      "rewrite_safety_n": 8,
+      "calibration_items": 2,
+      "calibration_pairs": 2
+    },
+    "per_item": [
+      {
+        "id": "seed-01",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "seed-02",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": null,
+        "consistency": 1
+      },
+      {
+        "id": "seed-03",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "seed-04",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "seed-05",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "seed-06",
+        "gold": "adequate",
+        "pred": "adequate",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": null,
+        "consistency": 2
+      },
+      {
+        "id": "seed-07",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 2,
+        "consistency": 2
+      },
+      {
+        "id": "seed-08",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "verdict": 1,
+        "schema": 2,
+        "grounded": 1,
+        "rewrite_safety": 0,
+        "consistency": 2
+      },
+      {
+        "id": "seed-09",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "verdict": 2,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      },
+      {
+        "id": "seed-10",
+        "gold": "adequate",
+        "pred": "gives_away_key_step",
+        "verdict": 0,
+        "schema": 2,
+        "grounded": 2,
+        "rewrite_safety": 1,
+        "consistency": 2
+      }
+    ]
+  }
+}
