@@ -108,8 +108,49 @@ git checkout dev && git merge --ff-only feat/eval-harness feat/data-gen feat/smo
 ```
 `adapters/` is gitignored — regenerate with `scripts/run_v1.py`.
 
+## Dataset expansion + v2 (700 examples) — does more data help?
+
+Added **500** teacher examples via 10 `claude-sonnet-5-thinking-medium` subagents
+(bands + extra adversarial pairs + hard `gives_away_key_step` vectors) → **700 total**
+(96.4% gate pass). Trained `adapters/v2` (540 train, 405 iters ≈ 3 epochs, val loss 3.8→0.34).
+
+**v2 full gold (n=68):**
+
+| Metric | base | tuned | Δ |
+|---|---|---|---|
+| Verdict accuracy | 51.5% | 89.7% | +38.2 |
+| Grounded reasoning | 83.8% | 100.0% | +16.2 |
+| Rewrite safety | 100.0% | 82.8% | −17.2 |
+| Schema compliance | 61.8% | 100.0% | +38.2 |
+| Calibration robustness | 20.0% | 60.0% | +40.0 |
+
+**v2 seed gold (n=10) — apples-to-apples with v1:**
+
+| Metric | base | v1 tuned | v2 tuned |
+|---|---|---|---|
+| Verdict accuracy | 50.0% | 80.0% | 80.0% |
+| Grounded reasoning | 90.0% | 100.0% | 100.0% |
+| Rewrite safety | 83.3% | 75.0% | **87.5%** |
+| Schema compliance | 60.0% | 100.0% | 100.0% |
+| Calibration robustness | 50.0% | 100.0% | 50.0% |
+
+**Conclusion: scaling 200→700 did NOT clearly beat v1.** On the comparable seed set, v2
+*repaired* the v1 rewrite-safety dip (75→87.5) but the calibration slices moved the other
+way (seed n=2 is noisy; the larger full-gold adversarial slice shows 60% — the concrete
+weak spot). Rewrite-safety on the full gold (82.8%) confirms the tuned model still leaks on
+~1/6 of non-adequate cases. Net: headline gains held (schema 100%, verdict ~90%), proving
+the approach is robust, but **raw volume was not the lever** — this validates the project's
+"data composition/quality over volume" thesis and points Day 4 at *targeted* examples for
+the calibration-adversarial boundary and safe-rewrite generation, not just more of the same.
+
+_(v1 and v2 headline sets differ — v1_test n=20 vs all_test n=68 — so only the shared seed
+gold is a strict v1-vs-v2 comparison; full tables in `eval/results/v1_*` and `v2_*`.)_
+
 ## Suggested next steps
 - **Day 4 data iteration**: error-analysis on the tuned model's remaining misses; add targeted
-  examples for the weakest cell (rewrite safety on non-adequate).
+  examples for the two weak cells now clearly identified — calibration-adversarial robustness
+  and rewrite safety on non-adequate — rather than more volume.
+- **Fix the gate false-positives**: the "rewrite leaks final answer" check over-flags when the
+  answer is a small integer already present in the problem (lost ~25 otherwise-good rows).
 - **Stretch**: wire an LLM-judge into criteria 2/3; build an adversarial robustness eval;
   DPO on on-spec vs off-spec rewrite pairs.

@@ -1,0 +1,1188 @@
+{
+  "base": {
+    "n": 68,
+    "verdict_accuracy": 51.5,
+    "grounded_reasoning": 83.8,
+    "rewrite_safety": 100.0,
+    "rewrite_safety_n": 39,
+    "schema_compliance": 61.8,
+    "calibration_robustness": 20.0,
+    "calibration_n": 5,
+    "confusion": {
+      "adequate": {
+        "adequate": 2,
+        "gives_final_answer": 4,
+        "gives_away_key_step": 0,
+        "mismatched_calibration": 9,
+        "vague_unhelpful": 0
+      },
+      "gives_final_answer": {
+        "adequate": 0,
+        "gives_final_answer": 8,
+        "gives_away_key_step": 1,
+        "mismatched_calibration": 1,
+        "vague_unhelpful": 0
+      },
+      "gives_away_key_step": {
+        "adequate": 3,
+        "gives_final_answer": 3,
+        "gives_away_key_step": 7,
+        "mismatched_calibration": 5,
+        "vague_unhelpful": 0
+      },
+      "mismatched_calibration": {
+        "adequate": 0,
+        "gives_final_answer": 1,
+        "gives_away_key_step": 1,
+        "mismatched_calibration": 10,
+        "vague_unhelpful": 0
+      },
+      "vague_unhelpful": {
+        "adequate": 0,
+        "gives_final_answer": 0,
+        "gives_away_key_step": 0,
+        "mismatched_calibration": 4,
+        "vague_unhelpful": 8
+      }
+    },
+    "per_item": [
+      {
+        "id": "exp-35a-029",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912a-014",
+        "gold": "gives_final_answer",
+        "pred": "gives_away_key_step",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "v1-68-04",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": false,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912a-024",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-35a-013",
+        "gold": "gives_away_key_step",
+        "pred": "adequate",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "v1-k2-21",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "v1-k2-40",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": false,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912a-043",
+        "gold": "vague_unhelpful",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": false,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-k2b-033",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-k2b-044",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": false,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-hard-027",
+        "gold": "gives_away_key_step",
+        "pred": "adequate",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "v1-35-36",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": false,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-35a-047",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-68b-005",
+        "gold": "gives_away_key_step",
+        "pred": "mismatched_calibration",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-68a-036",
+        "gold": "mismatched_calibration",
+        "pred": "gives_final_answer",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-68-21",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-35b-048",
+        "gold": "vague_unhelpful",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-k2b-015",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": false,
+        "grounded": false,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-912a-049",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-68b-010",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912b-007",
+        "gold": "adequate",
+        "pred": "gives_final_answer",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "v1-k2-25",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": false,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-912-30",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-k2a-002",
+        "gold": "adequate",
+        "pred": "gives_final_answer",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-adv-14a",
+        "gold": "adequate",
+        "pred": "gives_final_answer",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-k2b-046",
+        "gold": "vague_unhelpful",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-k2a-015",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "v1-68-01",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-k2b-014",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-68b-027",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": false,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-35-13",
+        "gold": "gives_away_key_step",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-hard-022",
+        "gold": "gives_away_key_step",
+        "pred": "adequate",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "v1-adv-16a",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-68-05",
+        "gold": "gives_away_key_step",
+        "pred": "gives_final_answer",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-68a-012",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "v1-912-29",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912a-039",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-hard-013",
+        "gold": "gives_away_key_step",
+        "pred": "mismatched_calibration",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-912b-029",
+        "gold": "gives_away_key_step",
+        "pred": "gives_final_answer",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-35a-005",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-68-13",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-k2-03",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-912b-004",
+        "gold": "adequate",
+        "pred": "adequate",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-k2b-026",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-35a-002",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-912a-033",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-35b-002",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-912-19",
+        "gold": "gives_final_answer",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-35-25",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-68b-017",
+        "gold": "mismatched_calibration",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-912-37",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-k2b-048",
+        "gold": "vague_unhelpful",
+        "pred": "mismatched_calibration",
+        "schema_ok": false,
+        "grounded": false,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-35a-045",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": false,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912a-004",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-35a-044",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-k2-36",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-68a-027",
+        "gold": "gives_away_key_step",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-68-37",
+        "gold": "adequate",
+        "pred": "adequate",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-912b-034",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-k2-08",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-912a-026",
+        "gold": "gives_away_key_step",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-adv-17a",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "v1-k2-17",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-35-03",
+        "gold": "gives_away_key_step",
+        "pred": "gives_final_answer",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-68b-026",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-k2a-042",
+        "gold": "vague_unhelpful",
+        "pred": null,
+        "schema_ok": false,
+        "grounded": false,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-adv-25a",
+        "gold": "adequate",
+        "pred": "gives_final_answer",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-adv-07a",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      }
+    ]
+  },
+  "tuned": {
+    "n": 68,
+    "verdict_accuracy": 89.7,
+    "grounded_reasoning": 100.0,
+    "rewrite_safety": 82.8,
+    "rewrite_safety_n": 58,
+    "schema_compliance": 100.0,
+    "calibration_robustness": 60.0,
+    "calibration_n": 5,
+    "confusion": {
+      "adequate": {
+        "adequate": 10,
+        "gives_final_answer": 0,
+        "gives_away_key_step": 0,
+        "mismatched_calibration": 5,
+        "vague_unhelpful": 0
+      },
+      "gives_final_answer": {
+        "adequate": 0,
+        "gives_final_answer": 9,
+        "gives_away_key_step": 1,
+        "mismatched_calibration": 0,
+        "vague_unhelpful": 0
+      },
+      "gives_away_key_step": {
+        "adequate": 0,
+        "gives_final_answer": 1,
+        "gives_away_key_step": 17,
+        "mismatched_calibration": 0,
+        "vague_unhelpful": 0
+      },
+      "mismatched_calibration": {
+        "adequate": 0,
+        "gives_final_answer": 0,
+        "gives_away_key_step": 0,
+        "mismatched_calibration": 12,
+        "vague_unhelpful": 0
+      },
+      "vague_unhelpful": {
+        "adequate": 0,
+        "gives_final_answer": 0,
+        "gives_away_key_step": 0,
+        "mismatched_calibration": 0,
+        "vague_unhelpful": 13
+      }
+    },
+    "per_item": [
+      {
+        "id": "exp-35a-029",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912a-014",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-68-04",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912a-024",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-35a-013",
+        "gold": "gives_away_key_step",
+        "pred": "gives_final_answer",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-k2-21",
+        "gold": "adequate",
+        "pred": "adequate",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "v1-k2-40",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912a-043",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-k2b-033",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-k2b-044",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-hard-027",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-35-36",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-35a-047",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-68b-005",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-68a-036",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": false
+      },
+      {
+        "id": "v1-68-21",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-35b-048",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-k2b-015",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912a-049",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-68b-010",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912b-007",
+        "gold": "adequate",
+        "pred": "adequate",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "v1-k2-25",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-912-30",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-k2a-002",
+        "gold": "adequate",
+        "pred": "adequate",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-adv-14a",
+        "gold": "adequate",
+        "pred": "adequate",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-k2b-046",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-k2a-015",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": false
+      },
+      {
+        "id": "v1-68-01",
+        "gold": "adequate",
+        "pred": "adequate",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-k2b-014",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": false
+      },
+      {
+        "id": "exp-68b-027",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": false
+      },
+      {
+        "id": "v1-35-13",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-hard-022",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-adv-16a",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-68-05",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-68a-012",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-912-29",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": false
+      },
+      {
+        "id": "exp-912a-039",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": false
+      },
+      {
+        "id": "exp-hard-013",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912b-029",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-35a-005",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-68-13",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-k2-03",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912b-004",
+        "gold": "adequate",
+        "pred": "adequate",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-k2b-026",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-35a-002",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912a-033",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-35b-002",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-912-19",
+        "gold": "gives_final_answer",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-35-25",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": false
+      },
+      {
+        "id": "exp-68b-017",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": false
+      },
+      {
+        "id": "v1-912-37",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-k2b-048",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-35a-045",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912a-004",
+        "gold": "adequate",
+        "pred": "adequate",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-35a-044",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-k2-36",
+        "gold": "adequate",
+        "pred": "adequate",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-68a-027",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-68-37",
+        "gold": "adequate",
+        "pred": "adequate",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-912b-034",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": false
+      },
+      {
+        "id": "v1-k2-08",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-912a-026",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-adv-17a",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-k2-17",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "v1-35-03",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": false
+      },
+      {
+        "id": "exp-68b-026",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-k2a-042",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "exp-adv-25a",
+        "gold": "adequate",
+        "pred": "adequate",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "exp-adv-07a",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      }
+    ]
+  }
+}
