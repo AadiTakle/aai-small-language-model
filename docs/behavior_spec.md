@@ -54,3 +54,28 @@ This is a stranger-gradable pass/fail test: given any (problem, history, solutio
 * Not claiming domain-generality beyond math for v1 data/eval (stretch: test transfer to a second domain, e.g. code debugging towards the end).
 * Not judging tutor *tone*/encouragement quality independent of the taxonomy above. A message can be blunt but still `adequate` if it correctly withholds the answer/key step and is calibrated.
 * Not handling multi-turn planning ("what should the tutor say three turns from now"). Judgment and rewrite are always for the single candidate message given the history so far.
+
+## Project Governance — this spec is the master reference
+
+Per [`project_spec.md`](project_spec.md), this Behavior Spec is simultaneously the **data-generation rubric**, the **evaluation criterion**, and the **brainlift POV** — everything downstream serves it. It is the single source of truth: if an implementation and this spec disagree, the spec wins, or the spec is deliberately updated *first* and the change propagated downstream.
+
+**Locked — change only by editing this spec first, then propagating:**
+- The 5-verdict taxonomy and its definitions.
+- The output schema `{verdict, reasoning, rewritten_message}` (with `rewritten_message` null iff `adequate`) and the input schema.
+- The 5 eval criteria.
+
+**Traceability — every component maps back here:**
+
+| Spec element | Implemented in |
+| :--- | :--- |
+| Taxonomy + output/input schema | `socratic_tutor/schema.py` (`VERDICTS`, `validate_output`, `validate_input`); `socratic_tutor/prompts.py` (`SYSTEM_PROMPT`) |
+| Eval criteria 1–5 | `scripts/eval_harness.py`; `scripts/eval_rubric.py` (0–2 tiers + Appendix A rollup) |
+| Data-gen rubric (all sources must conform) | `scripts/gen_lib.py` (synthetic); `scripts/ingest_mrbench.py`, `scripts/ingest_mathdial.py` (real data mapped to this taxonomy); `passes_quality_gate` |
+| Brainlift POV | `docs/brainlift-socratic-tutor.md` |
+
+**Locked implementation decisions (derived from, and consistent with, this spec — not changes to it):**
+- Output is a single JSON object with **thinking disabled** (`enable_thinking=False`) to serve strict schema compliance (criterion 4).
+- The eval scores each criterion on a **0/1/2 tier** and rolls the 5 criteria up into the `project_spec` Appendix A dimensions (Spec adherence, Task quality, Robustness) plus a **Consistency** dimension (k-sample stability). Tiering is a measurement refinement of the same criteria, not a new contract.
+- Grounded-reasoning and rewrite-safety are scored by an independent OpenAI judge (gpt-4.1); the other criteria are deterministic.
+
+**Conformance audit (2026-07-07):** the taxonomy, output/input schema, and criteria in code match this spec exactly — no drift. All additions (tier scoring, the Consistency dimension, thinking-off, real-data label mapping) are refinements consistent with the spec and `project_spec` Appendix A.
