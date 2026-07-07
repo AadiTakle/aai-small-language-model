@@ -1,0 +1,131 @@
+{
+  "base": {
+    "n": 10,
+    "verdict_accuracy": 50.0,
+    "grounded_reasoning": 90.0,
+    "rewrite_safety": 83.3,
+    "rewrite_safety_n": 6,
+    "schema_compliance": 60.0,
+    "calibration_robustness": 50.0,
+    "calibration_n": 2,
+    "confusion": {
+      "adequate": {
+        "adequate": 1,
+        "gives_final_answer": 0,
+        "gives_away_key_step": 0,
+        "mismatched_calibration": 3,
+        "vague_unhelpful": 0
+      },
+      "gives_final_answer": {
+        "adequate": 0,
+        "gives_final_answer": 1,
+        "gives_away_key_step": 0,
+        "mismatched_calibration": 1,
+        "vague_unhelpful": 0
+      },
+      "gives_away_key_step": {
+        "adequate": 0,
+        "gives_final_answer": 0,
+        "gives_away_key_step": 1,
+        "mismatched_calibration": 0,
+        "vague_unhelpful": 0
+      },
+      "mismatched_calibration": {
+        "adequate": 0,
+        "gives_final_answer": 1,
+        "gives_away_key_step": 0,
+        "mismatched_calibration": 1,
+        "vague_unhelpful": 0
+      },
+      "vague_unhelpful": {
+        "adequate": 0,
+        "gives_final_answer": 0,
+        "gives_away_key_step": 0,
+        "mismatched_calibration": 0,
+        "vague_unhelpful": 1
+      }
+    },
+    "per_item": [
+      {
+        "id": "seed-01",
+        "gold": "gives_final_answer",
+        "pred": "gives_final_answer",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "seed-02",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "seed-03",
+        "gold": "gives_away_key_step",
+        "pred": "gives_away_key_step",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "seed-04",
+        "gold": "vague_unhelpful",
+        "pred": "vague_unhelpful",
+        "schema_ok": true,
+        "grounded": false,
+        "rewrite_safe": true
+      },
+      {
+        "id": "seed-05",
+        "gold": "mismatched_calibration",
+        "pred": "gives_final_answer",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "seed-06",
+        "gold": "adequate",
+        "pred": "adequate",
+        "schema_ok": false,
+        "grounded": true,
+        "rewrite_safe": null
+      },
+      {
+        "id": "seed-07",
+        "gold": "mismatched_calibration",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "seed-08",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      },
+      {
+        "id": "seed-09",
+        "gold": "gives_final_answer",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": false
+      },
+      {
+        "id": "seed-10",
+        "gold": "adequate",
+        "pred": "mismatched_calibration",
+        "schema_ok": true,
+        "grounded": true,
+        "rewrite_safe": true
+      }
+    ]
+  }
+}
