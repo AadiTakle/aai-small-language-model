@@ -1,0 +1,9 @@
+Jinja2==3.1.6
+mlx==0.31.2
+mlx-lm==0.31.3
+mlx-metal==0.31.2
+numpy==2.5.1
+protobuf==7.35.1
+PyYAML==6.0.3
+sentencepiece==0.2.1
+transformers==4.57.6
