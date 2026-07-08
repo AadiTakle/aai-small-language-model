@@ -23,3 +23,6 @@ data/external/
 eval/results/loop/*
 !eval/results/loop/log.md
 !eval/results/loop/history.json
+
+# Manual-review app is regenerable from build_review.py; the human's review_results.json export is the artifact
+eval/gold/review/
