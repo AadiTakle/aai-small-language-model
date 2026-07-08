@@ -74,7 +74,7 @@ def pick_rewrite(responses, exclude):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--per-verdict", type=int, default=25)
+    p.add_argument("--per-verdict", type=int, default=90)
     p.add_argument("--out", default="eval/gold/frozen_eval.jsonl")
     args = p.parse_args()
 
