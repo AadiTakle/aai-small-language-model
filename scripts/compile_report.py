@@ -11,8 +11,11 @@ import json
 import os
 import random
 import sys
+from collections import Counter
 
 CRITERIA = ["verdict", "grounded", "rewrite_safety", "schema", "calibration", "consistency"]
+# order for the per-model breakdown tables (deterministic backbone first)
+BREAKDOWN_ORDER = ["verdict", "schema", "consistency", "grounded", "rewrite_safety", "calibration"]
 CRIT_LABELS = {
     "verdict": "Verdict correctness", "grounded": "Grounded reasoning",
     "rewrite_safety": "Rewrite safety", "schema": "Schema compliance",
@@ -69,6 +72,51 @@ def _cell(t):
     return f"{m:.2f} [{lo:.2f},{hi:.2f}]" if m is not None else "n/a"
 
 
+def _total_units(payload, crit):
+    """Denominator for a criterion: item count, or pair count for calibration."""
+    return payload.get("calib_n", 0) if crit == "calibration" else len(payload["per_item"])
+
+
+def breakdown_stats(payload, crit):
+    """Return {'0','1','2','na','n','mean','lo','hi'} for one criterion of one contestant."""
+    vals = _values(payload, crit)
+    total = _total_units(payload, crit)
+    c = Counter(vals)
+    m, lo, hi, n = bootstrap_ci(vals)
+    return {"0": c.get(0, 0), "1": c.get(1, 0), "2": c.get(2, 0),
+            "na": total - len(vals), "n": len(vals), "mean": m, "lo": lo, "hi": hi}
+
+
+def breakdown_markdown(data, contestants):
+    """Per-model tier-breakdown tables: raw 0/1/2 counts + N/A + mean[CI] per criterion.
+
+    This is the distribution behind the aggregate means — it makes the flat schema=2.0
+    visible as genuine saturation (0:0 1:0 2:n) rather than a suspicious constant, and
+    exposes the small effective-n on rewrite_safety (N/A on adequate items) and calibration.
+    """
+    L = ["## Per-model tier breakdown (raw 0/1/2 counts behind the means)", ""]
+    L.append("_Counts of each tier per criterion. `N/A` = not scored (rewrite_safety is N/A on "
+             "`adequate` items with no rewrite; calibration is scored per adversarial pair, so its "
+             "`n` is the pair count). Mean excludes N/A. A flat `2:n` on schema is real saturation, "
+             "not a placeholder._")
+    L.append("")
+    for c in contestants:
+        p = data[c]
+        vm, vlo, vhi, vn = verdict_exact_accuracy(p)
+        hdr = (f"### `{c}` — n={p['n']}, verdict exact-match {vm:.1f}% [{vlo:.1f},{vhi:.1f}]"
+               if vm is not None else f"### `{c}` — n={p['n']}")
+        L.append(hdr)
+        L.append("Criterion | 0 | 1 | 2 | N/A | mean [95% CI]")
+        L.append("---|---|---|---|---|---")
+        for crit in BREAKDOWN_ORDER:
+            b = breakdown_stats(p, crit)
+            mean_cell = (f"{b['mean']:.3f} [{b['lo']:.2f},{b['hi']:.2f}]"
+                         if b["mean"] is not None else "n/a")
+            L.append(f"{CRIT_LABELS[crit]} | {b['0']} | {b['1']} | {b['2']} | {b['na']} | {mean_cell}")
+        L.append("")
+    return L
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--dir", default="eval/results/report")
@@ -121,13 +169,20 @@ def main():
         L.append(f"{dim} | " + " | ".join(
             (f"{rolls[c][dim]:.2f}" if rolls[c][dim] is not None else "n/a") for c in contestants))
 
+    # Per-model raw tier breakdown (the distribution behind the means)
+    L.append("")
+    L += breakdown_markdown(data, contestants)
+
+    breakdown = {c: {crit: breakdown_stats(data[c], crit) for crit in BREAKDOWN_ORDER}
+                 for c in contestants}
+
     md = "\n".join(L) + "\n"
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     with open(args.out + ".md", "w") as f:
         f.write(md)
     with open(args.out + ".json", "w") as f:
         json.dump({"stats": stats, "verdict_accuracy": vacc, "rollup": rolls,
-                   "contestants": contestants, "n": n0}, f, indent=2)
+                   "breakdown": breakdown, "contestants": contestants, "n": n0}, f, indent=2)
     print(md)
     return 0
 
