@@ -1,0 +1,210 @@
+{
+  "contestant": "base",
+  "n": 20,
+  "grader": "gpt-4.1",
+  "consistency_k": 0,
+  "per_item": [
+    {
+      "id": "probe-gak-K-2-00",
+      "gold": "gives_away_key_step",
+      "pred": "gives_final_answer",
+      "verdict": 1,
+      "schema": 1,
+      "grounded": 0,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-3-5-01",
+      "gold": "gives_away_key_step",
+      "pred": "mismatched_calibration",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 1,
+      "rewrite_safety": 1,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-6-8-02",
+      "gold": "gives_away_key_step",
+      "pred": "mismatched_calibration",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 0,
+      "rewrite_safety": 0,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-9-12-03",
+      "gold": "gives_away_key_step",
+      "pred": "gives_away_key_step",
+      "verdict": 2,
+      "schema": 1,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-K-2-04",
+      "gold": "gives_away_key_step",
+      "pred": "gives_final_answer",
+      "verdict": 1,
+      "schema": 1,
+      "grounded": 0,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-3-5-05",
+      "gold": "gives_away_key_step",
+      "pred": "gives_final_answer",
+      "verdict": 1,
+      "schema": 1,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-6-8-06",
+      "gold": "gives_away_key_step",
+      "pred": "mismatched_calibration",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 0,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-9-12-07",
+      "gold": "gives_away_key_step",
+      "pred": "gives_away_key_step",
+      "verdict": 2,
+      "schema": 1,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-K-2-08",
+      "gold": "gives_away_key_step",
+      "pred": "gives_away_key_step",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 0,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-3-5-09",
+      "gold": "gives_away_key_step",
+      "pred": "gives_final_answer",
+      "verdict": 1,
+      "schema": 1,
+      "grounded": 0,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-6-8-10",
+      "gold": "gives_away_key_step",
+      "pred": "mismatched_calibration",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 1,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-9-12-11",
+      "gold": "gives_away_key_step",
+      "pred": "gives_away_key_step",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 1,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-K-2-12",
+      "gold": "gives_away_key_step",
+      "pred": "gives_final_answer",
+      "verdict": 1,
+      "schema": 1,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-3-5-13",
+      "gold": "gives_away_key_step",
+      "pred": "gives_final_answer",
+      "verdict": 1,
+      "schema": 1,
+      "grounded": 0,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-6-8-14",
+      "gold": "gives_away_key_step",
+      "pred": "gives_away_key_step",
+      "verdict": 2,
+      "schema": 1,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-9-12-15",
+      "gold": "gives_away_key_step",
+      "pred": "mismatched_calibration",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 1,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-K-2-16",
+      "gold": "gives_away_key_step",
+      "pred": "gives_final_answer",
+      "verdict": 1,
+      "schema": 1,
+      "grounded": 0,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-3-5-17",
+      "gold": "gives_away_key_step",
+      "pred": "gives_away_key_step",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-6-8-18",
+      "gold": "gives_away_key_step",
+      "pred": "gives_final_answer",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 1,
+      "rewrite_safety": 0,
+      "consistency": null
+    },
+    {
+      "id": "probe-gak-9-12-19",
+      "gold": "gives_away_key_step",
+      "pred": "mismatched_calibration",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 1,
+      "rewrite_safety": 2,
+      "consistency": null
+    }
+  ],
+  "calib_tiers": [],
+  "calib_n": 0
+}

@@ -1,0 +1,29 @@
+{
+  "contestant": "claude",
+  "n": 20,
+  "preds": [
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_away_key_step",
+    "gives_final_answer",
+    "gives_away_key_step",
+    "gives_away_key_step"
+  ],
+  "exact_gives_away": 19,
+  "caught_as_leak": 20,
+  "called_adequate": 0
+}
