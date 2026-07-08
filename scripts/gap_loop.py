@@ -180,12 +180,23 @@ def train(rawfile, adapter, iters=500):
     return os.path.exists(f"{adapter}/adapters.safetensors")
 
 
+def score_subproc(adapter):
+    """Run score() in a FRESH subprocess so the parent process never holds MLX memory.
+    This prevents the train-time double-load (parent MLX cache + training subprocess)
+    that caused swap; only one MLX process is ever resident at a time."""
+    outp = f"{LOOP}/_score_{adapter.replace('/', '_')}.json"
+    if os.path.exists(outp):
+        os.remove(outp)
+    sh(f'.venv/bin/python scripts/gap_loop.py --score-adapter {adapter} --score-out "{outp}"')
+    return json.load(open(outp))
+
+
 def main():
     if os.path.exists(STOP):
         os.remove(STOP)  # clear a stale halt flag on startup
     log(f"\n# Gap loop v2 start {time.strftime('%Y-%m-%d %H:%M')} (parallel API; cumulative-anchor; halt via STOP file; add+prune moves)")
     anchor_adapter, anchor_data = "adapters/v4", "data/raw/v4.jsonl"
-    anchor_per = score(anchor_adapter)
+    anchor_per = score_subproc(anchor_adapter)
     best_adapter, best_data, best_per = anchor_adapter, anchor_data, anchor_per
     anchor_means = {c: cmean(anchor_per, c) for c in ALLC}
     log("Anchor (v4) frozen means: " + json.dumps(anchor_means))
@@ -219,7 +230,7 @@ def main():
         cand_adapter = f"adapters/loop{it}"
         if not train(cand_data, cand_adapter):
             log("training failed; revert."); dry += 1; continue
-        cand_per = score(cand_adapter)
+        cand_per = score_subproc(cand_adapter)
         json.dump(cand_per, open(f"{LOOP}/iter{it}_per.json", "w"))
         fm, flo, fhi = paired(cand_per, anchor_per, focus)          # focus vs ANCHOR (cumulative)
         regress = []
@@ -258,4 +269,9 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if "--score-adapter" in sys.argv:
+        _a = sys.argv[sys.argv.index("--score-adapter") + 1]
+        _o = sys.argv[sys.argv.index("--score-out") + 1]
+        json.dump(score(_a), open(_o, "w"))
+    else:
+        main()
