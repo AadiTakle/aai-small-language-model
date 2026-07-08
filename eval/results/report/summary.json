@@ -189,6 +189,44 @@
         1.777,
         103
       ]
+    },
+    "claude": {
+      "verdict": [
+        1.505,
+        1.369,
+        1.631,
+        103
+      ],
+      "grounded": [
+        1.903,
+        1.825,
+        1.961,
+        103
+      ],
+      "rewrite_safety": [
+        1.975,
+        1.925,
+        2.0,
+        80
+      ],
+      "schema": [
+        1.99,
+        1.971,
+        2.0,
+        103
+      ],
+      "calibration": [
+        2.0,
+        2.0,
+        2.0,
+        2
+      ],
+      "consistency": [
+        null,
+        null,
+        null,
+        0
+      ]
     }
   },
   "verdict_accuracy": {
@@ -220,6 +258,12 @@
       45.6,
       35.9,
       55.3,
+      103
+    ],
+    "claude": [
+      62.1,
+      52.4,
+      70.9,
       103
     ]
   },
@@ -253,6 +297,12 @@
       "Task quality": 1.724,
       "Robustness": 2.0,
       "Consistency": 1.689
+    },
+    "claude": {
+      "Spec adherence": 1.7475,
+      "Task quality": 1.939,
+      "Robustness": 2.0,
+      "Consistency": null
     }
   },
   "contestants": [
@@ -260,7 +310,8 @@
     "v2",
     "v3",
     "v4",
-    "gpt4o"
+    "gpt4o",
+    "claude"
   ],
   "n": 103
 }

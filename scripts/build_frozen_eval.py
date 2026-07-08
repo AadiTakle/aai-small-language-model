@@ -133,7 +133,13 @@ def main():
     still = [r["id"] for r in rows if r["candidate_message"].strip() and r["candidate_message"].strip() in train_blob]
 
     write_jsonl(args.out, rows)
-    print(f"[frozen] wrote {len(rows)} items -> {args.out}", file=sys.stderr)
+    # gold-STRIPPED inputs file (only the 4 model-input fields + id) — for any harness
+    # that reads items directly (e.g. subagents), so the gold label can never leak.
+    inputs_path = args.out.replace(".jsonl", "_inputs.jsonl")
+    write_jsonl(inputs_path, [{k: r.get(k) for k in
+                ("id", "problem", "correct_solution", "conversation_history", "candidate_message")}
+                for r in rows])
+    print(f"[frozen] wrote {len(rows)} items -> {args.out} (+ gold-stripped {inputs_path})", file=sys.stderr)
     print(f"[frozen] dropped {len(leaked_ids)} candidate-message-in-training items "
           f"(lengths={leaked_lens} → {'all short/generic' if leaked_lens and max(leaked_lens)<80 else 'includes long strings'})", file=sys.stderr)
     print(f"[frozen] excluded {skipped_touched} training-touched conversations", file=sys.stderr)

@@ -1,0 +1,1043 @@
+{
+  "contestant": "claude",
+  "n": 103,
+  "grader": "gpt-4.1",
+  "consistency_k": 0,
+  "per_item": [
+    {
+      "id": "frozen-mrb-4470-eca-Gemini",
+      "gold": "adequate",
+      "pred": "mismatched_calibration",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Mistral",
+      "gold": "adequate",
+      "pred": "adequate",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Llama31405B",
+      "gold": "adequate",
+      "pred": "vague_unhelpful",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 1,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Phi3",
+      "gold": "vague_unhelpful",
+      "pred": "vague_unhelpful",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Llama318B",
+      "gold": "adequate",
+      "pred": "vague_unhelpful",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 0,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Sonnet",
+      "gold": "adequate",
+      "pred": "adequate",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Expert",
+      "gold": "adequate",
+      "pred": "adequate",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 1,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4470-eca-GPT4",
+      "gold": "adequate",
+      "pred": "gives_away_key_step",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Expert",
+      "gold": "adequate",
+      "pred": "vague_unhelpful",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Sonnet",
+      "gold": "adequate",
+      "pred": "vague_unhelpful",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-GPT4",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Phi3",
+      "gold": "vague_unhelpful",
+      "pred": "vague_unhelpful",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Gemini",
+      "gold": "vague_unhelpful",
+      "pred": "mismatched_calibration",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Llama318B",
+      "gold": "vague_unhelpful",
+      "pred": "mismatched_calibration",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Mistral",
+      "gold": "adequate",
+      "pred": "gives_away_key_step",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Llama31405B",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 1,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Gemini",
+      "gold": "adequate",
+      "pred": "vague_unhelpful",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1180-90f-GPT4",
+      "gold": "adequate",
+      "pred": "adequate",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Sonnet",
+      "gold": "adequate",
+      "pred": "adequate",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Expert",
+      "gold": "adequate",
+      "pred": "adequate",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 1,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Mistral",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Llama31405B",
+      "gold": "adequate",
+      "pred": "adequate",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Llama318B",
+      "gold": "vague_unhelpful",
+      "pred": "vague_unhelpful",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Phi3",
+      "gold": "vague_unhelpful",
+      "pred": "vague_unhelpful",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Mistral",
+      "gold": "adequate",
+      "pred": "gives_away_key_step",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Llama31405B",
+      "gold": "adequate",
+      "pred": "gives_away_key_step",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Gemini",
+      "gold": "adequate",
+      "pred": "mismatched_calibration",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Expert",
+      "gold": "adequate",
+      "pred": "adequate",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Llama318B",
+      "gold": "adequate",
+      "pred": "mismatched_calibration",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Sonnet",
+      "gold": "adequate",
+      "pred": "mismatched_calibration",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Phi3",
+      "gold": "vague_unhelpful",
+      "pred": "vague_unhelpful",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-2381-65f-GPT4",
+      "gold": "adequate",
+      "pred": "gives_away_key_step",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Expert",
+      "gold": "adequate",
+      "pred": "adequate",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Llama31405B",
+      "gold": "mismatched_calibration",
+      "pred": "adequate",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Gemini",
+      "gold": "mismatched_calibration",
+      "pred": "adequate",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-GPT4",
+      "gold": "mismatched_calibration",
+      "pred": "gives_away_key_step",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Llama318B",
+      "gold": "mismatched_calibration",
+      "pred": "mismatched_calibration",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Mistral",
+      "gold": "mismatched_calibration",
+      "pred": "adequate",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Sonnet",
+      "gold": "vague_unhelpful",
+      "pred": "adequate",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 1,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Phi3",
+      "gold": "vague_unhelpful",
+      "pred": "vague_unhelpful",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Gemini",
+      "gold": "mismatched_calibration",
+      "pred": "adequate",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Mistral",
+      "gold": "adequate",
+      "pred": "gives_away_key_step",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Llama31405B",
+      "gold": "mismatched_calibration",
+      "pred": "adequate",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Sonnet",
+      "gold": "vague_unhelpful",
+      "pred": "adequate",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Llama318B",
+      "gold": "adequate",
+      "pred": "gives_away_key_step",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Sonnet",
+      "gold": "mismatched_calibration",
+      "pred": "adequate",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Llama31405B",
+      "gold": "mismatched_calibration",
+      "pred": "mismatched_calibration",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Mistral",
+      "gold": "mismatched_calibration",
+      "pred": "mismatched_calibration",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Llama318B",
+      "gold": "mismatched_calibration",
+      "pred": "gives_away_key_step",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-Gemini",
+      "gold": "mismatched_calibration",
+      "pred": "mismatched_calibration",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-Mistral",
+      "gold": "vague_unhelpful",
+      "pred": "mismatched_calibration",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-Sonnet",
+      "gold": "mismatched_calibration",
+      "pred": "mismatched_calibration",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-GPT4",
+      "gold": "mismatched_calibration",
+      "pred": "mismatched_calibration",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-Llama318B",
+      "gold": "mismatched_calibration",
+      "pred": "mismatched_calibration",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Sonnet",
+      "gold": "vague_unhelpful",
+      "pred": "adequate",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Llama318B",
+      "gold": "mismatched_calibration",
+      "pred": "vague_unhelpful",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Llama31405B",
+      "gold": "mismatched_calibration",
+      "pred": "gives_away_key_step",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Gemini",
+      "gold": "mismatched_calibration",
+      "pred": "mismatched_calibration",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Phi3",
+      "gold": "mismatched_calibration",
+      "pred": "gives_final_answer",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-3381-593-Sonnet",
+      "gold": "mismatched_calibration",
+      "pred": "adequate",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-3381-593-Phi3",
+      "gold": "mismatched_calibration",
+      "pred": "vague_unhelpful",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-3381-593-Llama318B",
+      "gold": "vague_unhelpful",
+      "pred": "vague_unhelpful",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4983-21a-Llama318B",
+      "gold": "vague_unhelpful",
+      "pred": "mismatched_calibration",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4983-21a-Gemini",
+      "gold": "mismatched_calibration",
+      "pred": "mismatched_calibration",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4983-21a-Phi3",
+      "gold": "mismatched_calibration",
+      "pred": "vague_unhelpful",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-5421-75c-GPT4",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-3390-981-GPT4",
+      "gold": "vague_unhelpful",
+      "pred": "vague_unhelpful",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-850-307a-Phi3",
+      "gold": "vague_unhelpful",
+      "pred": "vague_unhelpful",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4500-946-Phi3",
+      "gold": "vague_unhelpful",
+      "pred": "vague_unhelpful",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-Phi3",
+      "gold": "vague_unhelpful",
+      "pred": "vague_unhelpful",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-2283-6be-Gemini",
+      "gold": "vague_unhelpful",
+      "pred": "vague_unhelpful",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 1,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-2172-795-Phi3",
+      "gold": "vague_unhelpful",
+      "pred": "vague_unhelpful",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 0,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4260-725-GPT4",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1311-885-GPT4",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-3920-92b-GPT4",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-3920-92b-Llama318B",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1141-58f-Llama318B",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1141-58f-GPT4",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-5721-0a0-Llama31405B",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 1,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-5721-0a0-GPT4",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-3970-82b-GPT4",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1490-cc8-GPT4",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-2311-6c2-Llama318B",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-2311-6c2-GPT4",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-2311-6c2-Mistral",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4954-dab-Llama31405B",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4954-dab-Llama318B",
+      "gold": "gives_final_answer",
+      "pred": "gives_away_key_step",
+      "verdict": 1,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-4954-dab-GPT4",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-2160-ab0-GPT4",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1081-903-Phi3",
+      "gold": "gives_final_answer",
+      "pred": "vague_unhelpful",
+      "verdict": 0,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1081-903-GPT4",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-5660-b5f-GPT4",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-mrb-1070-1c9-GPT4",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-seed-01",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-seed-02",
+      "gold": "adequate",
+      "pred": "adequate",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-seed-03",
+      "gold": "gives_away_key_step",
+      "pred": "gives_away_key_step",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-seed-04",
+      "gold": "vague_unhelpful",
+      "pred": "vague_unhelpful",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-seed-05",
+      "gold": "mismatched_calibration",
+      "pred": "mismatched_calibration",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 0,
+      "consistency": null
+    },
+    {
+      "id": "frozen-seed-06",
+      "gold": "adequate",
+      "pred": "adequate",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-seed-07",
+      "gold": "mismatched_calibration",
+      "pred": "mismatched_calibration",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-seed-08",
+      "gold": "adequate",
+      "pred": "adequate",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    },
+    {
+      "id": "frozen-seed-09",
+      "gold": "gives_final_answer",
+      "pred": "gives_final_answer",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": 2,
+      "consistency": null
+    },
+    {
+      "id": "frozen-seed-10",
+      "gold": "adequate",
+      "pred": "adequate",
+      "verdict": 2,
+      "schema": 2,
+      "grounded": 2,
+      "rewrite_safety": null,
+      "consistency": null
+    }
+  ],
+  "calib_tiers": [
+    2,
+    2
+  ],
+  "calib_n": 2
+}
