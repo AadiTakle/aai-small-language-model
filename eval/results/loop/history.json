@@ -1,0 +1,68 @@
+[
+  {
+    "iter": 0,
+    "move": "anchor",
+    "means": {
+      "verdict": 1.523,
+      "schema": 2.0,
+      "grounded": 1.477,
+      "rewrite_safety": 1.431,
+      "consistency": 1.451
+    },
+    "accept": true
+  },
+  {
+    "iter": 1,
+    "move": "add:rewrite_safety",
+    "focus": "rewrite_safety",
+    "means": {
+      "verdict": 1.51,
+      "schema": 1.987,
+      "grounded": 1.513,
+      "rewrite_safety": 0.986,
+      "consistency": 1.428
+    },
+    "vs_anchor": {
+      "verdict": -0.013,
+      "schema": -0.013,
+      "grounded": 0.036,
+      "rewrite_safety": -0.445,
+      "consistency": -0.023
+    },
+    "focus_diff_ci": [
+      -0.409,
+      -0.57,
+      -0.249
+    ],
+    "regressions": [
+      "rewrite_safety -0.409[-0.570,-0.249]"
+    ],
+    "accept": false
+  },
+  {
+    "iter": 2,
+    "move": "prune:35",
+    "focus": "rewrite_safety",
+    "means": {
+      "verdict": 1.454,
+      "schema": 1.98,
+      "grounded": 1.405,
+      "rewrite_safety": 1.46,
+      "consistency": 1.399
+    },
+    "vs_anchor": {
+      "verdict": -0.069,
+      "schema": -0.02,
+      "grounded": -0.072,
+      "rewrite_safety": 0.029,
+      "consistency": -0.052
+    },
+    "focus_diff_ci": [
+      0.048,
+      -0.122,
+      0.207
+    ],
+    "regressions": [],
+    "accept": false
+  }
+]
