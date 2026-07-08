@@ -18,6 +18,7 @@ import argparse
 import json
 import os
 import random
+import re
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -32,6 +33,27 @@ FROZEN = "eval/gold/frozen_eval.jsonl"
 
 def _input(row):
     return {x: row.get(x) for x in ("problem", "correct_solution", "conversation_history", "candidate_message")}
+
+
+def _last_role(hist):
+    if not hist:
+        return "none"
+    m = re.match(r"\s*[-*]?\s*(tutor|student)\s*:", hist[-1], re.I)
+    return m.group(1).lower() if m else "other"
+
+
+def tag_artifacts(items):
+    """Flag MRBench role-labeling artifacts: a conversation that ends on a 'Tutor:' turn
+    (the candidate would be a 2nd consecutive tutor message; the last turn is usually a
+    student self-explanation mislabeled as tutor). Sets item['artifact']."""
+    n = 0
+    for it in items:
+        if _last_role(it.get("conversation_history") or []) == "tutor":
+            it["artifact"] = "ends_on_tutor"
+            n += 1
+        else:
+            it["artifact"] = ""
+    return n
 
 
 def relabel_all(rows):
@@ -92,12 +114,13 @@ def build_items(rows, n_agreed, dry_run):
     # contested first (sorted by gold verdict for rhythm), then the agreed spot-check
     contested.sort(key=lambda x: (x["gold_verdict"] or ""))
     review = contested + spot
+    n_artifact = tag_artifacts(review)
     for i, it in enumerate(review):
         it["n"] = i
     meta = {"total_frozen": len(rows), "contested": len(contested), "spotcheck": len(spot),
             "review_n": len(review), "dry_run": dry_run,
             "judge_errors": sum(1 for it in contested if it["judge_verdict"] is None),
-            "verdicts": list(VERDICTS)}
+            "artifacts": n_artifact, "verdicts": list(VERDICTS)}
     return review, meta
 
 
@@ -121,6 +144,7 @@ HTML = r"""<!doctype html><html lang="en"><head><meta charset="utf-8">
  .chip.spotcheck{background:#20242e;color:var(--mut)}
  .chip.gold{background:#20303f;color:#9ecbff;border-color:#5b9dff55}
  .chip.judge{background:#332a12;color:#ffd7a0;border-color:#d2992255}
+ .chip.artifact{background:#3a2412;color:#ffc98a;border-color:#d2660088;cursor:help}
  h2.prob{font-size:17px;margin:6px 0 10px} .sol{color:#cdd3dd} details{margin:8px 0} summary{cursor:pointer;color:var(--mut);font-size:13px}
  .kv{font-size:12px;color:var(--mut);margin:4px 0}
  .chat{display:flex;flex-direction:column;gap:7px;margin:12px 0}
@@ -152,6 +176,8 @@ HTML = r"""<!doctype html><html lang="en"><head><meta charset="utf-8">
   <span class="status" id="pos"></span>
   <button class="btn" onclick="go(-1)">&larr; Prev</button>
   <button class="btn" onclick="go(1)">Next &rarr;</button>
+  <button class="btn" onclick="document.getElementById('imp').click()">Import JSON</button>
+  <input id="imp" type="file" accept="application/json,.json" style="display:none" onchange="importJSON(this.files[0])">
   <button class="btn primary" onclick="exportJSON()">Export JSON</button>
 </div>
 <div class="help">Keys: <kbd>1</kbd>-<kbd>5</kbd> pick the verdict you think is correct (matching gold = agree) &middot; <kbd>u</kbd> unsure &middot; <kbd>r</kbd> rewrite leaks &middot; <kbd>n</kbd> notes &middot; <kbd>&larr;/&rarr;</kbd> or <kbd>j</kbd>/<kbd>k</kbd> navigate</div>
@@ -200,6 +226,7 @@ function render(){
   document.getElementById("main").innerHTML =
    '<div class="card"><div class="meta">'
    +'<span class="chip '+d.section+'">'+d.section+'</span>'
+   +(d.artifact?'<span class="chip artifact" title="MRBench role-labeling artifact: this conversation ends on a Tutor turn (usually a student self-explanation mislabeled as tutor). Decide keep/fix/drop.">⚠ role-artifact</span>':'')
    +'<span class="chip gold">gold: '+esc(d.gold_verdict)+'</span>'
    +'<span>'+esc(d.id)+'</span><span>&middot; '+esc(d.source)+'</span>'+(d.slice?'<span>&middot; '+esc(d.slice)+'</span>':'')+'</div>'
    +'<h2 class="prob">'+esc(d.problem)+'</h2>'
@@ -232,6 +259,27 @@ document.addEventListener("keydown",e=>{
   else if(e.key==="ArrowLeft"||e.key==="k"){ go(-1); }
   else if(e.key==="e"){ exportJSON(); }
 });
+function importJSON(file){
+  if(!file) return;
+  const fr = new FileReader();
+  fr.onload = () => {
+    let obj; try{ obj = JSON.parse(fr.result); }catch(e){ alert("Not valid JSON: "+e); return; }
+    const items = obj.items || obj;
+    if(!Array.isArray(items)){ alert("Expected an exported review file with an 'items' array."); return; }
+    let merged=0;
+    for(const x of items){
+      if(!x || !x.id) continue;
+      const has = x.user_verdict || x.unsure || x.rewrite_unsafe || (x.notes && x.notes.length);
+      if(!has) continue;
+      store[x.id] = {user_verdict: x.user_verdict||null, unsure: !!x.unsure,
+                     rewrite_unsafe: !!x.rewrite_unsafe, notes: x.notes||""};
+      merged++;
+    }
+    save();
+    alert("Imported "+merged+" judged items into this session.");
+  };
+  fr.readAsText(file);
+}
 function exportJSON(){
   const out = { meta: META, reviewed_at_local: new Date().toString(),
     reviewed_count: reviewedCount(),
@@ -254,12 +302,20 @@ def main():
     ap.add_argument("--n-agreed", type=int, default=20)
     ap.add_argument("--out", default="eval/gold/review/frozen_review.html")
     ap.add_argument("--dry-run", action="store_true", help="skip the gpt-4.1 relabel (review all, no flags)")
+    ap.add_argument("--from-manifest", default=None,
+                    help="re-render from a prior _manifest.json (reuses cached relabels; identical item ids/order, no API)")
     a = ap.parse_args()
 
-    rows = read_jsonl(a.frozen)
-    print(f"[review] {len(rows)} frozen items; {'DRY-RUN (no relabel)' if a.dry_run else 'relabeling with gpt-4.1 ...'}",
-          file=sys.stderr, flush=True)
-    review, meta = build_items(rows, a.n_agreed, a.dry_run)
+    if a.from_manifest:
+        man = json.load(open(a.from_manifest))
+        review, meta = man["items"], man["meta"]
+        meta["artifacts"] = tag_artifacts(review)  # (re)compute + tag
+        print(f"[review] re-rendering {len(review)} items from {a.from_manifest} (no API relabel)", file=sys.stderr)
+    else:
+        rows = read_jsonl(a.frozen)
+        print(f"[review] {len(rows)} frozen items; {'DRY-RUN (no relabel)' if a.dry_run else 'relabeling with gpt-4.1 ...'}",
+              file=sys.stderr, flush=True)
+        review, meta = build_items(rows, a.n_agreed, a.dry_run)
 
     html = HTML.replace("__DATA__", json.dumps(review)).replace("__META__", json.dumps(meta))
     os.makedirs(os.path.dirname(a.out), exist_ok=True)
@@ -269,7 +325,8 @@ def main():
     with open(a.out.replace(".html", "_manifest.json"), "w") as f:
         json.dump({"meta": meta, "items": review}, f, indent=2)
     print(f"[review] contested={meta['contested']} (judge_errors={meta['judge_errors']}) "
-          f"+ spotcheck={meta['spotcheck']} → review_n={meta['review_n']}", file=sys.stderr)
+          f"+ spotcheck={meta['spotcheck']} → review_n={meta['review_n']} "
+          f"(role-artifacts flagged={meta.get('artifacts', 0)})", file=sys.stderr)
     print(f"[review] wrote {a.out} (+ _manifest.json)", file=sys.stderr)
     print(f"\nOpen it:  open '{a.out}'")
     return 0
