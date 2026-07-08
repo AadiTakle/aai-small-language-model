@@ -25,7 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from socratic_tutor import config
 from socratic_tutor.io_utils import read_jsonl, split_rows, write_jsonl
-from socratic_tutor.prompts import build_user_prompt, render_training_text
+from socratic_tutor.prompts import SYSTEM_PROMPT, build_user_prompt, render_training_text
 from gen_lib import assistant_json, passes_quality_gate
 
 
@@ -64,6 +64,11 @@ def main() -> int:
     p.add_argument("--train", type=float, default=0.8)
     p.add_argument("--valid", type=float, default=0.1)
     p.add_argument("--no-gate", action="store_true", help="Skip the quality gate.")
+    p.add_argument("--format", choices=["text", "chat"], default="text",
+                   help="text = {'text': full render} (no prompt masking, default/legacy). "
+                        "chat = {'messages':[system,user,assistant]} for mlx_lm ChatDataset + "
+                        "mask_prompt:true (loss on the assistant JSON only). Renders token-identical; "
+                        "only the loss mask differs.")
     args = p.parse_args()
 
     raw = read_jsonl(args.raw)
@@ -87,19 +92,32 @@ def main() -> int:
     rng.shuffle(kept)
     train_rows, valid_rows, test_rows = split_rows(kept, args.train, args.valid)
 
-    print(f"[build] loading tokenizer from {config.MODEL} for text rendering ...",
-          file=sys.stderr)
-    from mlx_lm import load
-    _, tokenizer = load(config.MODEL)
+    if args.format == "chat":
+        # {"messages":[system,user,assistant]} — mlx_lm ChatDataset applies the chat
+        # template at load; pair with `mask_prompt: true` in the lora config so loss falls
+        # on the assistant JSON only. No tokenizer needed here.
+        def to_lines(rows):
+            return [{"messages": [
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": build_user_prompt(_input_dict(r))},
+                {"role": "assistant", "content": assistant_json(r)},
+            ]} for r in rows]
+        print("[build] format=chat (messages) — pair with mask_prompt:true for prompt masking",
+              file=sys.stderr)
+    else:
+        print(f"[build] format=text — loading tokenizer from {config.MODEL} for rendering ...",
+              file=sys.stderr)
+        from mlx_lm import load
+        _, tokenizer = load(config.MODEL)
 
-    def to_text_lines(rows):
-        return [{"text": render_training_text(tokenizer, _input_dict(r), assistant_json(r))}
-                for r in rows]
+        def to_lines(rows):
+            return [{"text": render_training_text(tokenizer, _input_dict(r), assistant_json(r))}
+                    for r in rows]
 
     out_dir = Path(args.out_dir)
-    write_jsonl(out_dir / "train.jsonl", to_text_lines(train_rows))
-    write_jsonl(out_dir / "valid.jsonl", to_text_lines(valid_rows))
-    write_jsonl(out_dir / "test.jsonl", to_text_lines(test_rows))
+    write_jsonl(out_dir / "train.jsonl", to_lines(train_rows))
+    write_jsonl(out_dir / "valid.jsonl", to_lines(valid_rows))
+    write_jsonl(out_dir / "test.jsonl", to_lines(test_rows))
     print(f"[build] wrote {len(train_rows)} train / {len(valid_rows)} valid / "
           f"{len(test_rows)} test -> {out_dir}", file=sys.stderr)
 
