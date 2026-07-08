@@ -19,8 +19,7 @@ adapters/
 # Downloaded third-party datasets (regenerated; attributed in docs)
 data/external/
 
-# Regenerable gap-loop per-iteration artifacts (large; trace kept in log.md + history.json)
-eval/results/loop/iter*_data.jsonl
-eval/results/loop/iter*_per.json
-eval/results/loop/_score_*.json
-eval/results/loop/archive_n103/
+# Gap-loop working dir: keep only the human/structured trace; everything else is regenerable
+eval/results/loop/*
+!eval/results/loop/log.md
+!eval/results/loop/history.json
