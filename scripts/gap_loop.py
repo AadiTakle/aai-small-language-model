@@ -74,7 +74,9 @@ def score(adapter, k=3):
     uj = judge.judge_available()
     gold = read_jsonl(FROZEN)
     staged = []
-    for row in gold:
+    for gi, row in enumerate(gold, 1):
+        if gi % 20 == 0 or gi == len(gold):
+            print(f"[score {adapter}] MLX gen {gi}/{len(gold)}", flush=True)
         inp = _input(row)
         raw = r.generate(inp, temp=0.0)
         out = parse_model_json(raw)
@@ -170,7 +172,8 @@ def prune_noisy(best_data, sample_n=150):
 
 
 def sh(cmd):
-    return subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    # stream subprocess output to the loop's stdout (visible live in the run log) — not captured
+    return subprocess.run(cmd, shell=True)
 
 
 def train(rawfile, adapter, iters=500):
@@ -196,6 +199,7 @@ def main():
         os.remove(STOP)  # clear a stale halt flag on startup
     log(f"\n# Gap loop v2 start {time.strftime('%Y-%m-%d %H:%M')} (parallel API; cumulative-anchor; halt via STOP file; add+prune moves)")
     anchor_adapter, anchor_data = "adapters/v4", "data/raw/v4.jsonl"
+    log(f"scoring anchor v4 ({time.strftime('%H:%M:%S')}) ...")
     anchor_per = score_subproc(anchor_adapter)
     best_adapter, best_data, best_per = anchor_adapter, anchor_data, anchor_per
     anchor_means = {c: cmean(anchor_per, c) for c in ALLC}
@@ -228,8 +232,10 @@ def main():
             write_jsonl(cand_data, kept)
             change = f"prune:{dropped}"
         cand_adapter = f"adapters/loop{it}"
+        log(f"training {cand_adapter} ({time.strftime('%H:%M:%S')}) — ~500 iters, watch mlx output ...")
         if not train(cand_data, cand_adapter):
             log("training failed; revert."); dry += 1; continue
+        log(f"scoring {cand_adapter} ({time.strftime('%H:%M:%S')}) ...")
         cand_per = score_subproc(cand_adapter)
         json.dump(cand_per, open(f"{LOOP}/iter{it}_per.json", "w"))
         fm, flo, fhi = paired(cand_per, anchor_per, focus)          # focus vs ANCHOR (cumulative)
