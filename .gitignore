@@ -24,5 +24,10 @@ eval/results/loop/*
 !eval/results/loop/log.md
 !eval/results/loop/history.json
 
-# Manual-review app is regenerable from build_review.py; the human's review_results.json export is the artifact
-eval/gold/review/
+# Manual-review apps + reconcile working files are regenerable; keep ONLY the provenance
+# of the gold relabel (what changed + the full proposal with reasons).
+eval/gold/review/*
+!eval/gold/review/proposed_edits.json
+!eval/gold/review/reconcile_applied.json
+# pre-reconcile gold backup (git history already holds the prior version)
+eval/gold/*.bak.jsonl

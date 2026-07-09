@@ -1,0 +1,600 @@
+{
+  "rulings_file": "/Users/atakle/Downloads/ruling_results.json",
+  "n_changes": 92,
+  "by_source": {
+    "USER": 28,
+    "CONFIRMED": 51,
+    "RULING-override": 1,
+    "RULING-accept": 12
+  },
+  "unruled": [],
+  "missing": [],
+  "rewrite_flags": [
+    "frozen-mrb-1180-90f-Gemini",
+    "frozen-mrb-3750-3e8-Llama31405B",
+    "frozen-mrb-1180-90f-Mistral"
+  ],
+  "before": {
+    "adequate": 94,
+    "vague_unhelpful": 73,
+    "gives_final_answer": 50,
+    "mismatched_calibration": 88,
+    "gives_away_key_step": 1
+  },
+  "after": {
+    "adequate": 64,
+    "vague_unhelpful": 79,
+    "gives_final_answer": 42,
+    "mismatched_calibration": 81,
+    "gives_away_key_step": 40
+  },
+  "changes": [
+    {
+      "id": "frozen-mrb-4470-eca-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Expert",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Gemini",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Expert",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Llama31405B",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Gemini",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Expert",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Sonnet",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Expert",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Llama318B",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-4430-62a-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Expert",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-Expert",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Expert",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-3381-593-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-3381-593-Llama31405B",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-850-307a-Expert",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-850-307a-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-4500-946-Expert",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-2172-795-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-4260-725-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-2231-0be-Expert",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-3912-5d9-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-1311-885-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "USER"
+    },
+    {
+      "id": "frozen-mrb-2311-6c2-Llama318B",
+      "old": "gives_final_answer",
+      "new": "adequate",
+      "source": "USER",
+      "gold_rewrite_cleared": true
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Gemini",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Llama318B",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Llama318B",
+      "old": "vague_unhelpful",
+      "new": "mismatched_calibration",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Llama318B",
+      "old": "vague_unhelpful",
+      "new": "mismatched_calibration",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Llama31405B",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "CONFIRMED",
+      "gold_rewrite_cleared": true
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Gemini",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "CONFIRMED",
+      "gold_rewrite_cleared": true
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-GPT4",
+      "old": "mismatched_calibration",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Mistral",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "CONFIRMED",
+      "gold_rewrite_cleared": true
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Sonnet",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "CONFIRMED",
+      "gold_rewrite_cleared": true
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Expert",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Gemini",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-Mistral",
+      "old": "vague_unhelpful",
+      "new": "mismatched_calibration",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-3381-593-Sonnet",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "CONFIRMED",
+      "gold_rewrite_cleared": true
+    },
+    {
+      "id": "frozen-mrb-3381-593-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-3381-593-Gemini",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-4983-21a-Llama31405B",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-4983-21a-Sonnet",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-4983-21a-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-3390-981-Expert",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-850-307a-Sonnet",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "CONFIRMED",
+      "gold_rewrite_cleared": true
+    },
+    {
+      "id": "frozen-mrb-850-307a-Llama318B",
+      "old": "mismatched_calibration",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-Llama318B",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-Sonnet",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "CONFIRMED",
+      "gold_rewrite_cleared": true
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-Expert",
+      "old": "mismatched_calibration",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-2283-6be-Phi3",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-1150-e9a-Mistral",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-2172-795-Sonnet",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-2172-795-Llama31405B",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-3912-5d9-Sonnet",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-3912-5d9-Phi3",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-3661-2cc-Llama318B",
+      "old": "mismatched_calibration",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-3661-2cc-Gemini",
+      "old": "mismatched_calibration",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-3920-92b-Llama318B",
+      "old": "gives_final_answer",
+      "new": "mismatched_calibration",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-5721-0a0-Gemini",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "CONFIRMED",
+      "gold_rewrite_cleared": true
+    },
+    {
+      "id": "frozen-mrb-3970-82b-Phi3",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-1490-cc8-Expert",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-1490-cc8-Sonnet",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-3640-953-Gemini",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "CONFIRMED",
+      "gold_rewrite_cleared": true
+    },
+    {
+      "id": "frozen-mrb-3640-953-Llama318B",
+      "old": "mismatched_calibration",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-2160-ab0-Sonnet",
+      "old": "vague_unhelpful",
+      "new": "mismatched_calibration",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-1081-903-Phi3",
+      "old": "gives_final_answer",
+      "new": "mismatched_calibration",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-1081-903-Expert",
+      "old": "vague_unhelpful",
+      "new": "adequate",
+      "source": "CONFIRMED",
+      "gold_rewrite_cleared": true
+    },
+    {
+      "id": "frozen-mrb-2242-738-Phi3",
+      "old": "vague_unhelpful",
+      "new": "gives_final_answer",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-5922-199-Llama31405B",
+      "old": "gives_final_answer",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-5430-711-Llama318B",
+      "old": "gives_final_answer",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-3660-a26-Sonnet",
+      "old": "vague_unhelpful",
+      "new": "mismatched_calibration",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-3660-a26-Llama318B",
+      "old": "vague_unhelpful",
+      "new": "mismatched_calibration",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-2150-c7e-GPT4",
+      "old": "gives_final_answer",
+      "new": "mismatched_calibration",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-2150-c7e-Mistral",
+      "old": "gives_final_answer",
+      "new": "mismatched_calibration",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-2822-2a6-Expert",
+      "old": "vague_unhelpful",
+      "new": "adequate",
+      "source": "CONFIRMED",
+      "gold_rewrite_cleared": true
+    },
+    {
+      "id": "frozen-mrb-2822-2a6-Phi3",
+      "old": "vague_unhelpful",
+      "new": "gives_away_key_step",
+      "source": "CONFIRMED"
+    },
+    {
+      "id": "frozen-mrb-1380-46d-GPT4",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "RULING-override"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "RULING-accept"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Llama31405B",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "RULING-accept"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "RULING-accept"
+    },
+    {
+      "id": "frozen-mrb-2481-c67-GPT4",
+      "old": "vague_unhelpful",
+      "new": "adequate",
+      "source": "RULING-accept",
+      "gold_rewrite_cleared": true
+    },
+    {
+      "id": "frozen-mrb-2481-c67-Llama31405B",
+      "old": "gives_final_answer",
+      "new": "adequate",
+      "source": "RULING-accept",
+      "gold_rewrite_cleared": true
+    },
+    {
+      "id": "frozen-mrb-2481-c67-Sonnet",
+      "old": "gives_final_answer",
+      "new": "adequate",
+      "source": "RULING-accept",
+      "gold_rewrite_cleared": true
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "RULING-accept"
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "RULING-accept"
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Sonnet",
+      "old": "vague_unhelpful",
+      "new": "gives_away_key_step",
+      "source": "RULING-accept"
+    },
+    {
+      "id": "frozen-mrb-850-307a-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "RULING-accept"
+    },
+    {
+      "id": "frozen-mrb-4260-725-Gemini",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "RULING-accept"
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Llama31405B",
+      "old": "mismatched_calibration",
+      "new": "gives_away_key_step",
+      "source": "RULING-accept"
+    }
+  ]
+}

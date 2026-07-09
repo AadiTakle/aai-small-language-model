@@ -1,0 +1,907 @@
+{
+  "review_file": "/Users/atakle/Downloads/review_results (1).json",
+  "n_frozen": 306,
+  "reviewer_decided": 33,
+  "judged": 273,
+  "missing": [],
+  "malformed_lines": 0,
+  "edits": [
+    {
+      "id": "frozen-mrb-4470-eca-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Expert",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": "Just asking the question but again, doesn't actually build off student's work"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Gemini",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": "broken"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Expert",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": "broken"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Llama31405B",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Gemini",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": "doesnt correctly understand the student's mistake"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Expert",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Sonnet",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Expert",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Llama318B",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": "actively harmful since it suggests the student is close to the concept despite the student completely misunderstanding what it is asking."
+    },
+    {
+      "id": "frozen-mrb-4430-62a-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Expert",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": "This is very close. I love the clarification this gives, but it goes too far with its advice when mentioning dividing into 4 classrooms (not mentioned in the tutor prompts previously and not figured out by the student!)"
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-Expert",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Expert",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": "mix of 3 and 4, but 3 is more severe so selecting that."
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-3381-593-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-3381-593-Llama31405B",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-850-307a-Expert",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-850-307a-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-4500-946-Expert",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-2172-795-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": "I would frame this by pointing the student at the area where there mistake is and asking them to find it."
+    },
+    {
+      "id": "frozen-mrb-4260-725-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": "This one is really close. Its only mistake is that it gives away that jan has more, when it should just ask the student to consider if jan really has less."
+    },
+    {
+      "id": "frozen-mrb-2231-0be-Expert",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-3912-5d9-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-1311-885-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": ""
+    },
+    {
+      "id": "frozen-mrb-2311-6c2-Llama318B",
+      "old": "gives_final_answer",
+      "new": "adequate",
+      "source": "reviewer",
+      "tier": "USER",
+      "confidence": "user",
+      "why": "they already got the answer."
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Gemini",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "mismatched_calibration",
+      "why": "Criterion 3: misreads the student as subtracting bricks for all four walls when they subtracted 20 only once for the last wall."
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Llama318B",
+      "old": "adequate",
+      "new": "mismatched_calibration",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "mismatched_calibration",
+      "why": "Criterion 3: directs attention to the '-20' step, which is actually correct, misdiagnosing the real course-count error."
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Llama318B",
+      "old": "vague_unhelpful",
+      "new": "mismatched_calibration",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "mismatched_calibration",
+      "why": "Criterion 3: falsely claims 60% split into two groups isn't 30% each, misdiagnosing the actual extra-division mistake."
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Llama318B",
+      "old": "vague_unhelpful",
+      "new": "mismatched_calibration",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "mismatched_calibration",
+      "why": "Criterion 3: blames rounding of 2.92, when the real error is the per-box count (24 vs 8) and the 70 vs 72 total."
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Llama31405B",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "adequate",
+      "why": "Criterion 5: accurately notes the student used the wrong subset and redirects to the both-defect candles without supplying the method."
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Gemini",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "adequate",
+      "why": "Criterion 5: redirects from the non-smelling group to the both-defect candles without revealing the multiplication."
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-GPT4",
+      "old": "mismatched_calibration",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "gives_away_key_step",
+      "why": "Criterion 1: hands over the method ('find 5% of the smell-defect candles first, then 1% of that number')."
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Mistral",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "adequate",
+      "why": "Criterion 5: redirects to the candles that smell and explode without supplying the percentages or answer."
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Sonnet",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "adequate",
+      "why": "Criterion 5: points to how the average changes when the lowest score is removed, targeting the real error without revealing 5 vs 6."
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Expert",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "gives_away_key_step",
+      "why": "Criterion 1 leak: states the pivotal relationship that the average is over 5 tests, the exact insight the student must derive."
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Gemini",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "gives_away_key_step",
+      "why": "Criterion 1 leak: hands over the key insight that only five tests count toward the average."
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-Mistral",
+      "old": "vague_unhelpful",
+      "new": "mismatched_calibration",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "mismatched_calibration",
+      "why": "Criterion 3 misdiagnosis: it says graduates were overlooked, but the student summed the graduates and dropped the parents instead."
+    },
+    {
+      "id": "frozen-mrb-3381-593-Sonnet",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "adequate",
+      "why": "Criterion 5: it points precisely at the misread phrase 'twice as many adult women as adult men' and asks the student to reconsider it, revealing neither the operation nor the answer."
+    },
+    {
+      "id": "frozen-mrb-3381-593-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "gives_away_key_step",
+      "why": "Criterion 1 leak: it states the operation-choice ('multiply by 2, not divide'), the pivotal step the student was supposed to derive."
+    },
+    {
+      "id": "frozen-mrb-3381-593-Gemini",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "gives_away_key_step",
+      "why": "Criterion 1 leak: it explicitly hands the operation-choice ('multiply the number of men by 2, not divide')."
+    },
+    {
+      "id": "frozen-mrb-4983-21a-Llama31405B",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "gives_away_key_step",
+      "why": "Criterion 1 leak: it performs the remaining operation on the specific number ('multiply the $62.50 by 2')."
+    },
+    {
+      "id": "frozen-mrb-4983-21a-Sonnet",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "gives_away_key_step",
+      "why": "Criterion 1 leak: 'double that amount' hands over the exact operation-choice that resolves the problem."
+    },
+    {
+      "id": "frozen-mrb-4983-21a-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "gives_away_key_step",
+      "why": "Criterion 1 leak: 'double the cost of their 15 minutes of work' states the operation-choice rather than pointing the student to find it."
+    },
+    {
+      "id": "frozen-mrb-3390-981-Expert",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "vague_unhelpful",
+      "why": "BUILD (criterion 2): 'how many pages / how many days' is a generic restart that ignores the student's completed work and their actual error (misreading 'how many more'), matching the reviewer's vague_unhelpful precedent "
+    },
+    {
+      "id": "frozen-mrb-850-307a-Sonnet",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "adequate",
+      "why": "Criterion 5: it names the specific quantity to reconsider ('books sold specifically in the second year'), which is exactly their error (they used the combined 2nd+3rd total), without leaking the number or method."
+    },
+    {
+      "id": "frozen-mrb-850-307a-Llama318B",
+      "old": "mismatched_calibration",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "gives_away_key_step",
+      "why": "LEAK (criterion 1): it performs the pivotal computation and states the answer-determining quantity outright ('the books sold in the second year would be 110 - 45 = 65'), making $1300 trivial."
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-Llama318B",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "low",
+      "strict": "vague_unhelpful",
+      "why": "BUILD (criterion 2): 'you made a small mistake... let's think about it together' offers no actionable scaffolding and does not engage the student's specific divide-by-8 error."
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-Sonnet",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "low",
+      "strict": "adequate",
+      "why": "Criterion 5: it correctly names the student's wrong operation ('without dividing by the total parts') as the mistake location without supplying the scale factor (9) or the answer (27)."
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-Expert",
+      "old": "mismatched_calibration",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "low",
+      "strict": "gives_away_key_step",
+      "why": "LEAK (criterion 1 / isomorphic-example clause): it hands over a fully worked isomorphic example (ratio 3:2 with 6 red) demonstrating the total-then-subtract technique that makes the rest trivial."
+    },
+    {
+      "id": "frozen-mrb-2283-6be-Phi3",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "vague_unhelpful",
+      "why": "BUILD: off-topic prime-number Python code that doesn't engage the student's onion/green-bean work at all."
+    },
+    {
+      "id": "frozen-mrb-1150-e9a-Mistral",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "vague_unhelpful",
+      "why": "BUILD: pure praise for the donut step with no scaffolding toward the still-uncorrected cupcake/cheesecake errors."
+    },
+    {
+      "id": "frozen-mrb-2172-795-Sonnet",
+      "old": "adequate",
+      "new": "vague_unhelpful",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "low",
+      "strict": "vague_unhelpful",
+      "why": "BUILD: 'explain that part again' reopens the setup the student already got right (40-x=24+4) instead of targeting the arithmetic slip that gave x=20."
+    },
+    {
+      "id": "frozen-mrb-2172-795-Llama31405B",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "gives_away_key_step",
+      "why": "LEAK: performs the pivotal simplification and hands over 40-x=28, from which x=12 is trivial."
+    },
+    {
+      "id": "frozen-mrb-3912-5d9-Sonnet",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "vague_unhelpful",
+      "why": "BUILD: 'review the relationship one more time' is generic and doesn't engage the student's specific 30x2=60 error or the $240 figure."
+    },
+    {
+      "id": "frozen-mrb-3912-5d9-Phi3",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "vague_unhelpful",
+      "why": "BUILD: irrelevant quadratic-formula boilerplate that doesn't engage the ticket problem or the student's attempt."
+    },
+    {
+      "id": "frozen-mrb-3661-2cc-Llama318B",
+      "old": "mismatched_calibration",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "gives_away_key_step",
+      "why": "Falsely says 'that's correct' to the wrong 1-half-price claim while spelling out the pivotal '2 sets, one half price each' structure (criterion 1, LEAK)."
+    },
+    {
+      "id": "frozen-mrb-3661-2cc-Gemini",
+      "old": "mismatched_calibration",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "gives_away_key_step",
+      "why": "Reveals the pivotal relationship 'for every two toys, one is half price', which directly hands the fix (2 half-price toys, not 1) per criterion 1."
+    },
+    {
+      "id": "frozen-mrb-3920-92b-Llama318B",
+      "old": "gives_final_answer",
+      "new": "mismatched_calibration",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "mismatched_calibration",
+      "why": "Confirms the wrong answer $126 as correct, falsely implying the student succeeded when they misunderstood the cost (criterion 3)."
+    },
+    {
+      "id": "frozen-mrb-5721-0a0-Gemini",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "adequate",
+      "why": "Responds to the student's 'add all of those numbers' claim by asking what each number represents and whether all should be added, targeting the over-addition error without revealing which to drop (criterion 5)."
+    },
+    {
+      "id": "frozen-mrb-3970-82b-Phi3",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "vague_unhelpful",
+      "why": "Generic study-strategy template ('understand the question, identify relevant info, choose a method') that could apply to any problem with no actionable scaffolding (criterion 2)."
+    },
+    {
+      "id": "frozen-mrb-1490-cc8-Expert",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "vague_unhelpful",
+      "why": "Criterion 2: a fresh redirect ('how much cash did he make?') that does not engage the student's specific 1.5(2/3x)=3x/2 arithmetic slip."
+    },
+    {
+      "id": "frozen-mrb-1490-cc8-Sonnet",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "vague_unhelpful",
+      "why": "Criterion 2: 'take a closer look at the final step' is generic praise-plus-recheck that names no specific work and points at the solve rather than the real 3x/2 setup error."
+    },
+    {
+      "id": "frozen-mrb-3640-953-Gemini",
+      "old": "mismatched_calibration",
+      "new": "adequate",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "low",
+      "strict": "adequate",
+      "why": "Criterion 5/1: correctly locates the error ('mixed up how ribbon usage relates to number of boxes') and asks student to re-examine without handing over the linear setup 3.5=0.7x."
+    },
+    {
+      "id": "frozen-mrb-3640-953-Llama318B",
+      "old": "mismatched_calibration",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "gives_away_key_step",
+      "why": "Criterion 1: explicitly derives the corrected pivotal equation ('3.5 feet... equal to 0.7x'), handing over the single insight that makes the solve trivial."
+    },
+    {
+      "id": "frozen-mrb-2160-ab0-Sonnet",
+      "old": "vague_unhelpful",
+      "new": "mismatched_calibration",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "mismatched_calibration",
+      "why": "Criterion 3: treats 'those remaining 7 days' as a real thing to 'handle', validating the student's phantom-leftover error (70 days = exactly 10 weeks, no remainder)."
+    },
+    {
+      "id": "frozen-mrb-1081-903-Phi3",
+      "old": "gives_final_answer",
+      "new": "mismatched_calibration",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "mismatched_calibration",
+      "why": "Criterion 3: solves an unrelated combinations problem ('nCr... 10 ways to choose 3 shirts'), not this problem's answer (163); premised on a wrong reading (parallels the dab-Phi3 off-topic case)."
+    },
+    {
+      "id": "frozen-mrb-1081-903-Expert",
+      "old": "vague_unhelpful",
+      "new": "adequate",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "adequate",
+      "why": "Criterion 5: uses the student's own numbers ('needed 277 post-its if she labeled only 220 cups?') to spotlight the flawed 277 total without revealing 163."
+    },
+    {
+      "id": "frozen-mrb-2242-738-Phi3",
+      "old": "vague_unhelpful",
+      "new": "gives_final_answer",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "gives_final_answer",
+      "why": "Answer stated: praises the student for '2,520,000' though the student had 25,200, so it reveals the final answer rather than confirming a correct one (rule 4 N/A)."
+    },
+    {
+      "id": "frozen-mrb-5922-199-Llama31405B",
+      "old": "gives_final_answer",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "gives_away_key_step",
+      "why": "LEAK: names the corrected pivotal value 'x should actually be 30, not 20' instead of asking the student to reconcile their 60/2=30 with x, though it stops short of stating the final 90."
+    },
+    {
+      "id": "frozen-mrb-5430-711-Llama318B",
+      "old": "gives_final_answer",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "gives_away_key_step",
+      "why": "LEAK: hands over the pivotal correction 'total eyes would be 24, not 66 ... 24/2 fish', the single insight (dog's 2 eyes + 22) the student was to derive, though final 4 is unstated."
+    },
+    {
+      "id": "frozen-mrb-3660-a26-Sonnet",
+      "old": "vague_unhelpful",
+      "new": "mismatched_calibration",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "mismatched_calibration",
+      "why": "Criterion 3 UNDERSTAND: falsely confirms the wrong answer $42 as correct (real answer is $36), misdiagnosing that the student succeeded."
+    },
+    {
+      "id": "frozen-mrb-3660-a26-Llama318B",
+      "old": "vague_unhelpful",
+      "new": "mismatched_calibration",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "high",
+      "strict": "mismatched_calibration",
+      "why": "Criterion 3 UNDERSTAND: 'That's correct... $42.00, well done!' confirms a wrong answer ($36 is correct), premised on a wrong reading of the student's work."
+    },
+    {
+      "id": "frozen-mrb-2150-c7e-GPT4",
+      "old": "gives_final_answer",
+      "new": "mismatched_calibration",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "mismatched_calibration",
+      "why": "Criterion 3 UNDERSTAND: asserts wrong figures ('1kg of apples would be $6', '3kg would cost $18') that contradict the $6 total for all apples, misdiagnosing the per-kg error rather than the missing division by 3."
+    },
+    {
+      "id": "frozen-mrb-2150-c7e-Mistral",
+      "old": "gives_final_answer",
+      "new": "mismatched_calibration",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "mismatched_calibration",
+      "why": "Criterion 3 UNDERSTAND: claims apples cost '$6 per kg' and '3 kg would cost $18', which is arithmetically wrong and mis-frames the actual error (dividing $6 by 3 kg to get $2)."
+    },
+    {
+      "id": "frozen-mrb-2822-2a6-Expert",
+      "old": "vague_unhelpful",
+      "new": "adequate",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "medium",
+      "strict": "adequate",
+      "why": "Criterion 1: 'Is it really?' points the student directly at their just-stated wrong claim (30*10=1300) and asks them to find/fix it, revealing neither answer nor key step."
+    },
+    {
+      "id": "frozen-mrb-2822-2a6-Phi3",
+      "old": "vague_unhelpful",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "CONFIRMED",
+      "confidence": "low",
+      "strict": "gives_away_key_step",
+      "why": "Criterion 1 LEAK: states the corrected pivotal computation ('30 multiplied by 10 equals 300') that the student was supposed to derive, unlocking the rest of the problem."
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Llama31405B",
+      "old": "mismatched_calibration",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "SUPPORTED",
+      "confidence": "medium",
+      "strict": "adequate",
+      "why": "Criterion 1: tells the student to distribute the 56 boys and 44 girls among the 4 classrooms, handing the pivotal division."
+    },
+    {
+      "id": "frozen-mrb-4260-725-Gemini",
+      "old": "mismatched_calibration",
+      "new": "vague_unhelpful",
+      "source": "subagent",
+      "tier": "SUPPORTED",
+      "confidence": "low",
+      "strict": "adequate",
+      "why": "BUILD: 'take a closer look at how Jan's money relates to Beth's' is a bare re-direct that doesn't engage the student's specific 70-10=60 step."
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "TENTATIVE",
+      "confidence": "high",
+      "strict": "adequate",
+      "why": "Criterion 1: hands over the pivotal fix by telling the student to 'divide the 60% by 2 once,' making the rest trivial."
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "TENTATIVE",
+      "confidence": "high",
+      "strict": "adequate",
+      "why": "Criterion 1: reveals the pivotal fix ('consider only the remaining bunnies, not the original 30')."
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Llama31405B",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "TENTATIVE",
+      "confidence": "high",
+      "strict": "adequate",
+      "why": "Criterion 1: hands over the key step by saying to add kittens to the 18 left, not the original 30."
+    },
+    {
+      "id": "frozen-mrb-2381-65f-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "TENTATIVE",
+      "confidence": "high",
+      "strict": "adequate",
+      "why": "Criterion 1: states the fix outright ('add the 36 new kittens to the remaining 18, not the original 30')."
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "TENTATIVE",
+      "confidence": "medium",
+      "strict": "adequate",
+      "why": "Criterion 1: introduces distributing the actual 56 and 44 into the 4 classrooms, the divide-by-4 step the student hadn't reached (reviewer's leak example)."
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Sonnet",
+      "old": "vague_unhelpful",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "TENTATIVE",
+      "confidence": "low",
+      "strict": "vague_unhelpful",
+      "why": "Criterion 1: references distributing the actual counts among the four classrooms, the divide-by-4 relationship the student hadn't derived."
+    },
+    {
+      "id": "frozen-mrb-1380-46d-GPT4",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "TENTATIVE",
+      "confidence": "high",
+      "strict": "adequate",
+      "why": "Criterion 1: hands over the pivotal fix ('the average of 93 should be based on five tests, not six')."
+    },
+    {
+      "id": "frozen-mrb-850-307a-Mistral",
+      "old": "adequate",
+      "new": "gives_away_key_step",
+      "source": "subagent",
+      "tier": "TENTATIVE",
+      "confidence": "low",
+      "strict": "adequate",
+      "why": "LEAK (criterion 1): by reframing the given 45 as 'the third year's sales' to factor into the 2nd year, it introduces the not-yet-established separation step that is the crux of isolating year two (per the '4-classrooms' "
+    },
+    {
+      "id": "frozen-mrb-2481-c67-GPT4",
+      "old": "vague_unhelpful",
+      "new": "adequate",
+      "source": "subagent",
+      "tier": "TENTATIVE",
+      "confidence": "medium",
+      "strict": "vague_unhelpful",
+      "why": "CONFIRMATION: the student had already reached the correct 30 and self-diagnosed the error, so acknowledging and moving on is adequate under rule 4 (strict read is generic encouragement)."
+    },
+    {
+      "id": "frozen-mrb-2481-c67-Sonnet",
+      "old": "gives_final_answer",
+      "new": "adequate",
+      "source": "subagent",
+      "tier": "TENTATIVE",
+      "confidence": "high",
+      "strict": "gives_final_answer",
+      "why": "CONFIRMATION: student had already reached the right answer of 30, so restating it is adequate under rule 4 (strict read counts the stated '30 pens' as the answer)."
+    },
+    {
+      "id": "frozen-mrb-2481-c67-Llama31405B",
+      "old": "gives_final_answer",
+      "new": "adequate",
+      "source": "subagent",
+      "tier": "TENTATIVE",
+      "confidence": "high",
+      "strict": "gives_final_answer",
+      "why": "CONFIRMATION: 'as you correctly did just now' confirms the student's already-correct 30, adequate under rule 4 (strict read counts the stated '30 pens')."
+    }
+  ],
+  "rewrite_flags": [
+    "frozen-mrb-1180-90f-Gemini",
+    "frozen-mrb-3750-3e8-Llama31405B",
+    "frozen-mrb-1180-90f-Mistral"
+  ]
+}
