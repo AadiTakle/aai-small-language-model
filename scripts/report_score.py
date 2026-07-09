@@ -15,6 +15,7 @@ import json
 import os
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -83,32 +84,44 @@ def main():
 
     use_judge = (not a.no_judge) and judge.judge_available()
     gold = read_jsonl(a.test)
-    per_item, adv = [], []
     n = len(gold)
+
+    # Phase 1: local generation only (serial — single GPU / one API stream). Greedy pass +
+    # k consistency samples; no judge calls yet.
+    staged = []
     for idx, row in enumerate(gold, 1):
         raw = gen(_input(row), 0.0)
         out = parse_model_json(raw)
-        pred = (out or {}).get("verdict")
-        item = {
-            "id": row.get("id"), "gold": row.get("gold_verdict"), "pred": pred,
-            "verdict": verdict_tier(row.get("gold_verdict"), pred),
-            "schema": schema_tier(raw, out),
-            "grounded": grounded_tier(row, out, use_judge),
-            "rewrite_safety": safety_tier(row, out, use_judge),
-            "consistency": None,
-        }
+        cons = None
         if a.consistency_k > 0:
-            verds = [(parse_model_json(gen(_input(row), a.consistency_temp)) or {}).get("verdict")
-                     for _ in range(a.consistency_k)]
-            item["consistency"] = consistency_tier(verds)
-        per_item.append(item)
-        if row.get("slice") == "calibration_adversarial":
-            adv.append({"id": row.get("id"), "gold": row.get("gold_verdict"), "pred": pred})
-        if idx % 10 == 0 or idx == n:
-            print(f"[score:{c}] {idx}/{n}", file=sys.stderr, flush=True)
+            cons = consistency_tier([(parse_model_json(gen(_input(row), a.consistency_temp)) or {}).get("verdict")
+                                     for _ in range(a.consistency_k)])
+        staged.append((row, raw, out, cons))
+        if idx % 20 == 0 or idx == n:
+            print(f"[score:{c}] gen {idx}/{n}", file=sys.stderr, flush=True)
+
+    # Phase 2: grounded + rewrite-safety judging in PARALLEL (the slow part with a reasoning grader).
+    def finish(t):
+        row, raw, out, cons = t
+        pred = (out or {}).get("verdict")
+        return {"id": row.get("id"), "gold": row.get("gold_verdict"), "pred": pred,
+                "verdict": verdict_tier(row.get("gold_verdict"), pred),
+                "schema": schema_tier(raw, out),
+                "grounded": grounded_tier(row, out, use_judge),
+                "rewrite_safety": safety_tier(row, out, use_judge),
+                "consistency": cons}
+    if use_judge:
+        with ThreadPoolExecutor(max_workers=8) as ex:
+            per_item = list(ex.map(finish, staged))
+    else:
+        per_item = [finish(t) for t in staged]
+    adv = [{"id": r.get("id"), "gold": r.get("gold_verdict"), "pred": (out or {}).get("verdict")}
+           for (r, raw, out, cons) in staged if r.get("slice") == "calibration_adversarial"]
+    print(f"[score:{c}] judged {n} items (grader={'gpt' if use_judge else 'heuristic'})", file=sys.stderr, flush=True)
 
     payload = {
-        "contestant": c, "n": n, "grader": ("gpt-4.1" if use_judge else "heuristic"),
+        "contestant": c, "n": n,
+        "grader": (os.environ.get("OPENAI_JUDGE_MODEL", "gpt-4.1") if use_judge else "heuristic"),
         "consistency_k": a.consistency_k, "per_item": per_item,
         "calib_tiers": calibration_tiers(adv), "calib_n": len(adv),
     }
