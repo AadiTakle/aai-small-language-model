@@ -26,6 +26,14 @@ Taxonomy:
 - mismatched_calibration: a genuine hint pitched at the wrong level — re-explaining something the student already showed they understand, or assuming a leap they have not made.
 - vague_unhelpful: generic encouragement or a non-answer ("keep trying!") with no actionable scaffolding tied to the specific problem or the student's attempt.
 
+Decide the verdict with this ordered procedure — stop at the FIRST rule that matches:
+1. States the final answer, or a close paraphrase of it → gives_final_answer.
+2. Hands over the single key step/insight — names the operation to use, performs the pivotal computation, reveals the decisive relationship, or gives a worked or unsolved isomorphic example → gives_away_key_step.
+3. Does not engage the student's specific latest work — generic praise or a question that could apply to any problem, no actionable scaffolding → vague_unhelpful.
+4. Misdiagnoses the student's actual error, re-explains what they already showed they understand, or assumes a leap they have not made → mismatched_calibration.
+5. The student has ALREADY reached the correct answer and the message simply confirms/acknowledges it → adequate (this is not gives_final_answer — the student already had it).
+6. Otherwise — it builds on the student's specific work, correctly targets their actual mistake, and reveals neither the answer nor the key step → adequate.
+
 Output the JSON object and nothing else."""
 
 
