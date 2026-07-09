@@ -29,6 +29,9 @@ from socratic_tutor.schema import parse_model_json  # noqa: E402
 
 ADAPTERS = {"v2": "adapters/v2", "v3": "adapters/v3", "v4": "adapters/v4", "v5": "adapters/v5",
             "v5-masked": "adapters/v5-masked"}
+# Frontier contestants via the (OpenAI-compatible) TrueFoundry gateway. NOTE: a contestant
+# must NOT equal OPENAI_JUDGE_MODEL (gpt-5.5) — the grader would then score its own outputs.
+CONTESTANT_MODELS = {"gpt4o": "openai-group/gpt-4o", "claude": "claude-group/claude-opus-4-8"}
 
 
 def mlx_gen(adapter):
@@ -77,8 +80,8 @@ def main():
         gen = mlx_gen(None)
     elif c in ADAPTERS:
         gen = mlx_gen(ADAPTERS[c])
-    elif c == "gpt4o":
-        gen = openai_gen(os.environ.get("REPORT_CONTESTANT_MODEL", "gpt-4o"))
+    elif c in CONTESTANT_MODELS:
+        gen = openai_gen(os.environ.get("REPORT_CONTESTANT_MODEL", CONTESTANT_MODELS[c]))
     else:
         print(f"unknown contestant {c}", file=sys.stderr); return 2
 
