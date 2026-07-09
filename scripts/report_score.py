@@ -42,22 +42,20 @@ def mlx_gen(adapter):
 
 def openai_gen(model):
     from openai import OpenAI
-    client = OpenAI()
+    client = OpenAI(timeout=90, max_retries=4)  # SDK handles transient/429 backoff
 
     def gen(inp, temp):
-        delays = [2, 5, 10, 20, 40, 60]
-        waited = 0.0
-        for i in range(len(delays) + 1):
-            try:
-                r = client.chat.completions.create(
-                    model=model, temperature=temp,
-                    messages=[{"role": "system", "content": SYSTEM_PROMPT},
-                              {"role": "user", "content": build_user_prompt(inp)}])
-                return r.choices[0].message.content or ""
-            except Exception:
-                if i >= len(delays) or waited >= 180:
-                    return ""
-                time.sleep(delays[i]); waited += delays[i]
+        msgs = [{"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": build_user_prompt(inp)}]
+        # some gateway models (e.g. claude-opus-4-8) reject `temperature`; fall back without it
+        for kw in ({"temperature": temp}, {}):
+            for _ in range(2):
+                try:
+                    r = client.chat.completions.create(model=model, messages=msgs, **kw)
+                    return r.choices[0].message.content or ""
+                except Exception:  # noqa: BLE001
+                    break
+        return ""
     return gen
 
 
