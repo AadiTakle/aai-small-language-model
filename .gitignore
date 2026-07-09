@@ -31,3 +31,6 @@ eval/gold/review/*
 !eval/gold/review/reconcile_applied.json
 # pre-reconcile gold backup (git history already holds the prior version)
 eval/gold/*.bak.jsonl
+
+# generated human-review UIs (regenerable from scripts + flagged jsonl)
+eval/gold/review/**/ruling.html
