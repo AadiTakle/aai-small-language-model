@@ -1,0 +1,3904 @@
+{
+  "dataset": "eval/gold/frozen_eval.jsonl",
+  "label_field": "gold_verdict",
+  "models": [
+    "openai-group/gpt-4.1",
+    "claude-group/claude-opus-4-8",
+    "gemini-group/gemini-2.5-pro"
+  ],
+  "n": 299,
+  "categories": {
+    "CONFIRM": 202,
+    "CHANGE": 83,
+    "NO_CONSENSUS": 14
+  },
+  "items": [
+    {
+      "id": "frozen-mrb-4470-eca-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Mistral",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Llama31405B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Sonnet",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4470-eca-Expert",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4470-eca-GPT4",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Expert",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Sonnet",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Gemini",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Mistral",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3750-3e8-Llama31405B",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Gemini",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-GPT4",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Sonnet",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Expert",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Mistral",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Llama31405B",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Mistral",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Llama31405B",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Expert",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Llama318B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Sonnet",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-GPT4",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Expert",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Llama31405B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Gemini",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-GPT4",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Mistral",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 1,
+      "n_models": 3,
+      "category": "NO_CONSENSUS"
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Sonnet",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Mistral",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Llama31405B",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Sonnet",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Llama318B",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4430-62a-GPT4",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Expert",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1380-46d-GPT4",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Sonnet",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Expert",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Llama31405B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Gemini",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Mistral",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1380-46d-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-Mistral",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 1,
+      "n_models": 3,
+      "category": "NO_CONSENSUS"
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-Sonnet",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-GPT4",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-Expert",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-Llama31405B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-GPT4",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Sonnet",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Expert",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Mistral",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Llama31405B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Phi3",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3381-593-Sonnet",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3381-593-Expert",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3381-593-Mistral",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3381-593-Gemini",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3381-593-GPT4",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3381-593-Llama31405B",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3381-593-Phi3",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3381-593-Llama318B",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4983-21a-Llama31405B",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4983-21a-Mistral",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "adequate",
+      "n_agree": 1,
+      "n_models": 3,
+      "category": "NO_CONSENSUS"
+    },
+    {
+      "id": "frozen-mrb-4983-21a-Llama318B",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4983-21a-Sonnet",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4983-21a-GPT4",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4983-21a-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4983-21a-Phi3",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4983-21a-Expert",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-5421-75c-Mistral",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5421-75c-Llama318B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5421-75c-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5421-75c-Expert",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5421-75c-Sonnet",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5421-75c-Llama31405B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5421-75c-Gemini",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3390-981-Sonnet",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3390-981-Expert",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 1,
+      "n_models": 3,
+      "category": "NO_CONSENSUS"
+    },
+    {
+      "id": "frozen-mrb-3390-981-Gemini",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3390-981-GPT4",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-3390-981-Mistral",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3390-981-Llama31405B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3390-981-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-850-307a-Gemini",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-850-307a-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-850-307a-Expert",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-850-307a-Sonnet",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-850-307a-Llama31405B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-850-307a-Llama318B",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-850-307a-GPT4",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-850-307a-Mistral",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4500-946-Sonnet",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4500-946-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4500-946-Llama31405B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4500-946-Expert",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4500-946-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4500-946-GPT4",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4500-946-Mistral",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4500-946-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-Llama31405B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-GPT4",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-Llama318B",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-Sonnet",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-Mistral",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4520-2fc-Expert",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2283-6be-Expert",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2283-6be-GPT4",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2283-6be-Gemini",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2283-6be-Llama31405B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2283-6be-Mistral",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2283-6be-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2283-6be-Sonnet",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2283-6be-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1150-e9a-Sonnet",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1150-e9a-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1150-e9a-Llama31405B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1150-e9a-GPT4",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1150-e9a-Expert",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1150-e9a-Mistral",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-1150-e9a-Gemini",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2172-795-Sonnet",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2172-795-Llama31405B",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2172-795-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2172-795-GPT4",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2172-795-Mistral",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2172-795-Expert",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2172-795-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4260-725-Sonnet",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4260-725-Llama31405B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4260-725-Expert",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4260-725-Mistral",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4260-725-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4260-725-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4260-725-Gemini",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2231-0be-Sonnet",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2231-0be-Expert",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 1,
+      "n_models": 3,
+      "category": "NO_CONSENSUS"
+    },
+    {
+      "id": "frozen-mrb-2231-0be-GPT4",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 1,
+      "n_models": 3,
+      "category": "NO_CONSENSUS"
+    },
+    {
+      "id": "frozen-mrb-2231-0be-Llama31405B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2231-0be-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 1,
+      "n_models": 3,
+      "category": "NO_CONSENSUS"
+    },
+    {
+      "id": "frozen-mrb-2231-0be-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2231-0be-Mistral",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3912-5d9-Llama31405B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-3912-5d9-Sonnet",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-3912-5d9-GPT4",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3912-5d9-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3912-5d9-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3912-5d9-Expert",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-3912-5d9-Mistral",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-3912-5d9-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1311-885-Mistral",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1311-885-Llama31405B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1311-885-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1311-885-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1311-885-Expert",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3661-2cc-Llama318B",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3661-2cc-Gemini",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3661-2cc-Phi3",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3920-92b-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3920-92b-Llama31405B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3920-92b-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-3920-92b-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3920-92b-Phi3",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-1141-58f-Llama318B",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1141-58f-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1141-58f-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-1141-58f-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5721-0a0-Gemini",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5721-0a0-Llama31405B",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5721-0a0-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5721-0a0-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5721-0a0-Phi3",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-790-86a2-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 1,
+      "n_models": 3,
+      "category": "NO_CONSENSUS"
+    },
+    {
+      "id": "frozen-mrb-790-86a2-Mistral",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 1,
+      "n_models": 3,
+      "category": "NO_CONSENSUS"
+    },
+    {
+      "id": "frozen-mrb-790-86a2-GPT4",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 1,
+      "n_models": 3,
+      "category": "NO_CONSENSUS"
+    },
+    {
+      "id": "frozen-mrb-790-86a2-Llama31405B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 1,
+      "n_models": 3,
+      "category": "NO_CONSENSUS"
+    },
+    {
+      "id": "frozen-mrb-790-86a2-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-790-86a2-Sonnet",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3970-82b-Llama318B",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 1,
+      "n_models": 3,
+      "category": "NO_CONSENSUS"
+    },
+    {
+      "id": "frozen-mrb-3970-82b-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3970-82b-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3970-82b-Sonnet",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-3970-82b-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2040-24f-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2040-24f-GPT4",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2040-24f-Expert",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2040-24f-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1490-cc8-Llama31405B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1490-cc8-Expert",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 1,
+      "n_models": 3,
+      "category": "NO_CONSENSUS"
+    },
+    {
+      "id": "frozen-mrb-1490-cc8-Gemini",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1490-cc8-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1490-cc8-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1490-cc8-Sonnet",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-3640-953-Sonnet",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-3640-953-Gemini",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3640-953-Llama318B",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3640-953-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3640-953-Expert",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2311-6c2-Llama318B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2311-6c2-Sonnet",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2311-6c2-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2311-6c2-Mistral",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2311-6c2-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2311-6c2-Gemini",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4954-dab-Llama31405B",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4954-dab-Llama318B",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4954-dab-Phi3",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-4954-dab-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3710-277-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3710-277-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1630-cee-Expert",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2160-ab0-Sonnet",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2160-ab0-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2160-ab0-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2101-7dc-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1081-903-Phi3",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-1081-903-Expert",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1081-903-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1081-903-Sonnet",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-5660-b5f-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-1070-1c9-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5080-fdd-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5480-bf4-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3102-244-Mistral",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-3102-244-Llama31405B",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-3102-244-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3102-244-Llama318B",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-193-8ba3-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2242-738-Phi3",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2242-738-Mistral",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2242-738-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-962-1770-Llama31405B",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-962-1770-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5922-199-Llama31405B",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5922-199-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2541-349-Sonnet",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-100-540b-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-100-540b-Sonnet",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-100-540b-Expert",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-100-540b-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5430-711-Llama318B",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5430-711-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4421-983-GPT4",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-3271-0e8-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-3271-0e8-Mistral",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2431-f3f-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2431-f3f-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2531-76a-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2531-76a-Llama318B",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2531-76a-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4050-332-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4050-332-Sonnet",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2481-c67-GPT4",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2481-c67-Sonnet",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2481-c67-Llama31405B",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2481-c67-Gemini",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-5560-b2e-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-650-a64f-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3660-a26-Sonnet",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-3660-a26-Llama318B",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-600-ad70-Expert",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "adequate",
+      "n_agree": 1,
+      "n_models": 3,
+      "category": "NO_CONSENSUS"
+    },
+    {
+      "id": "frozen-mrb-200-6bc4-Llama318B",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-320-aa46-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-320-aa46-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3730-50b-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-3730-50b-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-5910-256-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2150-c7e-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-2150-c7e-GPT4",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2150-c7e-Mistral",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-2822-2a6-Expert",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CHANGE"
+    },
+    {
+      "id": "frozen-mrb-5752-777-GPT4",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-mrb-4220-7d6-Phi3",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 2,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-seed-01",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-seed-02",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-seed-03",
+      "current": "gives_away_key_step",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_away_key_step",
+        "claude-group/claude-opus-4-8": "gives_away_key_step",
+        "gemini-group/gemini-2.5-pro": "gives_away_key_step"
+      },
+      "majority": "gives_away_key_step",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-seed-04",
+      "current": "vague_unhelpful",
+      "votes": {
+        "openai-group/gpt-4.1": "vague_unhelpful",
+        "claude-group/claude-opus-4-8": "vague_unhelpful",
+        "gemini-group/gemini-2.5-pro": "vague_unhelpful"
+      },
+      "majority": "vague_unhelpful",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-seed-05",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-seed-06",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-seed-07",
+      "current": "mismatched_calibration",
+      "votes": {
+        "openai-group/gpt-4.1": "mismatched_calibration",
+        "claude-group/claude-opus-4-8": "mismatched_calibration",
+        "gemini-group/gemini-2.5-pro": "mismatched_calibration"
+      },
+      "majority": "mismatched_calibration",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-seed-08",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-seed-09",
+      "current": "gives_final_answer",
+      "votes": {
+        "openai-group/gpt-4.1": "gives_final_answer",
+        "claude-group/claude-opus-4-8": "gives_final_answer",
+        "gemini-group/gemini-2.5-pro": "gives_final_answer"
+      },
+      "majority": "gives_final_answer",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    },
+    {
+      "id": "frozen-seed-10",
+      "current": "adequate",
+      "votes": {
+        "openai-group/gpt-4.1": "adequate",
+        "claude-group/claude-opus-4-8": "adequate",
+        "gemini-group/gemini-2.5-pro": "adequate"
+      },
+      "majority": "adequate",
+      "n_agree": 3,
+      "n_models": 3,
+      "category": "CONFIRM"
+    }
+  ]
+}
