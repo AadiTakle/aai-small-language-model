@@ -26,7 +26,8 @@ from socratic_tutor.rubric import (  # noqa: E402
 )
 from socratic_tutor.schema import parse_model_json  # noqa: E402
 
-ADAPTERS = {"v2": "adapters/v2", "v3": "adapters/v3", "v4": "adapters/v4", "v5": "adapters/v5"}
+ADAPTERS = {"v2": "adapters/v2", "v3": "adapters/v3", "v4": "adapters/v4", "v5": "adapters/v5",
+            "v5-masked": "adapters/v5-masked"}
 
 
 def mlx_gen(adapter):
