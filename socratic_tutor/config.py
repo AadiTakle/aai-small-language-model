@@ -8,7 +8,7 @@ MODEL = "mlx-community/Qwen3-1.7B-4bit"
 # Qwen3 defaults to a <think> reasoning trace. For a strict-JSON judge/rewriter we
 # want clean single-object output, so thinking is disabled at both train-render and
 # inference. Revisit only if verdict accuracy is poor (see plan).
-ENABLE_THINKING = False
+ENABLE_THINKING = True  # v8: train + infer WITH a <think> reasoning trace (was False through v7)
 
 # Output token budget for a judge+rewrite response (verdict + reasoning + rewrite).
 MAX_TOKENS = 512

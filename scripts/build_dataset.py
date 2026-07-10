@@ -64,6 +64,10 @@ def main() -> int:
     p.add_argument("--train", type=float, default=0.8)
     p.add_argument("--valid", type=float, default=0.1)
     p.add_argument("--no-gate", action="store_true", help="Skip the quality gate.")
+    p.add_argument("--traces", default=None,
+                   help="v8 thinking: JSON {id: trace} or jsonl {id,trace}. Wraps each assistant "
+                        "target as <think>trace</think> + json for thinking-mode SFT (needs "
+                        "config.ENABLE_THINKING=True). Rows without a trace fall back to their reasoning.")
     p.add_argument("--format", choices=["text", "chat"], default="text",
                    help="text = {'text': full render} (no prompt masking, default/legacy). "
                         "chat = {'messages':[system,user,assistant]} for mlx_lm ChatDataset + "
@@ -110,8 +114,25 @@ def main() -> int:
         from mlx_lm import load
         _, tokenizer = load(config.MODEL)
 
+        traces = None
+        if args.traces:
+            import json as _json
+            traces = (_json.load(open(args.traces)) if args.traces.endswith(".json")
+                      else {r["id"]: r.get("trace", "") for r in read_jsonl(args.traces)})
+            n_tr = sum(1 for t in traces.values() if (t or "").strip())
+            print(f"[build] loaded {n_tr} think-traces from {args.traces} (thinking-mode SFT)",
+                  file=sys.stderr)
+
+        def _assistant(r):
+            aj = assistant_json(r)
+            if traces is not None:
+                tr = (traces.get(r["id"]) or r.get("reasoning") or "").strip()
+                if tr:
+                    return f"<think>\n{tr}\n</think>\n\n{aj}"
+            return aj
+
         def to_lines(rows):
-            return [{"text": render_training_text(tokenizer, _input_dict(r), assistant_json(r))}
+            return [{"text": render_training_text(tokenizer, _input_dict(r), _assistant(r))}
                     for r in rows]
 
     out_dir = Path(args.out_dir)
