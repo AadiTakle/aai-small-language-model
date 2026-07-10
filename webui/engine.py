@@ -28,6 +28,7 @@ THINK_RE = re.compile(r"<think>.*?</think>", re.S)
 
 _mlx_cache = {}
 _mlx_lock = threading.RLock()  # reentrant: _mlx_generate holds it and calls _get_mlx which also locks
+_no_temp = set()  # gateway models that reject the `temperature` param (Claude, gpt-5.5) — learned on 1st 400
 
 TUTOR_SYS = (
     "You are an expert Socratic math tutor for a K-12 student. Guide the student toward the answer "
@@ -59,16 +60,25 @@ def _client():
 
 
 def _gate_chat(model, sysmsg, usermsg, temp=0.0):
-    """One gateway chat call; falls back to omitting temperature (some gateway models reject it)."""
+    """One gateway chat call. Tries with `temperature`, then without (Claude / gpt-5.5 deprecate it);
+    remembers temp-rejecting models so we don't waste a 400 next time. Raises with the REAL error if
+    it can't get non-empty text — callers surface that instead of a silent placeholder."""
     client = _client()
     msgs = [{"role": "system", "content": sysmsg}, {"role": "user", "content": usermsg}]
-    for kw in ({"temperature": temp}, {}):
+    attempts = [{}] if model in _no_temp else [{"temperature": temp}, {}]
+    last = "no response"
+    for kw in attempts:
         try:
             r = client.chat.completions.create(model=model, messages=msgs, **kw)
-            return r.choices[0].message.content or ""
-        except Exception:  # noqa: BLE001
-            continue
-    return ""
+            txt = (r.choices[0].message.content or "").strip()
+            if txt:
+                return txt
+            last = "gateway returned empty content"
+        except Exception as e:  # noqa: BLE001
+            last = f"{type(e).__name__}: {str(e)[:200]}"
+            if "temperature" in str(e).lower():
+                _no_temp.add(model)  # deprecated/rejected — skip it next time
+    raise RuntimeError(last)
 
 
 def _get_mlx(adapter):
@@ -141,8 +151,10 @@ def tutor_turn(tutor_id, problem, solution, conversation):
     convo = "\n".join(conversation) if conversation else "(none yet)"
     user = (f"PROBLEM:\n{problem}\n\nCORRECT SOLUTION (reference only — never reveal):\n{solution}\n\n"
             f"CONVERSATION SO FAR:\n{convo}\n\nYour next tutor message:")
-    msg = _gate_chat(entry["model"], TUTOR_SYS, user, temp=0.7).strip()
-    return {"candidate_message": msg} if msg else {"error": "tutor returned empty"}
+    try:
+        return {"candidate_message": _gate_chat(entry["model"], TUTOR_SYS, user, temp=0.7)}
+    except Exception as e:  # noqa: BLE001
+        return {"error": str(e)}
 
 
 def contribute(record):

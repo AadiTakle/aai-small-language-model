@@ -42,6 +42,10 @@ function renderChat() {
   log.innerHTML = convo.map((t) => {
     if (t.role === "student")
       return `<div class="turn student"><div class="who">Student</div><div class="bubble">${esc(t.text)}</div></div>`;
+    if (t.error)
+      return `<div class="turn"><div class="who">Tutor · ${esc(t.tutor || "")}</div>
+        <div class="tutor-card"><div class="meta"><div class="row2">${badge("error")}
+        <span class="candidate">tutor call failed: ${esc(t.error)}</span></div></div></div></div>`;
     const flagged = t.verdict && t.verdict !== "adequate";
     const rawLine = flagged
       ? `<div class="candidate">tutor's raw message (flagged): <s>${esc(t.candidate)}</s></div>`
@@ -70,7 +74,11 @@ $("#s-send").addEventListener("click", async () => {
     const tutorId = $("#s-tutor").value, judgeId = $("#s-judge").value;
     const { problem, solution } = setup();
     const t = await api("/api/tutor", { tutor: tutorId, problem, solution, conversation });
-    const candidate = t.candidate_message || "(tutor error)";
+    if (!t.candidate_message) {  // tutor failed — surface it, don't judge a placeholder
+      convo.push({ role: "tutor", tutor: tutorId, error: t.error || "tutor returned no message" });
+      renderChat(); return;
+    }
+    const candidate = t.candidate_message;
     const suite = await api("/api/judge_suite", { problem, solution, conversation, candidate, models: [judgeId] });
     const j = (suite.results || [{}])[0] || {};
     const flagged = j.verdict && j.verdict !== "adequate";
@@ -79,7 +87,7 @@ $("#s-send").addEventListener("click", async () => {
                  verdict: j.verdict, reasoning: j.reasoning || j.error || "" });
     renderChat();
   } catch (e) {
-    convo.push({ role: "tutor", tutor: "", judge: "", candidate: "", shown: `error: ${e.message}`, verdict: "error", reasoning: "" });
+    convo.push({ role: "tutor", tutor: tutorId, error: e.message });
     renderChat();
   } finally { btn.disabled = false; btn.textContent = "Send"; }
 });
