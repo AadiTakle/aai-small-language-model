@@ -1,0 +1,50 @@
+[
+  {
+    "id": "exp-35a-044",
+    "old": "mismatched_calibration",
+    "new": "vague_unhelpful",
+    "reason": "rewrite_leaks"
+  },
+  {
+    "id": "exp-hard-048",
+    "old": "vague_unhelpful",
+    "new": "mismatched_calibration",
+    "reason": "rewrite_leaks"
+  },
+  {
+    "id": "mrb-3530-162-Sonnet",
+    "old": "adequate",
+    "new": "vague_unhelpful",
+    "reason": "rewrite_leaks"
+  },
+  {
+    "id": "mrb-3530-162-Expert",
+    "old": "adequate",
+    "new": "vague_unhelpful",
+    "reason": "rewrite_leaks"
+  },
+  {
+    "id": "mrb-4210-d63-Llama318B",
+    "old": "adequate",
+    "new": "mismatched_calibration",
+    "reason": "rewrite_leaks"
+  },
+  {
+    "id": "mrb-4121-492-Gemini",
+    "old": "adequate",
+    "new": "vague_unhelpful",
+    "reason": "rewrite_leaks"
+  },
+  {
+    "id": "mrb-4152-ddb-Phi3",
+    "old": "mismatched_calibration",
+    "new": "vague_unhelpful",
+    "reason": "rewrite_leaks"
+  },
+  {
+    "id": "mathdial-5000680-2",
+    "old": "adequate",
+    "new": "mismatched_calibration",
+    "reason": "rewrite_leaks"
+  }
+]
