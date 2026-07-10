@@ -51,3 +51,17 @@ product goal, v9 (62P/89R) is a candidate, but the canary argues against it as a
 
 Artifacts: `data/tier2/`, `data/raw/v9.jsonl`, `adapters/v9` (gitignored), `eval/results/v9_tier2.md`/
 `.json`. Branch `feat/leak-recall-threshold`.
+
+## v9b (safe-dup tuning) — overcorrected to precision
+160 seeds → 34 validated pairs → 102 rows at **1 leaky : 2 safe** (`--safe-dup 2`). Result: the canary
+was **fixed** (FP 12.5%→12.5%; precision recovered 62%→75.7%) — but it overshot the other way: leak
+recall **crashed to 51.0%** (below v6's 59.6%), F1 −9.1, and a **broad** regression (5-way −7.4). So
+v9 overshot recall (canary broke); v9b overshot precision (recall below baseline) *and* the 102 added
+rows hurt general accuracy. Two failure modes bracketing a narrow sweet spot we didn't hit.
+
+**Refined conclusion:** the minimal-pair lever is a **knife-edge**, and at the row-count needed the
+synthetic augmentation causes broad regression (consistent with the gap-loop "adding hurts" finding and
+"augment-don't-replace"). The clean leak-recall lever is therefore **not** more training-data tuning —
+it's the **inference-time threshold on v6** (self-consistency = 61P/76R, no retraining, no regression),
+or the structural routes (discriminative classifier / scale — see `docs/scale_test_qwen3_4b.md`).
+`sft_v6` stays ship (now the 6th experiment not to cleanly beat it).
