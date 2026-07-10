@@ -122,7 +122,7 @@ def _judge_batch(model, items):
     return _run_parallel(one, items, f"judge:{model.split('/')[-1]}")
 
 
-def stage_b(pairs, force):
+def stage_b(pairs, safe_dup, force):
     if os.path.exists(TRAIN_ADD) and not force:
         print(f"[B] skip (exists): {TRAIN_ADD}", file=sys.stderr)
         return read_jsonl(TRAIN_ADD)
@@ -153,7 +153,7 @@ def stage_b(pairs, force):
                     "reasoning": p.get("safe_reason") or "Corrects by eliciting the step, not stating it.",
                     "rewritten_message": None, "source_detail": "tier2_pair"}
         if passes_quality_gate(leaky_row)[0] and passes_quality_gate(safe_row)[0]:
-            add += [leaky_row, safe_row]
+            add += [leaky_row] + [safe_row] * safe_dup  # safe_dup>1 skews ratio toward safe (holds precision)
             kept += 1
     write_jsonl(TRAIN_ADD, add)
     print(f"[B] validated {kept}/{len(pairs)} pairs -> {len(add)} training rows -> {TRAIN_ADD}", file=sys.stderr)
@@ -272,9 +272,18 @@ def main():
     ap.add_argument("--eval-limit", type=int, default=0)
     ap.add_argument("--smoke", action="store_true")
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--tag", default="v9", help="artifact suffix (e.g. v9b) so runs don't clobber each other")
+    ap.add_argument("--safe-dup", type=int, default=1,
+                     help="emit each validated SAFE row N times to skew the leaky:safe ratio (v9b: 2-3)")
     a = ap.parse_args()
     if a.smoke:
         a.seeds, a.iters, a.eval_limit = 3, 2, 8
+    global PAIRS_RAW, TRAIN_ADD, V9_RAW, V9_ADAPTER, REPORT
+    PAIRS_RAW = f"{T2}/pairs_raw_{a.tag}.jsonl"
+    TRAIN_ADD = f"{T2}/train_add_{a.tag}.jsonl"
+    V9_RAW = f"data/raw/{a.tag}.jsonl"
+    V9_ADAPTER = f"adapters/{a.tag}"
+    REPORT = f"eval/results/{a.tag}_tier2"
 
     err = preflight()
     if err:
@@ -287,7 +296,7 @@ def main():
         print("[tier2] no pairs generated — abort", file=sys.stderr)
         return 1
     print("[tier2] STAGE B: cross-family jury validation + assemble", file=sys.stderr)
-    add = stage_b(pairs, a.force)
+    add = stage_b(pairs, a.safe_dup, a.force)
     if not add:
         print("[tier2] no pairs survived validation — abort (regenerate with a better prompt)", file=sys.stderr)
         return 1
