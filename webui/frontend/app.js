@@ -39,7 +39,7 @@ const setup = () => ({ problem: $("#s-problem").value, solution: $("#s-solution"
 function renderChat() {
   const log = $("#chat-log");
   if (!convo.length) { log.innerHTML = `<div class="chat-empty">Send the student's first message to begin.</div>`; return; }
-  log.innerHTML = convo.map((t) => {
+  log.innerHTML = convo.map((t, i) => {
     if (t.role === "student")
       return `<div class="turn student"><div class="who">Student</div><div class="bubble">${esc(t.text)}</div></div>`;
     if (t.error)
@@ -50,16 +50,43 @@ function renderChat() {
     const rawLine = flagged
       ? `<div class="candidate">tutor's raw message (flagged): <s>${esc(t.candidate)}</s></div>`
       : "";
-    return `<div class="turn"><div class="who">Tutor · ${esc(t.tutor)} → judged by ${esc(t.judge)}</div>
+    const dflt = VERDICTS.includes(t.verdict) ? t.verdict : "adequate";
+    const label = t.contributed
+      ? `<div class="label-row"><span class="tl-status ok">✓ added to dataset as <b>${esc(t.contributed)}</b></span></div>`
+      : `<div class="label-row"><span class="k">your label:</span>
+          <select class="tl-verdict">${VERDICTS.map((v) => `<option${v === dflt ? " selected" : ""}>${v}</option>`).join("")}</select>
+          <button class="tl-add ghost">Add to dataset</button><span class="tl-status"></span></div>`;
+    return `<div class="turn" data-i="${i}"><div class="who">Tutor · ${esc(t.tutor)} → judged by ${esc(t.judge)}</div>
       <div class="tutor-card">
         <div class="shown"><b>shown to student:</b> ${esc(t.shown)}</div>
         <div class="meta">
           <div class="row2">${badge(t.verdict)}<span class="candidate">${esc(t.reasoning || "")}</span></div>
           ${rawLine}
         </div>
+        ${label}
       </div></div>`;
   }).join("");
+  $$("#chat-log .tl-add").forEach((b) => b.addEventListener("click", () => labelAndAdd(+b.closest(".turn").dataset.i, b)));
   log.scrollTop = log.scrollHeight;
+}
+
+async function labelAndAdd(i, btn) {
+  const turn = convo[i];
+  const verdict = btn.parentElement.querySelector(".tl-verdict").value;
+  const st = btn.parentElement.querySelector(".tl-status");
+  const conversation = convo.slice(0, i).map((t) => (t.role === "student" ? `Student: ${t.text}` : `Tutor: ${t.shown}`));
+  const rewrite = verdict === "adequate" ? null : (turn.shown && turn.shown !== turn.candidate ? turn.shown : null);
+  btn.disabled = true; st.textContent = "saving…"; st.className = "tl-status";
+  try {
+    await api("/api/contribute", {
+      problem: $("#s-problem").value, solution: $("#s-solution").value,
+      final_answer: $("#s-answer").value, key_step: $("#s-keystep").value,
+      conversation, candidate_message: turn.candidate, verdict,
+      reasoning: turn.reasoning || "", rewritten_message: rewrite,
+      source_model: turn.tutor, slm_verdict: turn.verdict || "", mode: "tutor_session",
+    });
+    turn.contributed = verdict; renderChat();            // persist across re-renders
+  } catch (e) { st.textContent = "error: " + e.message; btn.disabled = false; }
 }
 
 $("#s-reset").addEventListener("click", () => { convo = []; renderChat(); });

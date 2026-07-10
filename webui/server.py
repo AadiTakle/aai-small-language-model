@@ -50,6 +50,8 @@ class ContribReq(BaseModel):
     rewritten_message: str | None = None
     source_model: str = ""
     ranked_over: list[str] = []
+    slm_verdict: str = ""      # what the SLM said (Tutor Session) — provenance vs the human label
+    mode: str = ""             # "tutor_session" | "compare"
 
 
 @app.get("/api/models")

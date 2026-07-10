@@ -161,4 +161,5 @@ def contribute(record):
     CONTRIB_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(CONTRIB_PATH, "a") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
-    return {"ok": True, "path": str(CONTRIB_PATH.relative_to(REPO))}
+    p = CONTRIB_PATH
+    return {"ok": True, "path": str(p.relative_to(REPO) if p.is_relative_to(REPO) else p)}
