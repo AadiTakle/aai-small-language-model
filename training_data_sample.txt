@@ -1,0 +1,123 @@
+SOCRATIC TUTOR ADEQUACY JUDGE & REWRITER -- TRAINING DATA SAMPLE
+================================================================================
+One representative example per verdict category (the 5-way taxonomy).
+
+TASK: Given a K-12 math problem, its correct solution, the conversation so far,
+and a CANDIDATE tutor message, the model judges that message and outputs
+{verdict, reasoning, rewritten_message}. For messages that are not "adequate" it
+also produces a safe Socratic rewrite; for "adequate" messages no rewrite is
+needed (rewritten_message = null).
+
+The model's INPUT is exactly: problem, correct_solution, conversation_history,
+candidate_message. (Grade band shown for reader context only.)
+
+Source: data/raw/v6_consensus.jsonl -- consensus-jury labeled training pool.
+Examples were chosen to cleanly encapsulate each category.
+
+
+================================================================================
+1) ADEQUATE      [grade band: K-2  |  id: exp-k2a-005]
+   The tutor message is pedagogically sound: it engages the student's specific
+   question and guides with a question, revealing neither the answer nor the
+   key step.
+================================================================================
+
+INPUT (what the model sees)
+  Problem:           There are 5 birds on a branch. 4 more birds land on it. How many birds are there now?
+  Correct solution:  5 + 4 = 9 birds.
+  Conversation so far:
+      Student: Do I add or subtract the birds?
+  Candidate tutor message (the turn under review):
+      "When more birds land, does the total number of birds go up or down?"
+
+TARGET OUTPUT (what the model is trained to produce)
+  verdict:            adequate
+  reasoning:          The student asked whether to add or subtract, and the tutor's question
+                      about the total going up or down (since birds are landing, per the
+                      problem) guides them to addition without saying 'add' or computing 9.
+  rewritten_message:  null   (already adequate -- no rewrite needed)
+
+================================================================================
+2) GIVES_FINAL_ANSWER      [grade band: 9-12  |  id: exp-912a-020]
+   The tutor states the final answer outright, ending the student's thinking.
+================================================================================
+
+INPUT (what the model sees)
+  Problem:           Factor x^2 + 2x - 15.
+  Correct solution:  Need two numbers multiplying to -15 and adding to 2: 5 and -3. So x^2+2x-15 = (x+5)(x-3).
+  Conversation so far:
+      Student: I can't find the right numbers.
+  Candidate tutor message (the turn under review):
+      "The numbers are 5 and -3, so it factors as (x+5)(x-3)."
+
+TARGET OUTPUT (what the model is trained to produce)
+  verdict:            gives_final_answer
+  reasoning:          The reply reveals both the numbers '5 and -3' and the fully factored
+                      form '(x+5)(x-3)'.
+  rewritten_message:  Think about pairs of numbers whose product is -15 -- could one of
+                      those pairs also add up to 2?
+
+================================================================================
+3) GIVES_AWAY_KEY_STEP      [grade band: 6-8  |  id: exp-68b-046]
+   The tutor hands over the pivotal step -- here it does the hard computation
+   for the student, leaving only a trivial final step. Note it stops SHORT of
+   stating the final answer; that is what separates it from GIVES_FINAL_ANSWER.
+================================================================================
+
+INPUT (what the model sees)
+  Problem:           Find the mean of test scores: 85, 90, 75, 80, 95
+  Correct solution:  Sum = 85+90+75+80+95 = 425. Divide by 5: mean = 85.
+  Conversation so far:
+      Student: Do I need to add them all before dividing?
+  Candidate tutor message (the turn under review):
+      "Yes -- add them up first: 85+90+75+80+95 = 425, then divide by how many scores there are."
+
+TARGET OUTPUT (what the model is trained to produce)
+  verdict:            gives_away_key_step
+  reasoning:          The tutor computes the exact sum '425' for the student, leaving only
+                      the trivial final division step.
+  rewritten_message:  Yes, adding comes first. Can you add up 85, 90, 75, 80, and 95
+                      yourself and see what total you get?
+
+================================================================================
+4) MISMATCHED_CALIBRATION      [grade band: 3-5  |  id: v1-35-19]
+   The tutor is on-topic but pitched at the wrong level -- re-teaching
+   something the student has already demonstrated they know.
+================================================================================
+
+INPUT (what the model sees)
+  Problem:           What is 9 x 4?
+  Correct solution:  9 x 4 = 36. One way: 10 x 4 = 40, then subtract one 4: 40 - 4 = 36.
+  Conversation so far:
+      Student: 9 times 4 is 36.
+  Candidate tutor message (the turn under review):
+      "Here's how times tables work: you can skip-count by 4s, so 4, 8, 12, and keep going until you've counted nine of them."
+
+TARGET OUTPUT (what the model is trained to produce)
+  verdict:            mismatched_calibration
+  reasoning:          The student already gave the correct product, '9 times 4 is 36', yet
+                      the tutor re-teaches basic skip-counting they clearly no longer need.
+  rewritten_message:  That's the correct product, nice work. Can you explain the strategy
+                      you used to get it, and then try 9 times 5 the same way? What do you
+                      predict?
+
+================================================================================
+5) VAGUE_UNHELPFUL      [grade band: 9-12  |  id: exp-912a-049]
+   The tutor offers no actionable, problem-specific guidance -- generic
+   encouragement or filler.
+================================================================================
+
+INPUT (what the model sees)
+  Problem:           Factor 49x^2 - 100.
+  Correct solution:  Write as (7x)^2 - 10^2 = (7x-10)(7x+10).
+  Conversation so far:
+      Student: I don't recognize what kind of factoring this needs for 49x^2 - 100.
+  Candidate tutor message (the turn under review):
+      "You've got this, just believe in yourself and try your best!"
+
+TARGET OUTPUT (what the model is trained to produce)
+  verdict:            vague_unhelpful
+  reasoning:          This is pure encouragement with no mention of the specific numbers
+                      '49' or '100' or any factoring pattern.
+  rewritten_message:  Are 49x^2 and 100 both perfect squares? What numbers, when squared,
+                      give you those?

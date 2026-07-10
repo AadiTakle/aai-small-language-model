@@ -31,6 +31,12 @@ eval/gold/review/*
 !eval/gold/review/reconcile_applied.json
 # pre-reconcile gold backup (git history already holds the prior version)
 eval/gold/*.bak.jsonl
+data/raw/*.bak.jsonl
 
 # generated human-review UIs (regenerable from scripts + flagged jsonl)
 eval/gold/review/**/ruling.html
+
+# DPO round-trip: regenerable multi-GB model dirs (same rationale as adapters/); keep the
+# small rendered-pairs jsonl tracked
+data/dpo/fused_v6_fp16/
+data/dpo/mlx_dpo_v1_4bit/

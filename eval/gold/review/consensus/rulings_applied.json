@@ -1,0 +1,1117 @@
+{
+  "reviewed_at_local": "Thu Jul 09 2026 12:20:08 GMT-0500 (Central Daylight Time)",
+  "ruled": 74,
+  "total": 74,
+  "items": [
+    {
+      "id": "frozen-mrb-1180-90f-Gemini",
+      "bucket": "gold-override",
+      "current": "vague_unhelpful",
+      "jury_label": "gives_away_key_step",
+      "votes": {
+        "gpt-4.1": "gives_away_key_step",
+        "claude": "gives_away_key_step",
+        "gemini": "adequate"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": true,
+      "notes": " [claude-reviewed: fixed per drop-list re-diagnosis]"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Expert",
+      "bucket": "gold-override",
+      "current": "vague_unhelpful",
+      "jury_label": "mismatched_calibration",
+      "votes": {
+        "gpt-4.1": "mismatched_calibration",
+        "claude": "vague_unhelpful",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": true,
+      "notes": " [claude-reviewed: fixed per drop-list re-diagnosis]"
+    },
+    {
+      "id": "frozen-mrb-1180-90f-Llama31405B",
+      "bucket": "gold-override",
+      "current": "vague_unhelpful",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "adequate",
+        "gemini": "adequate"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": true,
+      "notes": " [claude-reviewed: fixed per drop-list re-diagnosis]"
+    },
+    {
+      "id": "frozen-mrb-2381-65f-Expert",
+      "bucket": "gold-override",
+      "current": "mismatched_calibration",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "gives_away_key_step",
+        "claude": "adequate",
+        "gemini": "adequate"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Expert",
+      "bucket": "gold-override",
+      "current": "mismatched_calibration",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "adequate",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "mismatched_calibration",
+      "drop": false,
+      "changed": false,
+      "notes": "The student has demonstrated her ability to reason through the problem already, no need to have her do it again for the sake of being thorough"
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Llama31405B",
+      "bucket": "gold-override",
+      "current": "gives_away_key_step",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "adequate",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Sonnet",
+      "bucket": "gold-override",
+      "current": "gives_away_key_step",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "adequate",
+        "gemini": "adequate"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "frozen-mrb-4430-62a-Llama318B",
+      "bucket": "gold-override",
+      "current": "vague_unhelpful",
+      "jury_label": "gives_away_key_step",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "gives_away_key_step",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "frozen-mrb-1380-46d-GPT4",
+      "bucket": "gold-override",
+      "current": "mismatched_calibration",
+      "jury_label": "gives_away_key_step",
+      "votes": {
+        "gpt-4.1": "gives_away_key_step",
+        "claude": "gives_away_key_step",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "gives_away_key_step",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "frozen-mrb-4642-e2c-Expert",
+      "bucket": "gold-override",
+      "current": "gives_away_key_step",
+      "jury_label": "mismatched_calibration",
+      "votes": {
+        "gpt-4.1": "mismatched_calibration",
+        "claude": "mismatched_calibration",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "mismatched_calibration",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "frozen-mrb-850-307a-Expert",
+      "bucket": "gold-override",
+      "current": "vague_unhelpful",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "vague_unhelpful",
+        "claude": "adequate",
+        "gemini": "adequate"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "frozen-mrb-4500-946-Expert",
+      "bucket": "gold-override",
+      "current": "vague_unhelpful",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "adequate",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "frozen-mrb-4260-725-Gemini",
+      "bucket": "gold-override",
+      "current": "vague_unhelpful",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "mismatched_calibration",
+        "gemini": "adequate"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": true,
+      "notes": "Good, but doesn't have any action for the student to take, could be confusing. I will agree its accurate though and flag it."
+    },
+    {
+      "id": "frozen-mrb-2311-6c2-Llama318B",
+      "bucket": "gold-override",
+      "current": "adequate",
+      "jury_label": "gives_final_answer",
+      "votes": {
+        "gpt-4.1": "gives_final_answer",
+        "claude": "gives_final_answer",
+        "gemini": "gives_final_answer"
+      },
+      "ruling": "gives_final_answer",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "frozen-mrb-2481-c67-Sonnet",
+      "bucket": "gold-override",
+      "current": "adequate",
+      "jury_label": "gives_final_answer",
+      "votes": {
+        "gpt-4.1": "gives_final_answer",
+        "claude": "gives_final_answer",
+        "gemini": "gives_final_answer"
+      },
+      "ruling": "gives_final_answer",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "frozen-mrb-450-eb6d-Mistral",
+      "bucket": "gold-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": "It needs to ask the user to look at something or notice something to be perfect, but its inoffensive"
+    },
+    {
+      "id": "frozen-mrb-4740-dfe-Mistral",
+      "bucket": "gold-noconsensus",
+      "current": "mismatched_calibration",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "frozen-mrb-4983-21a-Mistral",
+      "bucket": "gold-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "mismatched_calibration",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "gives_away_key_step",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "frozen-mrb-3390-981-Expert",
+      "bucket": "gold-noconsensus",
+      "current": "vague_unhelpful",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "vague_unhelpful",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "vague_unhelpful",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "frozen-mrb-2231-0be-Expert",
+      "bucket": "gold-noconsensus",
+      "current": "mismatched_calibration",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "mismatched_calibration",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "frozen-mrb-2231-0be-GPT4",
+      "bucket": "gold-noconsensus",
+      "current": "mismatched_calibration",
+      "jury_label": "gives_away_key_step",
+      "votes": {
+        "gpt-4.1": "gives_away_key_step",
+        "claude": "gives_final_answer",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": null,
+      "drop": true,
+      "changed": false,
+      "notes": " [claude-reviewed: fixed per drop-list re-diagnosis]"
+    },
+    {
+      "id": "frozen-mrb-2231-0be-Gemini",
+      "bucket": "gold-noconsensus",
+      "current": "mismatched_calibration",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "gives_away_key_step",
+      "drop": false,
+      "changed": true,
+      "notes": " [claude-reviewed: fixed per drop-list re-diagnosis]"
+    },
+    {
+      "id": "frozen-mrb-790-86a2-Gemini",
+      "bucket": "gold-noconsensus",
+      "current": "mismatched_calibration",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "vague_unhelpful",
+      "drop": false,
+      "changed": true,
+      "notes": "the candidate message just got the math wrong entirely. This wouldn't typically happen since the frontier model is in charge of doing the math, not our model."
+    },
+    {
+      "id": "frozen-mrb-790-86a2-Mistral",
+      "bucket": "gold-noconsensus",
+      "current": "mismatched_calibration",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "gives_away_key_step",
+      "drop": false,
+      "changed": true,
+      "notes": " [claude-reviewed: fixed per drop-list re-diagnosis]"
+    },
+    {
+      "id": "frozen-mrb-790-86a2-GPT4",
+      "bucket": "gold-noconsensus",
+      "current": "mismatched_calibration",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "gives_away_key_step",
+      "drop": false,
+      "changed": true,
+      "notes": " [claude-reviewed: fixed per drop-list re-diagnosis]"
+    },
+    {
+      "id": "frozen-mrb-790-86a2-Llama31405B",
+      "bucket": "gold-noconsensus",
+      "current": "mismatched_calibration",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "gives_away_key_step",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "frozen-mrb-3970-82b-Llama318B",
+      "bucket": "gold-noconsensus",
+      "current": "vague_unhelpful",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "vague_unhelpful",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "vague_unhelpful",
+      "drop": false,
+      "changed": false,
+      "notes": "just says itll help but doesn't actually start guiding the student"
+    },
+    {
+      "id": "frozen-mrb-1490-cc8-Expert",
+      "bucket": "gold-noconsensus",
+      "current": "vague_unhelpful",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "vague_unhelpful",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "mismatched_calibration",
+      "drop": false,
+      "changed": true,
+      "notes": "student already answered that but incorrectly"
+    },
+    {
+      "id": "frozen-mrb-600-ad70-Expert",
+      "bucket": "gold-noconsensus",
+      "current": "vague_unhelpful",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "vague_unhelpful",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "vague_unhelpful",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "exp-k2b-032",
+      "bucket": "train-noconsensus",
+      "current": "mismatched_calibration",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "vague_unhelpful",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "mismatched_calibration",
+      "drop": false,
+      "changed": false,
+      "notes": "that isn't what the student asked about. They know that it goes to 12 but doesn't know what happens after 12."
+    },
+    {
+      "id": "exp-35b-025",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_final_answer",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "gives_final_answer",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "exp-68a-040",
+      "bucket": "train-noconsensus",
+      "current": "mismatched_calibration",
+      "jury_label": "mismatched_calibration",
+      "votes": {
+        "gpt-4.1": "mismatched_calibration",
+        "claude": "gives_away_key_step",
+        "gemini": "vague_unhelpful"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "exp-68b-048",
+      "bucket": "train-noconsensus",
+      "current": "mismatched_calibration",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "mismatched_calibration",
+        "gemini": "vague_unhelpful"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "exp-adv-08b",
+      "bucket": "train-noconsensus",
+      "current": "mismatched_calibration",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "vague_unhelpful",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "mismatched_calibration",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "exp-adv-12a",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "mismatched_calibration",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "exp-adv-16a",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_final_answer",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "gives_away_key_step",
+      "drop": false,
+      "changed": true,
+      "notes": "shouldnt specify 5+18 (a key step as part of BODMAS)"
+    },
+    {
+      "id": "mrb-3711-05b-Phi3",
+      "bucket": "train-noconsensus",
+      "current": "mismatched_calibration",
+      "jury_label": "gives_away_key_step",
+      "votes": {
+        "gpt-4.1": "gives_away_key_step",
+        "claude": "mismatched_calibration",
+        "gemini": "vague_unhelpful"
+      },
+      "ruling": "mismatched_calibration",
+      "drop": false,
+      "changed": false,
+      "notes": "The student says that exact step in the prior message."
+    },
+    {
+      "id": "mrb-232-a53c-Gemini",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "mismatched_calibration",
+      "drop": false,
+      "changed": true,
+      "notes": "first message says that value already"
+    },
+    {
+      "id": "mrb-63834533-Expert",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "mismatched_calibration",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mrb-3530-162-Mistral",
+      "bucket": "train-noconsensus",
+      "current": "gives_away_key_step",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "mismatched_calibration",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "gives_away_key_step",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mrb-42957622-Gemini",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "mismatched_calibration",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mrb-1300-249-Llama31405B",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "mismatched_calibration",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mrb-29492982-Gemini",
+      "bucket": "train-noconsensus",
+      "current": "gives_away_key_step",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "gives_away_key_step",
+      "drop": false,
+      "changed": false,
+      "notes": " [claude-reviewed: fixed per drop-list re-diagnosis]"
+    },
+    {
+      "id": "mrb-61665334-Sonnet",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "vague_unhelpful",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mrb-63483065-Llama318B",
+      "bucket": "train-noconsensus",
+      "current": "gives_final_answer",
+      "jury_label": "gives_away_key_step",
+      "votes": {
+        "gpt-4.1": "gives_away_key_step",
+        "claude": "gives_final_answer",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "gives_final_answer",
+      "drop": false,
+      "changed": false,
+      "notes": "the candidate message is just horribly wrong about this [claude-reviewed: fixed per drop-list re-diagnosis]"
+    },
+    {
+      "id": "mrb-2391-784-Mistral",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "gives_away_key_step",
+      "votes": {
+        "gpt-4.1": "gives_away_key_step",
+        "claude": "adequate",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "gives_away_key_step",
+      "drop": false,
+      "changed": true,
+      "notes": "Likely a better way to frame this that doesn't outright say Anna cannot earn money from unsold cupcakes, especially since the student just made that connection with Emily."
+    },
+    {
+      "id": "mrb-4451-21b-Llama318B",
+      "bucket": "train-noconsensus",
+      "current": "gives_final_answer",
+      "jury_label": "gives_away_key_step",
+      "votes": {
+        "gpt-4.1": "gives_away_key_step",
+        "claude": "gives_final_answer",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "gives_final_answer",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mrb-29162823-Sonnet",
+      "bucket": "train-noconsensus",
+      "current": "gives_final_answer",
+      "jury_label": "gives_away_key_step",
+      "votes": {
+        "gpt-4.1": "gives_away_key_step",
+        "claude": "gives_final_answer",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "gives_final_answer",
+      "drop": false,
+      "changed": false,
+      "notes": "message is incorrect, the student got 5 * 14 = 75. [claude-reviewed: fixed per drop-list re-diagnosis]"
+    },
+    {
+      "id": "mrb-2162-38e-Mistral",
+      "bucket": "train-noconsensus",
+      "current": "mismatched_calibration",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "mismatched_calibration",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mrb-2501-49e-Gemini",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "mismatched_calibration",
+      "drop": false,
+      "changed": true,
+      "notes": "they know that they just calculated something wrong (clearly states their reasoning for the remaining portion in the last message)"
+    },
+    {
+      "id": "mrb-29161626-Sonnet",
+      "bucket": "train-noconsensus",
+      "current": "gives_final_answer",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_final_answer",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "gives_final_answer",
+      "drop": false,
+      "changed": false,
+      "notes": "bro.... [claude-reviewed: fixed per drop-list re-diagnosis]"
+    },
+    {
+      "id": "mrb-4152-ddb-GPT4",
+      "bucket": "train-noconsensus",
+      "current": "gives_final_answer",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "gives_final_answer"
+      },
+      "ruling": "gives_away_key_step",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "mrb-5220-3bb-Mistral",
+      "bucket": "train-noconsensus",
+      "current": "gives_away_key_step",
+      "jury_label": "gives_away_key_step",
+      "votes": {
+        "gpt-4.1": "gives_away_key_step",
+        "claude": "gives_final_answer",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "gives_final_answer",
+      "drop": false,
+      "changed": true,
+      "notes": "son ur math skills are ass [claude-reviewed: fixed per drop-list re-diagnosis]"
+    },
+    {
+      "id": "mathdial-5000797-2",
+      "bucket": "train-noconsensus",
+      "current": "gives_away_key_step",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "mismatched_calibration",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "mathdial-5000971-4",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "vague_unhelpful",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "vague_unhelpful",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "mathdial-5001057-2",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": "I want you to be clearer on what \"second step\" means. There is a better way to frame this that is clearer."
+    },
+    {
+      "id": "mathdial-5001119-4",
+      "bucket": "train-noconsensus",
+      "current": "gives_away_key_step",
+      "jury_label": "mismatched_calibration",
+      "votes": {
+        "gpt-4.1": "mismatched_calibration",
+        "claude": "adequate",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": true,
+      "notes": " [claude-reviewed: fixed per drop-list re-diagnosis]"
+    },
+    {
+      "id": "mathdial-5000133-5",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "mismatched_calibration",
+      "votes": {
+        "gpt-4.1": "mismatched_calibration",
+        "claude": "gives_away_key_step",
+        "gemini": "adequate"
+      },
+      "ruling": "mismatched_calibration",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "mathdial-5000899-4",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "vague_unhelpful",
+      "votes": {
+        "gpt-4.1": "vague_unhelpful",
+        "claude": "adequate",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": "Would like if it had some context. This is the right next step for the student to look at but it seems random when framed this way."
+    },
+    {
+      "id": "mathdial-5000252-4",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mathdial-5000524-2",
+      "bucket": "train-noconsensus",
+      "current": "gives_away_key_step",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "gives_away_key_step",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mathdial-5000150-2",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "mismatched_calibration",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "mismatched_calibration",
+      "drop": false,
+      "changed": true,
+      "notes": "They did this already, but didnt consider julia's 6 hours correctly"
+    },
+    {
+      "id": "mathdial-5000123-4",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": "This is a good first step, leads into the next obvious question of why did the student then multiply by 7 after the 4"
+    },
+    {
+      "id": "mathdial-5001061-2",
+      "bucket": "train-noconsensus",
+      "current": "gives_away_key_step",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "mismatched_calibration",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "mathdial-5000006-2",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "vague_unhelpful",
+      "votes": {
+        "gpt-4.1": "vague_unhelpful",
+        "claude": "adequate",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mathdial-5000800-2",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "vague_unhelpful",
+      "votes": {
+        "gpt-4.1": "vague_unhelpful",
+        "claude": "mismatched_calibration",
+        "gemini": "adequate"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mathdial-5000400-3",
+      "bucket": "train-noconsensus",
+      "current": "gives_away_key_step",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "gives_away_key_step",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mathdial-5000581-4",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "gives_away_key_step",
+      "votes": {
+        "gpt-4.1": "gives_away_key_step",
+        "claude": "vague_unhelpful",
+        "gemini": "adequate"
+      },
+      "ruling": "gives_away_key_step",
+      "drop": false,
+      "changed": true,
+      "notes": ""
+    },
+    {
+      "id": "mathdial-5000889-2",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "vague_unhelpful",
+      "votes": {
+        "gpt-4.1": "vague_unhelpful",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "mismatched_calibration",
+      "drop": false,
+      "changed": true,
+      "notes": " [claude-reviewed: fixed per drop-list re-diagnosis]"
+    },
+    {
+      "id": "mathdial-5000680-2",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "mismatched_calibration",
+        "gemini": "gives_away_key_step"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mathdial-5000213-2",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mathdial-5000380-2",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "gives_away_key_step",
+      "votes": {
+        "gpt-4.1": "gives_away_key_step",
+        "claude": "mismatched_calibration",
+        "gemini": "vague_unhelpful"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mathdial-5000495-2",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "adequate",
+      "votes": {
+        "gpt-4.1": "adequate",
+        "claude": "gives_away_key_step",
+        "gemini": "mismatched_calibration"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    },
+    {
+      "id": "mathdial-5000495-4",
+      "bucket": "train-noconsensus",
+      "current": "adequate",
+      "jury_label": "mismatched_calibration",
+      "votes": {
+        "gpt-4.1": "mismatched_calibration",
+        "claude": "gives_away_key_step",
+        "gemini": "adequate"
+      },
+      "ruling": "adequate",
+      "drop": false,
+      "changed": false,
+      "notes": ""
+    }
+  ]
+}
