@@ -1,0 +1,17 @@
+{
+  "judges": [
+    {"id": "base",    "label": "Qwen3-1.7B (base)",   "kind": "mlx",     "adapter": null,            "max_tokens": 512},
+    {"id": "v6",      "label": "SLM v6 (ship)",        "kind": "mlx",     "adapter": "adapters/v6",   "max_tokens": 512},
+    {"id": "v9",      "label": "SLM v9 (recall)",      "kind": "mlx",     "adapter": "adapters/v9",   "max_tokens": 512},
+    {"id": "v9b",     "label": "SLM v9b (recall-tuned)","kind": "mlx",    "adapter": "adapters/v9b",  "max_tokens": 512},
+    {"id": "gpt-4o",  "label": "GPT-4o",               "kind": "gateway", "model": "openai-group/gpt-4o"},
+    {"id": "claude",  "label": "Claude Opus",          "kind": "gateway", "model": "claude-group/claude-opus-4-8"},
+    {"id": "gpt-5.5", "label": "GPT-5.5",              "kind": "gateway", "model": "openai-group/gpt-5.5"}
+  ],
+  "tutors": [
+    {"id": "claude",  "label": "Claude Opus", "model": "claude-group/claude-opus-4-8"},
+    {"id": "gpt-4o",  "label": "GPT-4o",      "model": "openai-group/gpt-4o"},
+    {"id": "gpt-5.5", "label": "GPT-5.5",     "model": "openai-group/gpt-5.5"}
+  ],
+  "_note": "Expansion point: add a new SLM version or LLM by appending an entry. Judges = anything that grades a candidate (SLMs + frontier). Tutors = frontier models that can play the Socratic tutor in Tab 1."
+}
