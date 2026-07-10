@@ -53,3 +53,32 @@ on verdict accuracy — it's the 2nd-best model — but the goal was to beat v6,
 
 Artifacts: `data/raw/v7.jsonl`, `eval/results/v7_relabel_report.md`, `eval/results/v7_frozen.md`,
 `adapters/v7` (gitignored). Branch `feat/v7-decision-tree`.
+
+## Audit resolution (blind jury) — hypothesis REJECTED: the gold is NOT poor
+Follow-up (`scripts/audit_v7_gold.py`): an independent 2-model blind jury (Claude-opus + gpt-4o,
+decision-tree prompt, no gold/identities shown; neither is v7's gpt-5.5 labeler) re-judged the 77
+v6-vs-v7 disagreements. On the 31 where both jurors agreed (confident):
+
+| subset | n | jury=v7 | jury=sft_v6 | jury=frozen_gold |
+|---|---|---|---|---|
+| all confident disagreements | 31 | 9 | 18 | 23 |
+| v7-LOST (gold==v6) | 19 | 2 | 16 | 16 |
+
+**The gold is not poor.** On the items v7 "lost", the jury sided with the gold **16 vs 2**, and
+matched the frozen gold **23/31** overall — more than either model — so the gold is well-aligned
+with independent cross-family judgment. The jury even used the tree prompt (if anything biased
+toward v7) and still rejected v7's flips → robust.
+
+**Root cause of v7's regression:** the relabel over-flipped the quality axis, and the
+"conservative" gate did NOT catch it because guided + verify were the SAME model (gpt-5.5) —
+self-consistent but both over-aggressive vs a cross-family jury. **Same-model agreement ≠
+correctness.**
+
+**Revised recommendation:** `sft_v6` stays ship (now confirmed by an independent jury, not just
+the gold). Do NOT pursue a full gold-relabel — the audit already did the fair adjudication and it
+favors the gold (only ~2/31 gold items looked genuinely off; not systemic). Deeper signal: the
+jury was split on **46/77** disagreements — frontier models can't agree on the quality-axis
+boundary either. So the real lever is the STRUCTURAL move from `rubric_evaluation.md` (report
+binary safety separately; consider collapsing mismatched/vague), not more relabeling of an
+intrinsically fuzzy axis. For any future relabel, use a CROSS-FAMILY jury (different models for
+guided vs verify).

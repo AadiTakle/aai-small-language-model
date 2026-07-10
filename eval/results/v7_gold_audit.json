@@ -1,0 +1,695 @@
+[
+  {
+    "id": "frozen-mrb-3750-3e8-Expert",
+    "gold": "vague_unhelpful",
+    "v6": "vague_unhelpful",
+    "v7": "adequate",
+    "claude": "mismatched_calibration",
+    "gpt4o": "mismatched_calibration",
+    "jury": "mismatched_calibration"
+  },
+  {
+    "id": "frozen-mrb-3750-3e8-Llama31405B",
+    "gold": "gives_final_answer",
+    "v6": "gives_final_answer",
+    "v7": "gives_away_key_step",
+    "claude": "gives_final_answer",
+    "gpt4o": "gives_final_answer",
+    "jury": "gives_final_answer"
+  },
+  {
+    "id": "frozen-mrb-1180-90f-GPT4",
+    "gold": "adequate",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "mismatched_calibration",
+    "gpt4o": "mismatched_calibration",
+    "jury": "mismatched_calibration"
+  },
+  {
+    "id": "frozen-mrb-1180-90f-Expert",
+    "gold": "adequate",
+    "v6": "vague_unhelpful",
+    "v7": "mismatched_calibration",
+    "claude": "mismatched_calibration",
+    "gpt4o": "mismatched_calibration",
+    "jury": "mismatched_calibration"
+  },
+  {
+    "id": "frozen-mrb-1180-90f-Mistral",
+    "gold": "gives_final_answer",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "gives_final_answer",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-1180-90f-Llama318B",
+    "gold": "mismatched_calibration",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "mismatched_calibration",
+    "gpt4o": "mismatched_calibration",
+    "jury": "mismatched_calibration"
+  },
+  {
+    "id": "frozen-mrb-2381-65f-Mistral",
+    "gold": "gives_away_key_step",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "gives_away_key_step",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-2381-65f-Llama31405B",
+    "gold": "gives_away_key_step",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "gives_away_key_step",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-2381-65f-Gemini",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "mismatched_calibration",
+    "gpt4o": "mismatched_calibration",
+    "jury": "mismatched_calibration"
+  },
+  {
+    "id": "frozen-mrb-450-eb6d-Mistral",
+    "gold": "adequate",
+    "v6": "adequate",
+    "v7": "gives_away_key_step",
+    "claude": "gives_away_key_step",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-4430-62a-GPT4",
+    "gold": "gives_away_key_step",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "gives_away_key_step",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-1380-46d-Expert",
+    "gold": "gives_away_key_step",
+    "v6": "gives_away_key_step",
+    "v7": "adequate",
+    "claude": "adequate",
+    "gpt4o": "adequate",
+    "jury": "adequate"
+  },
+  {
+    "id": "frozen-mrb-1380-46d-Gemini",
+    "gold": "gives_away_key_step",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "gives_away_key_step",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-1380-46d-Mistral",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "mismatched_calibration",
+    "gpt4o": "mismatched_calibration",
+    "jury": "mismatched_calibration"
+  },
+  {
+    "id": "frozen-mrb-1380-46d-Llama318B",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "gives_away_key_step",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-4740-dfe-Gemini",
+    "gold": "gives_away_key_step",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "adequate",
+    "gpt4o": "adequate",
+    "jury": "adequate"
+  },
+  {
+    "id": "frozen-mrb-4740-dfe-Mistral",
+    "gold": "adequate",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "mismatched_calibration",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-4642-e2c-GPT4",
+    "gold": "gives_away_key_step",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "gives_away_key_step",
+    "gpt4o": "gives_away_key_step",
+    "jury": "gives_away_key_step"
+  },
+  {
+    "id": "frozen-mrb-4642-e2c-Llama31405B",
+    "gold": "gives_away_key_step",
+    "v6": "adequate",
+    "v7": "gives_away_key_step",
+    "claude": "mismatched_calibration",
+    "gpt4o": "gives_away_key_step",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-4642-e2c-Phi3",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "mismatched_calibration",
+    "gpt4o": "mismatched_calibration",
+    "jury": "mismatched_calibration"
+  },
+  {
+    "id": "frozen-mrb-4983-21a-Llama318B",
+    "gold": "gives_away_key_step",
+    "v6": "adequate",
+    "v7": "gives_away_key_step",
+    "claude": "gives_away_key_step",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-4983-21a-Expert",
+    "gold": "gives_away_key_step",
+    "v6": "adequate",
+    "v7": "gives_away_key_step",
+    "claude": "gives_away_key_step",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-5421-75c-Gemini",
+    "gold": "adequate",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "adequate",
+    "gpt4o": "adequate",
+    "jury": "adequate"
+  },
+  {
+    "id": "frozen-mrb-3390-981-Expert",
+    "gold": "vague_unhelpful",
+    "v6": "mismatched_calibration",
+    "v7": "adequate",
+    "claude": "mismatched_calibration",
+    "gpt4o": "mismatched_calibration",
+    "jury": "mismatched_calibration"
+  },
+  {
+    "id": "frozen-mrb-850-307a-Expert",
+    "gold": "adequate",
+    "v6": "vague_unhelpful",
+    "v7": "mismatched_calibration",
+    "claude": "adequate",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-4500-946-Llama318B",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "mismatched_calibration",
+    "gpt4o": "mismatched_calibration",
+    "jury": "mismatched_calibration"
+  },
+  {
+    "id": "frozen-mrb-4500-946-Phi3",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "vague_unhelpful",
+    "claude": "gives_final_answer",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-4520-2fc-Sonnet",
+    "gold": "adequate",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "vague_unhelpful",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-4520-2fc-Mistral",
+    "gold": "adequate",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "gives_away_key_step",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-2283-6be-Mistral",
+    "gold": "adequate",
+    "v6": "adequate",
+    "v7": "gives_away_key_step",
+    "claude": "adequate",
+    "gpt4o": "adequate",
+    "jury": "adequate"
+  },
+  {
+    "id": "frozen-mrb-1150-e9a-Llama318B",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "mismatched_calibration",
+    "gpt4o": "mismatched_calibration",
+    "jury": "mismatched_calibration"
+  },
+  {
+    "id": "frozen-mrb-1150-e9a-Gemini",
+    "gold": "adequate",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "adequate",
+    "gpt4o": "adequate",
+    "jury": "adequate"
+  },
+  {
+    "id": "frozen-mrb-2172-795-Llama318B",
+    "gold": "gives_away_key_step",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "gives_final_answer",
+    "gpt4o": "gives_away_key_step",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-2172-795-Mistral",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "mismatched_calibration",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-2172-795-Gemini",
+    "gold": "mismatched_calibration",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "mismatched_calibration",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-4260-725-Expert",
+    "gold": "gives_away_key_step",
+    "v6": "adequate",
+    "v7": "gives_away_key_step",
+    "claude": "adequate",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-4260-725-Llama318B",
+    "gold": "gives_away_key_step",
+    "v6": "adequate",
+    "v7": "gives_away_key_step",
+    "claude": "gives_away_key_step",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-4260-725-Gemini",
+    "gold": "adequate",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "adequate",
+    "gpt4o": "adequate",
+    "jury": "adequate"
+  },
+  {
+    "id": "frozen-mrb-2231-0be-Expert",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "adequate",
+    "claude": "adequate",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-2231-0be-Llama31405B",
+    "gold": "adequate",
+    "v6": "adequate",
+    "v7": "gives_away_key_step",
+    "claude": "adequate",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-3912-5d9-Sonnet",
+    "gold": "adequate",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "vague_unhelpful",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-3912-5d9-Llama318B",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "mismatched_calibration",
+    "gpt4o": "mismatched_calibration",
+    "jury": "mismatched_calibration"
+  },
+  {
+    "id": "frozen-mrb-3661-2cc-Gemini",
+    "gold": "gives_away_key_step",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "gives_away_key_step",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-1141-58f-Gemini",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "adequate",
+    "claude": "mismatched_calibration",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-5721-0a0-Gemini",
+    "gold": "adequate",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "mismatched_calibration",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-5721-0a0-Phi3",
+    "gold": "mismatched_calibration",
+    "v6": "vague_unhelpful",
+    "v7": "mismatched_calibration",
+    "claude": "vague_unhelpful",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-790-86a2-Llama31405B",
+    "gold": "gives_away_key_step",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "gives_away_key_step",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-3970-82b-Llama318B",
+    "gold": "vague_unhelpful",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "vague_unhelpful",
+    "gpt4o": "vague_unhelpful",
+    "jury": "vague_unhelpful"
+  },
+  {
+    "id": "frozen-mrb-3970-82b-Phi3",
+    "gold": "vague_unhelpful",
+    "v6": "mismatched_calibration",
+    "v7": "vague_unhelpful",
+    "claude": "vague_unhelpful",
+    "gpt4o": "vague_unhelpful",
+    "jury": "vague_unhelpful"
+  },
+  {
+    "id": "frozen-mrb-3970-82b-Sonnet",
+    "gold": "adequate",
+    "v6": "mismatched_calibration",
+    "v7": "vague_unhelpful",
+    "claude": "vague_unhelpful",
+    "gpt4o": "vague_unhelpful",
+    "jury": "vague_unhelpful"
+  },
+  {
+    "id": "frozen-mrb-1490-cc8-Llama318B",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "mismatched_calibration",
+    "gpt4o": "mismatched_calibration",
+    "jury": "mismatched_calibration"
+  },
+  {
+    "id": "frozen-mrb-3640-953-Gemini",
+    "gold": "adequate",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "adequate",
+    "gpt4o": "adequate",
+    "jury": "adequate"
+  },
+  {
+    "id": "frozen-mrb-3640-953-Expert",
+    "gold": "adequate",
+    "v6": "mismatched_calibration",
+    "v7": "adequate",
+    "claude": "mismatched_calibration",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-2311-6c2-Llama318B",
+    "gold": "gives_final_answer",
+    "v6": "gives_away_key_step",
+    "v7": "mismatched_calibration",
+    "claude": "gives_final_answer",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-2311-6c2-Mistral",
+    "gold": "gives_final_answer",
+    "v6": "gives_away_key_step",
+    "v7": "gives_final_answer",
+    "claude": "gives_final_answer",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-2311-6c2-Phi3",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "vague_unhelpful",
+    "claude": "gives_final_answer",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-2311-6c2-Gemini",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "vague_unhelpful",
+    "claude": "mismatched_calibration",
+    "gpt4o": "mismatched_calibration",
+    "jury": "mismatched_calibration"
+  },
+  {
+    "id": "frozen-mrb-4954-dab-Llama31405B",
+    "gold": "gives_away_key_step",
+    "v6": "gives_away_key_step",
+    "v7": "mismatched_calibration",
+    "claude": "gives_final_answer",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-3710-277-Llama318B",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "mismatched_calibration",
+    "gpt4o": "mismatched_calibration",
+    "jury": "mismatched_calibration"
+  },
+  {
+    "id": "frozen-mrb-1630-cee-Expert",
+    "gold": "vague_unhelpful",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "vague_unhelpful",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-1070-1c9-GPT4",
+    "gold": "gives_final_answer",
+    "v6": "mismatched_calibration",
+    "v7": "gives_final_answer",
+    "claude": "gives_final_answer",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-3102-244-GPT4",
+    "gold": "gives_final_answer",
+    "v6": "gives_away_key_step",
+    "v7": "gives_final_answer",
+    "claude": "gives_final_answer",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-3102-244-Llama318B",
+    "gold": "gives_final_answer",
+    "v6": "mismatched_calibration",
+    "v7": "gives_final_answer",
+    "claude": "gives_final_answer",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-2242-738-Mistral",
+    "gold": "gives_final_answer",
+    "v6": "mismatched_calibration",
+    "v7": "gives_final_answer",
+    "claude": "gives_final_answer",
+    "gpt4o": "gives_final_answer",
+    "jury": "gives_final_answer"
+  },
+  {
+    "id": "frozen-mrb-2541-349-Sonnet",
+    "gold": "mismatched_calibration",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "vague_unhelpful",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-5430-711-Phi3",
+    "gold": "vague_unhelpful",
+    "v6": "vague_unhelpful",
+    "v7": "mismatched_calibration",
+    "claude": "gives_final_answer",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-4050-332-Sonnet",
+    "gold": "adequate",
+    "v6": "adequate",
+    "v7": "mismatched_calibration",
+    "claude": "vague_unhelpful",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-2481-c67-Sonnet",
+    "gold": "gives_final_answer",
+    "v6": "mismatched_calibration",
+    "v7": "gives_away_key_step",
+    "claude": "adequate",
+    "gpt4o": "adequate",
+    "jury": "adequate"
+  },
+  {
+    "id": "frozen-mrb-2481-c67-Llama31405B",
+    "gold": "adequate",
+    "v6": "mismatched_calibration",
+    "v7": "gives_final_answer",
+    "claude": "adequate",
+    "gpt4o": "adequate",
+    "jury": "adequate"
+  },
+  {
+    "id": "frozen-mrb-2481-c67-Gemini",
+    "gold": "adequate",
+    "v6": "mismatched_calibration",
+    "v7": "vague_unhelpful",
+    "claude": "mismatched_calibration",
+    "gpt4o": "adequate",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-5560-b2e-Phi3",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "vague_unhelpful",
+    "claude": "vague_unhelpful",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-3730-50b-Phi3",
+    "gold": "vague_unhelpful",
+    "v6": "mismatched_calibration",
+    "v7": "vague_unhelpful",
+    "claude": "gives_final_answer",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-3730-50b-GPT4",
+    "gold": "gives_final_answer",
+    "v6": "gives_away_key_step",
+    "v7": "gives_final_answer",
+    "claude": "gives_final_answer",
+    "gpt4o": "gives_final_answer",
+    "jury": "gives_final_answer"
+  },
+  {
+    "id": "frozen-mrb-2150-c7e-GPT4",
+    "gold": "mismatched_calibration",
+    "v6": "mismatched_calibration",
+    "v7": "gives_final_answer",
+    "claude": "gives_away_key_step",
+    "gpt4o": "gives_final_answer",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-2150-c7e-Mistral",
+    "gold": "mismatched_calibration",
+    "v6": "gives_away_key_step",
+    "v7": "gives_final_answer",
+    "claude": "gives_final_answer",
+    "gpt4o": "gives_away_key_step",
+    "jury": null
+  },
+  {
+    "id": "frozen-mrb-4220-7d6-Phi3",
+    "gold": "vague_unhelpful",
+    "v6": "mismatched_calibration",
+    "v7": "vague_unhelpful",
+    "claude": "vague_unhelpful",
+    "gpt4o": "mismatched_calibration",
+    "jury": null
+  },
+  {
+    "id": "frozen-seed-10",
+    "gold": "adequate",
+    "v6": "adequate",
+    "v7": "gives_final_answer",
+    "claude": "adequate",
+    "gpt4o": "adequate",
+    "jury": "adequate"
+  }
+]
