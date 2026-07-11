@@ -48,4 +48,7 @@ data/dpo/mlx_dpo_v1_4bit/
 # Overnight verdict/rewrite-split: rendered MLX data + train logs are regenerable
 data/mlx_verdict/
 data/mlx_rewrite/
+data/mlx_verdict_full/
+data/mlx_combined_bal/
+data/raw/rewrite_feed.jsonl
 eval/results/overnight/*.log

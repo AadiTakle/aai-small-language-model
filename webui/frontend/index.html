@@ -12,6 +12,7 @@
     <nav class="tabs">
       <button class="tab is-active" data-tab="session">Tutor Session</button>
       <button class="tab" data-tab="compare">Compare &amp; Label</button>
+      <button class="tab" data-tab="curate">Curate</button>
     </nav>
   </header>
 
@@ -76,6 +77,18 @@
       <button id="c-contribute" class="primary">Add to dataset +</button>
       <span id="c-status" class="status"></span>
     </section>
+  </main>
+
+  <!-- ─────────────── Tab 3: Curate (rewrite feed) ─────────────── -->
+  <main id="curate" class="panel">
+    <section class="card">
+      <h2>Rewrite curation feed</h2>
+      <div class="feed-head">
+        <div id="cu-progress" class="feed-progress">loading…</div>
+        <div class="feed-keys">keys: <b>1</b> approve left · <b>2</b> approve right · <b>e</b> write better · <b>s</b> skip</div>
+      </div>
+    </section>
+    <section id="cu-card" class="card"><div class="spinner">Loading feed…</div></section>
   </main>
 
   <script src="app.js" type="module"></script>

@@ -225,3 +225,128 @@ $("#c-contribute").addEventListener("click", async () => {
     st.textContent = `✓ added to ${res.path}`; st.className = "status ok";
   } catch (e) { st.textContent = `error: ${e.message}`; st.className = "status"; }
 });
+
+// ═══════════════ Tab 3: Curate (rewrite feed) ═══════════════
+let CU = { queue: [], pos: 0, stats: {}, loading: false, loaded: false };
+
+async function cuEnsureLoaded() { if (!CU.loaded && !CU.loading) cuLoad(); }
+
+async function cuLoad() {
+  CU.loading = true;
+  try {
+    const r = await api("/api/curate/next?count=25");
+    CU.stats = r; CU.queue = r.items || []; CU.pos = 0; CU.loaded = true;
+    if (!r.ready) { $("#cu-card").innerHTML = `<div class="spinner">Feed not built yet — the side-by-side data is still generating.</div>`; return; }
+    cuRender();
+  } catch (e) { $("#cu-card").innerHTML = `<div class="spinner">Error: ${esc(e.message)}</div>`; }
+  finally { CU.loading = false; }
+}
+
+const cuCurrent = () => CU.queue[CU.pos];
+
+function cuProgress() {
+  const s = CU.stats;
+  $("#cu-progress").innerHTML = s.total
+    ? `reviewed <b>${s.reviewed || 0}</b> / ${s.total} · <b>${s.remaining || 0}</b> left`
+    : "no items";
+}
+
+async function cuRefillIfLow() {
+  if (CU.pos < CU.queue.length - 3) return;
+  try {
+    const r = await api("/api/curate/next?count=25");
+    CU.stats = r;
+    const seen = new Set(CU.queue.map((x) => x.id));
+    (r.items || []).forEach((it) => { if (!seen.has(it.id)) CU.queue.push(it); });
+  } catch { /* keep going on the buffered items */ }
+}
+
+function cuRender() {
+  cuProgress();
+  const it = cuCurrent();
+  if (!it) { $("#cu-card").innerHTML = `<div class="spinner">🎉 All caught up — nothing left to review.</div>`; return; }
+  const convo = (it.conversation_history || []).map((h) => `<div class="cu-turn">${esc(h)}</div>`).join("")
+    || `<div class="cu-turn none">(no conversation yet)</div>`;
+  const wc = (t) => (t || "").trim().split(/\s+/).filter(Boolean).length;
+  const pane = (name, label, text) => text ? `
+    <div class="rw-pane">
+      <div class="rw-head"><span class="rw-label">${label}</span></div>
+      <div class="rw-text">${esc(text)}</div>
+      <button class="rw-approve primary" data-choice="${name}">✓ Approve <span class="rw-len">(${wc(text)}w)</span></button>
+    </div>` : "";
+  const panes = [pane("teacher", "gpt-5.6", it.teacher_rewrite), pane("slm", "rewrite_v1", it.slm_rewrite)].filter(Boolean).join("");
+  $("#cu-card").innerHTML = `
+    <div class="cu-context">
+      <span class="cu-fuzzy">fuzzy ${it.fuzzy ?? "—"}</span>
+      <div class="cu-problem"><b>Problem.</b> ${esc(it.problem)}</div>
+      <div class="cu-convo">${convo}</div>
+      <div class="cu-flagged">${badge(it.verdict)}<span class="cu-flagged-msg">flagged: “${esc(it.candidate_message)}”</span></div>
+      ${it.reason ? `<div class="cu-reason">why flagged: ${esc(it.reason)}</div>` : ""}
+    </div>
+    <div class="rw-panes ${it.slm_rewrite ? "two" : "one"}">${panes}</div>
+    <div class="cu-actions">
+      <button id="cu-better-btn" class="ghost">✍ Neither — write a better one (e)</button>
+      <button id="cu-skip" class="ghost">Skip (s)</button>
+    </div>
+    <div id="cu-better" class="cu-better hidden">
+      <textarea id="cu-better-text" rows="2" placeholder="Write the ideal Socratic hint: one focused question, no answer, no key-step giveaway…"></textarea>
+      <button id="cu-better-save" class="primary">Save better rewrite</button>
+    </div>`;
+  $$("#cu-card .rw-approve").forEach((b) => b.addEventListener("click", () => cuApprove(b.dataset.choice)));
+  $("#cu-better-btn").addEventListener("click", cuWriteBetter);
+  $("#cu-skip").addEventListener("click", cuSkip);
+  $("#cu-better-save").addEventListener("click", cuSaveBetter);
+}
+
+async function cuSubmit(decision, rewrite) {
+  const it = cuCurrent();
+  if (!it || !rewrite) return;
+  try {
+    await api("/api/curate/submit", {
+      id: it.id, decision, rewrite,
+      problem: it.problem, correct_solution: it.correct_solution, final_answer: it.final_answer,
+      key_step: it.key_step, conversation_history: it.conversation_history || [],
+      candidate_message: it.candidate_message, verdict: it.verdict, reason: it.reason,
+      teacher_rewrite: it.teacher_rewrite, slm_rewrite: it.slm_rewrite, source: it.source || "",
+    });
+    CU.stats.reviewed = (CU.stats.reviewed || 0) + 1;
+    CU.stats.remaining = Math.max(0, (CU.stats.remaining || 1) - 1);
+    CU.pos++; await cuRefillIfLow(); cuRender();
+  } catch (e) { $("#cu-progress").innerHTML = `error: ${esc(e.message)}`; }
+}
+
+function cuApprove(choice) {
+  const it = cuCurrent(); if (!it) return;
+  if (choice === "slm" && !it.slm_rewrite) return;
+  cuSubmit(choice === "slm" ? "approve_slm" : "approve_teacher",
+           choice === "slm" ? it.slm_rewrite : it.teacher_rewrite);
+}
+
+function cuWriteBetter() {
+  const box = $("#cu-better"); if (!box) return;
+  box.classList.remove("hidden");
+  const t = $("#cu-better-text"), it = cuCurrent();
+  if (t && !t.value) t.value = it.teacher_rewrite || it.slm_rewrite || "";
+  if (t) t.focus();
+}
+
+function cuSaveBetter() {
+  const t = $("#cu-better-text"), v = (t?.value || "").trim();
+  if (!v) { t?.focus(); return; }
+  cuSubmit("rewrite", v);
+}
+
+function cuSkip() { CU.pos++; cuRefillIfLow().then(cuRender); }
+
+const _cuTab = document.querySelector('.tab[data-tab="curate"]');
+if (_cuTab) _cuTab.addEventListener("click", cuEnsureLoaded);
+document.addEventListener("keydown", (e) => {
+  const p = document.getElementById("curate");
+  if (!p || !p.classList.contains("is-active")) return;
+  if (e.target && (e.target.tagName === "TEXTAREA" || e.target.tagName === "INPUT")) return;
+  const k = (e.key || "").toLowerCase();
+  if (k === "1") cuApprove("teacher");
+  else if (k === "2") cuApprove("slm");
+  else if (k === "e") { e.preventDefault(); cuWriteBetter(); }
+  else if (k === "s") cuSkip();
+});

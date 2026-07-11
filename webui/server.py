@@ -55,6 +55,23 @@ class ContribReq(BaseModel):
     mode: str = ""             # "tutor_session" | "compare"
 
 
+class CurateReq(BaseModel):
+    id: str = ""
+    decision: str = ""          # "approve_teacher" | "approve_slm" | "rewrite"
+    rewrite: str = ""           # final gold rewrite (the chosen one, or human-written)
+    problem: str = ""
+    correct_solution: str = ""
+    final_answer: str = ""
+    key_step: str = ""
+    conversation_history: list[str] = []
+    candidate_message: str = ""
+    verdict: str = ""
+    reason: str = ""
+    teacher_rewrite: str = ""
+    slm_rewrite: str = ""
+    source: str = ""
+
+
 @app.get("/api/health")
 def health():
     import os
@@ -86,6 +103,16 @@ def contribute(r: ContribReq):
     rec["source"] = "webui_human_contribution"
     rec["ts"] = time.time()
     return engine.contribute(rec)
+
+
+@app.get("/api/curate/next")
+def curate_next(count: int = 1):
+    return engine.curate_next(count)
+
+
+@app.post("/api/curate/submit")
+def curate_submit(r: CurateReq):
+    return engine.curate_submit(r.model_dump())
 
 
 # Static frontend at / (registered last so /api/* takes precedence).

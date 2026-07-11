@@ -25,6 +25,8 @@ from socratic_tutor.schema import parse_model_json  # noqa: E402
 
 REGISTRY = json.load(open(WEBUI_DIR / "models.json"))
 CONTRIB_PATH = REPO / "data" / "raw" / "human_contributions.jsonl"
+FEED_PATH = REPO / "data" / "raw" / "rewrite_feed.jsonl"          # curation queue (built by build_feed.py)
+HUMAN_REWRITES = REPO / "data" / "raw" / "human_rewrites.jsonl"   # curated gold rewrites (append-only)
 THINK_RE = re.compile(r"<think>.*?</think>", re.S)
 
 _mlx_cache = {}
@@ -167,3 +169,43 @@ def contribute(record):
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
     p = CONTRIB_PATH
     return {"ok": True, "path": str(p.relative_to(REPO) if p.is_relative_to(REPO) else p)}
+
+
+# --------------------------------------------------------------------------- #
+# Rewrite-curation feed: serve fuzziest-first items from rewrite_feed.jsonl,
+# skipping ones already reviewed into human_rewrites.jsonl.
+# --------------------------------------------------------------------------- #
+def _reviewed_ids():
+    if not HUMAN_REWRITES.exists():
+        return set()
+    ids = set()
+    for line in open(HUMAN_REWRITES):
+        line = line.strip()
+        if line:
+            try:
+                ids.add(json.loads(line).get("id"))
+            except Exception:  # noqa: BLE001
+                pass
+    return ids
+
+
+def curate_next(count=1):
+    """Next unreviewed feed item(s), fuzziest-first (the feed file is pre-sorted)."""
+    if not FEED_PATH.exists():
+        return {"ready": False, "items": [], "total": 0, "reviewed": 0, "remaining": 0, "has_slm": False}
+    feed = [json.loads(l) for l in open(FEED_PATH) if l.strip()]
+    done = _reviewed_ids()
+    remaining = [r for r in feed if r.get("id") not in done]
+    return {"ready": True, "items": remaining[:max(1, count)], "total": len(feed),
+            "reviewed": len(feed) - len(remaining), "remaining": len(remaining),
+            "has_slm": any(r.get("slm_rewrite") for r in feed[:20])}
+
+
+def curate_submit(rec):
+    HUMAN_REWRITES.parent.mkdir(parents=True, exist_ok=True)
+    rec = dict(rec)
+    rec["mode"] = "rewrite_curation"
+    rec["ts"] = time.time()
+    with open(HUMAN_REWRITES, "a") as f:
+        f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    return {"ok": True, "reviewed": len(_reviewed_ids())}
