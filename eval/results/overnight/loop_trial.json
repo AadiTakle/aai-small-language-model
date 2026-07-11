@@ -1,0 +1,14 @@
+{
+  "n": 60,
+  "max_iters": 3,
+  "single_pass_leak": 19,
+  "single_pass_leak_pct": 31.7,
+  "loop_leak": 21,
+  "loop_leak_pct": 35.0,
+  "loop_mean_iters": 1,
+  "loop_how": {
+    "judge_passed": 51,
+    "passed_original": 6,
+    "maxiter_fallback": 3
+  }
+}

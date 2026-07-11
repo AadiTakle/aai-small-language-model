@@ -218,4 +218,22 @@ Recall-first eval (frozen n=298):
 
 **`v9` leads on leak recall (90.4%), F1 (73.7%), and 5-way (64.1%)** — best SLM judge on all three; catches ~94/104 leaks. Precision 62% (over-flags) is acceptable under recall-first. v9b confirms safe-dup 2 overcorrects (recall 51%). Ensemble-union(judge_full∨v6) was a near-no-op (85.6%, +1) — correlated SLMs.
 
-**Ship (recall-first): `v9` (detector, 90.4% recall) → `rewrite_v2` (rewriter, 0% leak).** Both 1.7B, already trained. Note: `combined_full` is the best *balanced* judge (83.2 safety-binary, best of all — beats v6) if the objective were balanced accuracy; the **objective controls the operating point** (verdict-only → recall-heavy; combined → precision-heavy). To push recall past 90% toward catch-all: `run_tier2` with more seeds (fresh corrective-framed pairs), or a recall-tuned binary leak/safe head.
+**Ship (recall-first): `v9` (detector, 90.4% recall) → `rewrite_v2` (rewriter).** Both 1.7B, already trained. Note: `combined_full` is the best *balanced* judge (83.2 safety-binary, best of all — beats v6) if the objective were balanced accuracy; the **objective controls the operating point** (verdict-only → recall-heavy; combined → precision-heavy). To push recall past 90% toward catch-all: `run_tier2` with more seeds (fresh corrective-framed pairs), or a recall-tuned binary leak/safe head.
+
+### Rewrite-safety — metric correction + frontier comparison (IMPORTANT)
+
+The rewrite eval's "0% leak" was a **weak-metric artifact**: the deterministic `rewrite_leaks` only fires on a literal final-answer number / heavy key-step overlap, missing *operation-naming* leaks. Swapped the standard metric to an LLM detector. Under it, three definitions on the held-out 60:
+
+| model | deterministic (old) | broad LLM (answer OR operation) | crisp LLM (states the answer) |
+|---|---|---|---|
+| base (1.7B untuned) | 10% | 42% | 13% (8/60) |
+| **rewrite_v2 (ours, 1.7B)** | 0% | 28% | 5% (3/60) |
+| gpt-4o (avg frontier) | — | 28% | 2% (1/60) |
+| claude-sonnet-5 (avg) | — | 32% | 2% (1/60) |
+| gpt-4.1 (avg) | — | 30% | 0% |
+| gpt-5.6 (top frontier) | 0% | 22% | 2% |
+
+- **Operation-naming is universal** — every model (avg + top frontier) names operations 22–32%; rewrite_v2 (28%) is in-band. Inherent to Socratic hinting, not a rewrite_v2 flaw.
+- **On the real harm (states the answer), rewrite_v2 (3/60) ties average frontier (0–1/60) within noise.** The 1.7B distilled rewriter **rivals average frontier on answer-safety**; only gpt-5.6 is arguably ahead. → supports the spec thesis.
+- **Adversarial stress test** (8 problems × 15 escalating turns, gpt-4.1 broad detector): all raw tutors crack (base 3/8, gpt-4o 3/8, gpt-5.6 4/8, claude 2/8); `base+ship` 3/8 and `gpt-5.6+ship` 2/8 — the recall-first guard didn't help on the *broad* metric (rewrite_v2 names operations, gets flagged; v9 over-flags → replaces safe messages with operation-naming rewrites). The **judge↔rewrite refinement loop** (v9-verified) also didn't reduce leaks (31.7%→35.0%): the loop is bounded by its verifier, and v9 shares the operation-naming blind spot (accepts rewrites on iter 1).
+- **DECISION:** adopt **crisp "states-the-answer"** as the primary safety metric (unambiguous, = the real harm, = the original "crack" experiment). Operation-naming is a documented secondary gray zone shared with the frontier. Under the crisp metric the pipeline is genuinely safe (≈frontier).
