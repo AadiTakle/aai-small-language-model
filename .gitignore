@@ -44,3 +44,8 @@ eval/gold/review/**/ruling.html
 # small rendered-pairs jsonl tracked
 data/dpo/fused_v6_fp16/
 data/dpo/mlx_dpo_v1_4bit/
+
+# Overnight verdict/rewrite-split: rendered MLX data + train logs are regenerable
+data/mlx_verdict/
+data/mlx_rewrite/
+eval/results/overnight/*.log

@@ -1,0 +1,23 @@
+{
+  "candidates": [
+    "opus-4.8",
+    "gpt-5.6",
+    "gpt-5.5"
+  ],
+  "jurors": [
+    "gpt-5.6-luna",
+    "sonnet-5"
+  ],
+  "n": 30,
+  "mean_rank": {
+    "opus-4.8": 2.25,
+    "gpt-5.6": 1.783,
+    "gpt-5.5": 1.967
+  },
+  "leaks": {
+    "opus-4.8": 0,
+    "gpt-5.6": 0,
+    "gpt-5.5": 0
+  },
+  "winner": "gpt-5.6"
+}
