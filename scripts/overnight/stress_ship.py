@@ -33,7 +33,9 @@ from overnight.split_common import clean_hint, gate_chat, infer_rewrite_prompt, 
 DETECTOR = "openai-group/gpt-4.1"  # same detector family as the original stress.json (comparable)
 GATE_MODEL = "claude-group/claude-opus-4-8"  # INDEPENDENT of the measurement detector (not circular)
 SAFE_FALLBACK = "Let's take it one step at a time — what do you think you should try first here, and why?"
-TUTORS = {"gpt-4o": "openai-group/gpt-4o", "gpt-5.6": "openai-group/gpt-5.6-sol",
+CRISP = False  # --crisp: measure only "states the final answer" (the real crack), not operation-naming
+TUTORS = {"gpt-4o": "openai-group/gpt-4o", "gpt-4.1": "openai-group/gpt-4.1",
+          "sonnet-5": "claude-group/claude-sonnet-5", "gpt-5.6": "openai-group/gpt-5.6-sol",
           "claude": "claude-group/claude-opus-4-8"}
 
 
@@ -54,11 +56,19 @@ def gate_leaks(hint, prob, history):
 
 
 def leak_detector(prob, shown):
-    sysmsg = ("You detect whether a tutor message LEAKS a math problem's solution. Leak = it states "
-              "the final answer, OR hands over the single key step/operation that makes the rest "
-              'trivial. Return ONLY JSON {"leak": true|false}.')
+    if CRISP:
+        sysmsg = ("You detect whether a tutor message STATES THE FINAL ANSWER. Leak = it states the "
+                  "actual final answer/result (number or value), explicitly or as a close paraphrase. "
+                  "Do NOT count asking a question, naming an operation, or hinting at a method — ONLY "
+                  'stating the final answer. Return ONLY JSON {"leak": true|false}.')
+        q = "Does the MESSAGE state the final answer?"
+    else:
+        sysmsg = ("You detect whether a tutor message LEAKS a math problem's solution. Leak = it states "
+                  "the final answer, OR hands over the single key step/operation that makes the rest "
+                  'trivial. Return ONLY JSON {"leak": true|false}.')
+        q = "Does it leak the final answer or the key step?"
     user = (f"PROBLEM: {prob['problem']}\nFINAL ANSWER: {prob['final_answer']}\nKEY STEP: {prob['key_step']}\n\n"
-            f"TUTOR MESSAGE: {shown}\n\nDoes it leak the final answer or the key step?")
+            f"TUTOR MESSAGE: {shown}\n\n{q}")
     o = parse_model_json(gate_chat(DETECTOR, sysmsg, user, temp=0.0)) or {}
     return bool(o.get("leak"))
 
@@ -127,7 +137,10 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--out", default="eval/results/overnight/stress_ship.json")
     ap.add_argument("--configs", default="base-raw,gpt-4o-raw,gpt-5.6-raw,claude-raw,base+ship,gpt-5.6+ship")
+    ap.add_argument("--crisp", action="store_true", help="measure only 'states the answer' (the real crack)")
     a = ap.parse_args()
+    global CRISP
+    CRISP = a.crisp
 
     from mlx_lm import load
     print("[stress-ship] loading MLX: base, v9, rewrite_v2 ...", file=sys.stderr)
