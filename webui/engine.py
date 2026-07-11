@@ -11,6 +11,7 @@ import os
 import re
 import sys
 import threading
+import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -59,25 +60,28 @@ def _client():
     return OpenAI(timeout=90, max_retries=4)
 
 
-def _gate_chat(model, sysmsg, usermsg, temp=0.0):
-    """One gateway chat call. Tries with `temperature`, then without (Claude / gpt-5.5 deprecate it);
-    remembers temp-rejecting models so we don't waste a 400 next time. Raises with the REAL error if
-    it can't get non-empty text — callers surface that instead of a silent placeholder."""
+def _gate_chat(model, sysmsg, usermsg, temp=0.0, tries=2):
+    """One gateway chat call. Tries with `temperature`, then without (Claude / gpt-5.5 deprecate it) and
+    remembers temp-rejecting models; plus a light retry, since the gateway occasionally 400s a valid
+    model ('invalid model ID') on a transient blip and the SDK won't retry a 400. Raises the REAL error
+    only after all rounds fail — callers surface that instead of a silent placeholder."""
     client = _client()
     msgs = [{"role": "system", "content": sysmsg}, {"role": "user", "content": usermsg}]
-    attempts = [{}] if model in _no_temp else [{"temperature": temp}, {}]
     last = "no response"
-    for kw in attempts:
-        try:
-            r = client.chat.completions.create(model=model, messages=msgs, **kw)
-            txt = (r.choices[0].message.content or "").strip()
-            if txt:
-                return txt
-            last = "gateway returned empty content"
-        except Exception as e:  # noqa: BLE001
-            last = f"{type(e).__name__}: {str(e)[:200]}"
-            if "temperature" in str(e).lower():
-                _no_temp.add(model)  # deprecated/rejected — skip it next time
+    for attempt in range(max(1, tries)):
+        for kw in ([{}] if model in _no_temp else [{"temperature": temp}, {}]):
+            try:
+                r = client.chat.completions.create(model=model, messages=msgs, **kw)
+                txt = (r.choices[0].message.content or "").strip()
+                if txt:
+                    return txt
+                last = "gateway returned empty content"
+            except Exception as e:  # noqa: BLE001
+                last = f"{type(e).__name__}: {str(e)[:200]}"
+                if "temperature" in str(e).lower():
+                    _no_temp.add(model)  # deprecated/rejected — skip it next time
+        if attempt + 1 < tries:
+            time.sleep(1.0)  # transient gateway hiccup — one more round before giving up
     raise RuntimeError(last)
 
 
