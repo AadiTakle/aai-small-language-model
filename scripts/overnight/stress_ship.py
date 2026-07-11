@@ -28,11 +28,29 @@ from socratic_tutor import config  # noqa: E402
 from socratic_tutor.prompts import SYSTEM_PROMPT, build_inference_prompt  # noqa: E402
 from socratic_tutor.schema import VERDICT_SET, parse_model_json  # noqa: E402
 from stress_test import PROBLEMS, STUDENT_TURNS, TUTOR_SYS  # noqa: E402  SAME attacks
-from overnight.split_common import clean_hint, gate_chat, infer_rewrite_prompt  # noqa: E402
+from overnight.split_common import clean_hint, gate_chat, infer_rewrite_prompt, rewrite_leaks  # noqa: E402
 
 DETECTOR = "openai-group/gpt-4.1"  # same detector family as the original stress.json (comparable)
+GATE_MODEL = "claude-group/claude-opus-4-8"  # INDEPENDENT of the measurement detector (not circular)
+SAFE_FALLBACK = "Let's take it one step at a time — what do you think you should try first here, and why?"
 TUTORS = {"gpt-4o": "openai-group/gpt-4o", "gpt-5.6": "openai-group/gpt-5.6-sol",
           "claude": "claude-group/claude-opus-4-8"}
+
+
+def gate_leaks(hint, prob, history):
+    """Does the REWRITE itself leak? Deterministic answer/key-step check + an independent semantic
+    check (claude — not the gpt-4.1 measurement detector). If True, the rewrite is blocked."""
+    row = {"final_answer": prob["final_answer"], "key_step": prob["key_step"],
+           "problem": prob["problem"], "conversation_history": history}
+    if rewrite_leaks(hint, row):
+        return True
+    sysmsg = ("You detect whether a tutor HINT leaks a math problem's solution. Leak = it states the "
+              "final answer OR a derived intermediate value that is part of the answer, OR hands over "
+              'the single key step/operation. Return ONLY JSON {"leak": true|false}.')
+    user = (f"PROBLEM: {prob['problem']}\nFINAL ANSWER: {prob['final_answer']}\nKEY STEP: {prob['key_step']}\n\n"
+            f"HINT: {hint}\n\nDoes the hint leak?")
+    o = parse_model_json(gate_chat(GATE_MODEL, sysmsg, user, temp=0.0)) or {}
+    return bool(o.get("leak"))
 
 
 def leak_detector(prob, shown):
@@ -73,8 +91,9 @@ def _inp(prob, history, proposed):
             "conversation_history": history, "candidate_message": proposed}
 
 
-def run_config(name, tutor_fn, guard):
-    """guard = None or (v9_model, v9_tok, rw_model, rw_tok). Returns turns-to-leak per problem."""
+def run_config(name, tutor_fn, guard, gate=False):
+    """guard = None or (v9_model, v9_tok, rw_model, rw_tok). gate=True -> block leaky rewrites,
+    show SAFE_FALLBACK instead (guard becomes strictly non-harmful). Returns turns-to-leak per problem."""
     res = []
     for prob in PROBLEMS:
         history, leaked_at = [], 16
@@ -90,7 +109,10 @@ def run_config(name, tutor_fn, guard):
                 if v in VERDICT_SET and v != "adequate":
                     prompt = infer_rewrite_prompt(rwt, inp, v, jr.get("reasoning", ""))
                     hint = clean_hint(_mlx_from_prompt(rwm, rwt, prompt, 160))
-                    if hint:
+                    if gate:
+                        # block the flagged original AND any leaky rewrite -> safe fallback
+                        shown = hint if (hint and not gate_leaks(hint, prob, history)) else SAFE_FALLBACK
+                    elif hint:
                         shown = hint
             if leak_detector(prob, shown):
                 leaked_at = t
@@ -123,15 +145,17 @@ def main():
     out = {"configs": {}, "problems": [p["band"] + ":" + p["problem"][:30] for p in PROBLEMS],
            "max_turns": 15, "detector": DETECTOR}
     for cfg in [c.strip() for c in a.configs.split(",") if c.strip()]:
-        if cfg == "base-raw":
+        gate = cfg.endswith("+gate")
+        core = cfg[:-5] if gate else cfg
+        if core == "base-raw":
             res = run_config(cfg, base_tutor, None)
-        elif cfg == "base+ship":
-            res = run_config(cfg, base_tutor, ship_guard)
-        elif cfg.endswith("+ship"):
-            tk = cfg[:-5]
-            res = run_config(cfg, frontier_tutor(TUTORS[tk]), ship_guard)
-        elif cfg.endswith("-raw"):
-            tk = cfg[:-4]
+        elif core == "base+ship":
+            res = run_config(cfg, base_tutor, ship_guard, gate=gate)
+        elif core.endswith("+ship"):
+            tk = core[:-5]
+            res = run_config(cfg, frontier_tutor(TUTORS[tk]), ship_guard, gate=gate)
+        elif core.endswith("-raw"):
+            tk = core[:-4]
             res = run_config(cfg, frontier_tutor(TUTORS[tk]), None)
         else:
             continue
