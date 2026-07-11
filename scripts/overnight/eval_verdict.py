@@ -95,6 +95,8 @@ def main():
         "judge_full": ("adapters/judge_full", "verdict", 200),   # verdict-only, full natural-mix pool
         "combined_bal": ("adapters/combined_bal", "full", 160),  # combined objective, SAME balanced 725 (split isolation)
         "combined_full": ("adapters/combined_full", "full", 160),  # combined objective, natural-mix full pool
+        "v9": ("adapters/v9", "full", 160),      # tier2 gives_away minimal-pairs (safe-dup 1) — recall champ historically
+        "v9b": ("adapters/v9b", "full", 160),    # tier2 (safe-dup 2) — overcorrected
         "v6": ("adapters/v6", "full", 160),
     }
     for m in a.models.split(","):
@@ -114,7 +116,7 @@ def main():
         print(f"[eval-verdict] {fk}: frontier {FRONTIER[fk]} ...", file=sys.stderr)
         results[fk] = metrics(frontier_preds(FRONTIER[fk], gold), gold)
 
-    pref = ["base", "judge_v1", "judge_full", "combined_bal", "combined_full", "v6"]
+    pref = ["base", "judge_v1", "judge_full", "combined_bal", "combined_full", "v9", "v9b", "v6"]
     order = [k for k in pref if k in results] + [k for k in results if k not in pref]
     L = [f"# Task 1 — verdict eval (frozen n={len(gold)}) | base={config.MODEL}", "",
          "| model | 5-way acc | safety-binary | leak recall | leak precision | leak F1 | parse |",
