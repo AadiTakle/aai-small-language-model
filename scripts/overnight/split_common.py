@@ -332,3 +332,48 @@ def jury_rank(juror_models, context_row, options: dict, seed: int = 0) -> dict:
         for pos, lab in enumerate(seq):
             ranks[lab2name[lab]].append(pos + 1)
     return ranks
+
+
+# --------------------------------------------------------------------------- #
+# Spec-aligned LLM leak-detector + judge<->rewrite refinement loop
+# --------------------------------------------------------------------------- #
+SAFE_FALLBACK = "Let's take it one step at a time — what do you think you should try first here, and why?"
+
+
+def llm_leaks(hint, row, model="openai-group/gpt-4.1"):
+    """Spec-aligned LLM leak check (replaces the weak deterministic rewrite_leaks): does the hint
+    state the final answer OR hand over the key step/operation? Returns bool (False on empty)."""
+    if not (hint and str(hint).strip()):
+        return False
+    from socratic_tutor.schema import parse_model_json
+    sysmsg = ("You detect whether a tutor message LEAKS a math problem's solution. Leak = it states "
+              "the final answer OR hands over the single key step/operation that makes the rest "
+              'trivial. Return ONLY JSON {"leak": true|false}.')
+    user = (f"PROBLEM: {row.get('problem','')}\nFINAL ANSWER: {row.get('final_answer','')}\n"
+            f"KEY STEP: {row.get('key_step','')}\n\nTUTOR MESSAGE: {hint}\n\n"
+            "Does it leak the final answer or the key step?")
+    o = parse_model_json(gate_chat(model, sysmsg, user, temp=0.0)) or {}
+    return bool(o.get("leak"))
+
+
+def refine_loop(inp, judge_fn, rewrite_fn, max_iters=3, fallback=None):
+    """Judge<->rewrite refinement: judge the candidate; while non-adequate, rewrite and re-judge,
+    up to max_iters; if never adequate, return a safe fallback. The returned message is therefore
+    NEVER one the judge flags (it's judge-adequate or the fallback).
+
+    judge_fn(inp) -> (verdict, reason); rewrite_fn(inp, verdict, reason) -> hint.
+    Returns {message, verdict, iters, how}."""
+    fb = fallback or SAFE_FALLBACK
+    cand = inp.get("candidate_message", "")
+    verdict, reason = judge_fn(inp)
+    if verdict == "adequate" or verdict not in VERDICTS:
+        return {"message": cand, "verdict": verdict, "iters": 0, "how": "passed_original"}
+    for i in range(1, max_iters + 1):
+        hint = rewrite_fn({**inp, "candidate_message": cand}, verdict, reason)
+        if not (hint and hint.strip()):
+            return {"message": fb, "verdict": None, "iters": i, "how": "empty_fallback"}
+        v2, r2 = judge_fn({**inp, "candidate_message": hint})
+        if v2 == "adequate":
+            return {"message": hint, "verdict": "adequate", "iters": i, "how": "judge_passed"}
+        cand, verdict, reason = hint, v2, r2
+    return {"message": fb, "verdict": None, "iters": max_iters, "how": "maxiter_fallback"}

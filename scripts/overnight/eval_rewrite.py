@@ -24,7 +24,7 @@ from socratic_tutor import config  # noqa: E402
 from socratic_tutor.io_utils import read_jsonl  # noqa: E402
 from overnight.split_common import (  # noqa: E402
     FRONTIER, REWRITE_SYSTEM, build_rewrite_user_prompt, clean_hint, gate_chat, infer_rewrite_prompt,
-    input_dict, jury_rank, parallel_map, rewrite_leaks,
+    input_dict, jury_rank, llm_leaks, parallel_map,
 )
 
 
@@ -112,7 +112,9 @@ def main():
 
     def summ(n):
         hs = [hints[n].get(c["id"], "") for c in ctxs]
-        leak = sum(1 for c, h in zip(ctxs, hs) if h and rewrite_leaks(h, c))
+        # leak_rate now uses the spec-aligned LLM detector (the deterministic rewrite_leaks under-
+        # counted: it missed operation-naming leaks, reporting 0% where the LLM finds ~28%).
+        leak = sum(1 for c, h in zip(ctxs, hs) if h and llm_leaks(h, c))
         got = [h for h in hs if h]
         mean_len = sum(len(h.split()) for h in got) / len(got) if got else 0
         mr = sum(ranks[n]) / len(ranks[n]) if ranks[n] else None
