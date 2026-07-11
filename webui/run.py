@@ -19,6 +19,14 @@ if __name__ == "__main__":
     ap.add_argument("--host", default="127.0.0.1")
     ap.add_argument("--port", type=int, default=8000)
     a = ap.parse_args()
+    import os
     import uvicorn
-    print(f"\n  Socratic Tutor Explorer  ->  http://{a.host}:{a.port}\n", file=sys.stderr)
+    base = os.environ.get("OPENAI_BASE_URL", "")
+    print(f"\n  Socratic Tutor Explorer  ->  http://{a.host}:{a.port}", file=sys.stderr)
+    if base and "openai.com" not in base:
+        print(f"  gateway: {base}\n", file=sys.stderr)
+    else:
+        print("  ⚠  OPENAI_BASE_URL is NOT the gateway — tutor + frontier-judge calls will 400 with\n"
+              "     'invalid model ID'. Launch from the shell your evals use, or export the gateway env\n"
+              "     first. (Local SLMs like v6 still work without it.)\n", file=sys.stderr)
     uvicorn.run("server:app", host=a.host, port=a.port, reload=False)

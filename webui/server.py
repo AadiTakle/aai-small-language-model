@@ -54,6 +54,14 @@ class ContribReq(BaseModel):
     mode: str = ""             # "tutor_session" | "compare"
 
 
+@app.get("/api/health")
+def health():
+    import os
+    base = os.environ.get("OPENAI_BASE_URL", "")
+    return {"gateway_base_url": base or None,
+            "gateway_configured": bool(base) and "openai.com" not in base}
+
+
 @app.get("/api/models")
 def models():
     return {"judges": engine.judges(), "tutors": engine.tutors()}
