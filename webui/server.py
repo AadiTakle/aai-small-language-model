@@ -51,6 +51,7 @@ class ContribReq(BaseModel):
     source_model: str = ""
     ranked_over: list[str] = []
     slm_verdict: str = ""      # what the SLM said (Tutor Session) — provenance vs the human label
+    slm_rewrite: str | None = None  # what the SLM/model proposed as a rewrite — provenance vs the human rewrite
     mode: str = ""             # "tutor_session" | "compare"
 
 

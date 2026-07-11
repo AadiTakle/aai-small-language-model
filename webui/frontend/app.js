@@ -51,11 +51,15 @@ function renderChat() {
       ? `<div class="candidate">tutor's raw message (flagged): <s>${esc(t.candidate)}</s></div>`
       : "";
     const dflt = VERDICTS.includes(t.verdict) ? t.verdict : "adequate";
+    const rwPrefill = t.shown && t.shown !== t.candidate ? t.shown : "";  // the judge's rewrite, to accept or edit
     const label = t.contributed
       ? `<div class="label-row"><span class="tl-status ok">✓ added to dataset as <b>${esc(t.contributed)}</b></span></div>`
       : `<div class="label-row"><span class="k">your label:</span>
           <select class="tl-verdict">${VERDICTS.map((v) => `<option${v === dflt ? " selected" : ""}>${v}</option>`).join("")}</select>
-          <button class="tl-add ghost">Add to dataset</button><span class="tl-status"></span></div>`;
+          <button class="tl-add ghost">Add to dataset</button><span class="tl-status"></span>
+          <label class="tl-rw-wrap${dflt === "adequate" ? " hidden" : ""}"><span class="k">rewrite for the student — edit the model's or write your own:</span>
+            <textarea class="tl-rewrite" rows="2" placeholder="A calibrated Socratic hint: no final answer, no key step, grounded in the student's last message.">${esc(rwPrefill)}</textarea></label>
+        </div>`;
     return `<div class="turn" data-i="${i}"><div class="who">Tutor · ${esc(t.tutor)} → judged by ${esc(t.judge)}</div>
       <div class="tutor-card">
         <div class="shown"><b>shown to student:</b> ${esc(t.shown)}</div>
@@ -67,15 +71,27 @@ function renderChat() {
       </div></div>`;
   }).join("");
   $$("#chat-log .tl-add").forEach((b) => b.addEventListener("click", () => labelAndAdd(+b.closest(".turn").dataset.i, b)));
+  $$("#chat-log .tl-verdict").forEach((sel) => sel.addEventListener("change", () => {  // adequate ⇒ no rewrite
+    const wrap = sel.closest(".label-row").querySelector(".tl-rw-wrap");
+    if (wrap) wrap.classList.toggle("hidden", sel.value === "adequate");
+  }));
   log.scrollTop = log.scrollHeight;
 }
 
 async function labelAndAdd(i, btn) {
   const turn = convo[i];
-  const verdict = btn.parentElement.querySelector(".tl-verdict").value;
-  const st = btn.parentElement.querySelector(".tl-status");
+  const row = btn.parentElement;                          // .label-row
+  const verdict = row.querySelector(".tl-verdict").value;
+  const st = row.querySelector(".tl-status");
+  const rwEl = row.querySelector(".tl-rewrite");
+  const rewrite = verdict === "adequate" ? null : (rwEl ? rwEl.value.trim() : "");
+  if (verdict !== "adequate" && !rewrite) {               // never save the invalid flagged+empty combo
+    st.textContent = "write a rewrite first (a flagged message needs one)"; st.className = "tl-status";
+    if (rwEl) rwEl.focus();
+    return;
+  }
   const conversation = convo.slice(0, i).map((t) => (t.role === "student" ? `Student: ${t.text}` : `Tutor: ${t.shown}`));
-  const rewrite = verdict === "adequate" ? null : (turn.shown && turn.shown !== turn.candidate ? turn.shown : null);
+  const slmRewrite = turn.shown && turn.shown !== turn.candidate ? turn.shown : null;  // provenance: what the judge proposed
   btn.disabled = true; st.textContent = "saving…"; st.className = "tl-status";
   try {
     await api("/api/contribute", {
@@ -83,7 +99,8 @@ async function labelAndAdd(i, btn) {
       final_answer: $("#s-answer").value, key_step: $("#s-keystep").value,
       conversation, candidate_message: turn.candidate, verdict,
       reasoning: turn.reasoning || "", rewritten_message: rewrite,
-      source_model: turn.tutor, slm_verdict: turn.verdict || "", mode: "tutor_session",
+      source_model: turn.tutor, slm_verdict: turn.verdict || "", slm_rewrite: slmRewrite,
+      mode: "tutor_session",
     });
     turn.contributed = verdict; renderChat();            // persist across re-renders
   } catch (e) { st.textContent = "error: " + e.message; btn.disabled = false; }
@@ -193,12 +210,14 @@ $("#c-contribute").addEventListener("click", async () => {
   const ranked = $$("#c-results .model-card").map((card) => ({
     id: lastResults[+card.dataset.i].model, rank: +(card.querySelector(".rank")?.value || 0),
   })).filter((x) => x.rank > 0).sort((a, b) => a.rank - b.rank).map((x) => x.id);
+  const fav = lastResults[favorite];
   const rec = {
     problem: c.problem, solution: c.solution, final_answer: c.final_answer, key_step: c.key_step,
     conversation: c.conversation, candidate_message: c.candidate,
     verdict: $("#c-edit-verdict").value, reasoning: $("#c-edit-reasoning").value,
     rewritten_message: $("#c-edit-rewrite").value || null,
-    source_model: lastResults[favorite].model, ranked_over: ranked,
+    source_model: fav.model, ranked_over: ranked,
+    slm_verdict: fav.verdict || "", slm_rewrite: fav.rewritten_message || null, mode: "compare",
   };
   const st = $("#c-status"); st.textContent = "saving…"; st.className = "status";
   try {
