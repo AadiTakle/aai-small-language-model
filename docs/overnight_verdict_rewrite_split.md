@@ -201,4 +201,21 @@ thesis rather than simply refuting it:
 
 → **rewrite_v2 > rewrite_v1** (human-anchoring beats pure distillation, from only 23 corrections); still trails frontier holistic quality.
 
-**Ship pipeline (recall-first): `judge_full` (detector) + `rewrite_v2` (rewriter)** — two adapters. Next (recall-first judge): ensemble-union (judge_full OR v6), recall-tuned binary head, combined_full; plus a system-level end-to-end safety metric (judge-recall × rewrite-safety).
+**Ship pipeline (recall-first, superseded below): `judge_full` + `rewrite_v2`.**
+
+### Recall-first ship detector — `v9` (the winner)
+
+Diagnostic (`judge_full` missed leaks): all **16 misses are `gives_away_key_step`** (gives_final recall 100%), specifically **corrective-framed key-step leaks** — the tutor corrects the student by *stating* the key step ("you're close, but remember… let's try dividing…"), which judge_full mislabels `mismatched_calibration`. That is exactly what tier-2 minimal-pairs (`run_tier2`) target.
+
+Recall-first eval (frozen n=298):
+
+| model | 5-way | safety-bin | leak R | leak P | leak F1 |
+|---|---|---|---|---|---|
+| judge_full | 54.4 | 76.5 | 84.6 | 62.0 | 71.5 |
+| combined_full | 55.7 | **83.2** | 66.3 | 82.1 | 73.4 |
+| **v9** (tier2, safe-dup 1) | **64.1** | 77.5 | **90.4** | 62.3 | **73.7** |
+| v9b (tier2, safe-dup 2) | 56.0 | 77.2 | 51.0 | 75.7 | 60.9 |
+
+**`v9` leads on leak recall (90.4%), F1 (73.7%), and 5-way (64.1%)** — best SLM judge on all three; catches ~94/104 leaks. Precision 62% (over-flags) is acceptable under recall-first. v9b confirms safe-dup 2 overcorrects (recall 51%). Ensemble-union(judge_full∨v6) was a near-no-op (85.6%, +1) — correlated SLMs.
+
+**Ship (recall-first): `v9` (detector, 90.4% recall) → `rewrite_v2` (rewriter, 0% leak).** Both 1.7B, already trained. Note: `combined_full` is the best *balanced* judge (83.2 safety-binary, best of all — beats v6) if the objective were balanced accuracy; the **objective controls the operating point** (verdict-only → recall-heavy; combined → precision-heavy). To push recall past 90% toward catch-all: `run_tier2` with more seeds (fresh corrective-framed pairs), or a recall-tuned binary leak/safe head.
