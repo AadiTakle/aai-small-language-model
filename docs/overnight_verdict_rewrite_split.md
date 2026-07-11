@@ -171,3 +171,34 @@ thesis rather than simply refuting it:
   `data/raw/rewrite_contexts_{train,eval}.jsonl`.
 - Results: `eval/results/overnight/{balance_report.md, benchoff.json, verdict_eval.*, rewrite_eval.*}`.
 - Adapters (gitignored, regenerable): `adapters/judge_v1`, `adapters/rewrite_v1`.
+
+---
+
+## Follow-up (same day) — isolation, recall-first reframe, rewrite_v2
+
+**Isolation (disentangle split vs balancing vs volume on the verdict):**
+
+| model | data | objective | 5-way | safety-bin | leak R | leak P | leak F1 |
+|---|---|---|---|---|---|---|---|
+| v6 | v6_consensus ~996 | combined | 61.7 | 82.2 | 59.6 | 84.9 | 70.1 |
+| judge_v1 | 725 balanced | verdict-only | 50.3 | 75.5 | 67.3 | 64.2 | 65.7 |
+| judge_full | 1189 natural | verdict-only | 54.4 | 76.5 | **84.6** | 62.0 | 71.5 |
+| combined_bal | 725 balanced | combined | 60.7 | 75.5 | 79.8 | 61.5 | 69.5 |
+
+- **The split HURT:** combined_bal > judge_v1 on *identical* 725 data (5-way +10, recall +12) → the rewrite task regularizes/helps the verdict. Don't split for accuracy.
+- **More + natural data → frontier-level recall:** judge_full leak recall 84.6 (= opus-4.8), F1 71.5 (edges v6); precision stays 62 (over-flags) so safety-binary/5-way still < v6.
+
+**Recall-first reframe (deployment decision).** The judge only *triggers* a rewrite, so a false negative (missed leak) is the real harm and a false positive just spends a rewrite. Under recall-first, **leak recall is the ship metric → `judge_full` (84.6, ties frontier opus-4.8) is the ship detector, not v6** (v6 misses ~40% of leaks). Thesis: at 1.7B, judge_full *matches opus-4.8 on catching leaks*.
+
+**rewrite_v2 (human-anchored).** Curated set = 23 human + 1033 gpt-5.6 regenerations steered to the human standard. Held-out n=60, same jury:
+
+| model | jury rank | win-rate vs teacher | leak | len |
+|---|---|---|---|---|
+| base | 3.49 | 0% | 10% | 14 |
+| rewrite_v1 | 2.68 | 15.0% | 0% | 20 |
+| **rewrite_v2** | **2.48** | **16.7%** | 0% | 23 |
+| gpt-5.6 | 1.35 | — | 0% | 18 |
+
+→ **rewrite_v2 > rewrite_v1** (human-anchoring beats pure distillation, from only 23 corrections); still trails frontier holistic quality.
+
+**Ship pipeline (recall-first): `judge_full` (detector) + `rewrite_v2` (rewriter)** — two adapters. Next (recall-first judge): ensemble-union (judge_full OR v6), recall-tuned binary head, combined_full; plus a system-level end-to-end safety metric (judge-recall × rewrite-safety).

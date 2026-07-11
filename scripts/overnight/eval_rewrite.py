@@ -59,7 +59,8 @@ def main():
     ap.add_argument("--contexts", default="data/raw/rewrite_contexts_eval.jsonl")
     ap.add_argument("--benchoff", default="eval/results/overnight/benchoff.json")
     ap.add_argument("--winner", default=None)
-    ap.add_argument("--adapter", default="adapters/rewrite_v1")
+    ap.add_argument("--adapters", default="rewrite_v1:adapters/rewrite_v1",
+                    help="comma list of name:path adapters to score (e.g. rewrite_v1:...,rewrite_v2:...)")
     ap.add_argument("--out", default="eval/results/overnight/rewrite_eval")
     a = ap.parse_args()
 
@@ -75,11 +76,14 @@ def main():
     hints = {}
     print("[eval-rewrite] base (MLX) ...", file=sys.stderr)
     hints["base"] = mlx_hints(None, ctxs)
-    if (REPO / a.adapter).exists():
-        print("[eval-rewrite] rewrite_v1 (MLX) ...", file=sys.stderr)
-        hints["rewrite_v1"] = mlx_hints(a.adapter, ctxs)
-    else:
-        print(f"[eval-rewrite] SKIP rewrite_v1: {a.adapter} missing", file=sys.stderr)
+    for spec in [s for s in a.adapters.split(",") if s.strip()]:
+        name, _, path = spec.partition(":")
+        name, path = name.strip(), (path.strip() or f"adapters/{name.strip()}")
+        if (REPO / path).exists():
+            print(f"[eval-rewrite] {name} (MLX {path}) ...", file=sys.stderr)
+            hints[name] = mlx_hints(path, ctxs)
+        else:
+            print(f"[eval-rewrite] SKIP {name}: {path} missing", file=sys.stderr)
     print(f"[eval-rewrite] teacher {winner} (gateway) ...", file=sys.stderr)
     hints[f"teacher:{winner}"] = teacher_hints(winner_id, ctxs)
 
