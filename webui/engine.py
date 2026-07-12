@@ -27,7 +27,15 @@ REGISTRY = json.load(open(WEBUI_DIR / "models.json"))
 CONTRIB_PATH = REPO / "data" / "raw" / "human_contributions.jsonl"
 FEED_PATH = REPO / "data" / "raw" / "rewrite_feed.jsonl"          # curation queue (built by build_feed.py)
 HUMAN_REWRITES = REPO / "data" / "raw" / "human_rewrites.jsonl"   # curated gold rewrites (append-only)
+BOUNDARY_PATH = REPO / "data" / "raw" / "boundary_pairs.jsonl"    # leaky/safe minimal pairs (gen_boundary.py)
+HUMAN_BOUNDARY = REPO / "data" / "raw" / "human_boundary.jsonl"   # curated pair decisions (append-only)
 THINK_RE = re.compile(r"<think>.*?</think>", re.S)
+
+# Corrective-framed leaks are the judge's known failure mode: a leak dressed as feedback
+# ("not quite — you should…") reads adequate. Surface those first in the boundary feed.
+CORRECTIVE_CUES = ("not quite", "you're close", "you are close", "actually", "remember",
+                   "should be", "the mistake", "you made", "incorrect", "wrong",
+                   "instead of", "you forgot")
 
 _mlx_cache = {}
 _mlx_lock = threading.RLock()  # reentrant: _mlx_generate holds it and calls _get_mlx which also locks
@@ -209,3 +217,50 @@ def curate_submit(rec):
     with open(HUMAN_REWRITES, "a") as f:
         f.write(json.dumps(rec, ensure_ascii=False) + "\n")
     return {"ok": True, "reviewed": len(_reviewed_ids())}
+
+
+# --------------------------------------------------------------------------- #
+# Boundary-pair curation feed: serve leaky/safe minimal pairs from
+# boundary_pairs.jsonl side by side, corrective-framed leaks first, skipping
+# ones already reviewed into human_boundary.jsonl.
+# --------------------------------------------------------------------------- #
+def _boundary_reviewed_ids():
+    if not HUMAN_BOUNDARY.exists():
+        return set()
+    ids = set()
+    for line in open(HUMAN_BOUNDARY):
+        line = line.strip()
+        if line:
+            try:
+                ids.add(json.loads(line).get("id"))
+            except Exception:  # noqa: BLE001
+                pass
+    return ids
+
+
+def _has_corrective_cue(text):
+    t = (text or "").lower()
+    return any(c in t for c in CORRECTIVE_CUES)
+
+
+def boundary_next(count=1):
+    """Next unreviewed pair(s), corrective-framed leaks first (they're the judge's blind spot)."""
+    if not BOUNDARY_PATH.exists():
+        return {"ready": False, "items": [], "total": 0, "reviewed": 0, "remaining": 0}
+    pairs = [json.loads(l) for l in open(BOUNDARY_PATH) if l.strip()]
+    done = _boundary_reviewed_ids()
+    remaining = [r for r in pairs if r.get("id") not in done]
+    # stable sort: cue rows before non-cue rows, original order preserved within each group
+    remaining.sort(key=lambda r: not _has_corrective_cue(r.get("leaky_candidate")))
+    return {"ready": True, "items": remaining[:max(1, count)], "total": len(pairs),
+            "reviewed": len(pairs) - len(remaining), "remaining": len(remaining)}
+
+
+def boundary_submit(rec):
+    HUMAN_BOUNDARY.parent.mkdir(parents=True, exist_ok=True)
+    rec = dict(rec)
+    rec["mode"] = "boundary_curation"
+    rec["ts"] = time.time()
+    with open(HUMAN_BOUNDARY, "a") as f:
+        f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    return {"ok": True, "reviewed": len(_boundary_reviewed_ids())}

@@ -13,6 +13,7 @@
       <button class="tab is-active" data-tab="session">Tutor Session</button>
       <button class="tab" data-tab="compare">Compare &amp; Label</button>
       <button class="tab" data-tab="curate">Curate</button>
+      <button class="tab" data-tab="pairs">Pairs</button>
     </nav>
   </header>
 
@@ -89,6 +90,18 @@
       </div>
     </section>
     <section id="cu-card" class="card"><div class="spinner">Loading feed…</div></section>
+  </main>
+
+  <!-- ─────────────── Tab 4: Pairs (boundary curation) ─────────────── -->
+  <main id="pairs" class="panel">
+    <section class="card">
+      <h2>Boundary-pair curation</h2>
+      <div class="feed-head">
+        <div id="bp-progress" class="feed-progress">loading…</div>
+        <div class="feed-keys">keys: <b>1</b> approve · <b>f</b> flip labels · <b>l</b> edit leaky · <b>s</b> edit safe · <b>k</b> skip</div>
+      </div>
+    </section>
+    <section id="bp-card" class="card"><div class="spinner">Loading pairs…</div></section>
   </main>
 
   <script src="app.js" type="module"></script>

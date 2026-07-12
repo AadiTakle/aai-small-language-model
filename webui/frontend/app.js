@@ -350,3 +350,146 @@ document.addEventListener("keydown", (e) => {
   else if (k === "e") { e.preventDefault(); cuWriteBetter(); }
   else if (k === "s") cuSkip();
 });
+
+// ═══════════════ Tab 4: Pairs (boundary curation) ═══════════════
+// Show one leaky/safe minimal pair at a time, side by side, and let the human confirm the
+// labels (approve), swap them (flip), or replace either side's text (edit_leaky / edit_safe).
+let BP = { queue: [], pos: 0, stats: {}, loading: false, loaded: false, editing: null };
+
+async function bpEnsureLoaded() { if (!BP.loaded && !BP.loading) bpLoad(); }
+
+async function bpLoad() {
+  BP.loading = true;
+  try {
+    const r = await api("/api/boundary/next?count=25");
+    BP.stats = r; BP.queue = r.items || []; BP.pos = 0; BP.loaded = true;
+    if (!r.ready) { $("#bp-card").innerHTML = `<div class="spinner">Pairs not built yet — data/raw/boundary_pairs.jsonl is missing.</div>`; return; }
+    bpRender();
+  } catch (e) { $("#bp-card").innerHTML = `<div class="spinner">Error: ${esc(e.message)}</div>`; }
+  finally { BP.loading = false; }
+}
+
+const bpCurrent = () => BP.queue[BP.pos];
+
+function bpProgress() {
+  const s = BP.stats;
+  $("#bp-progress").innerHTML = s.total
+    ? `reviewed <b>${s.reviewed || 0}</b> / ${s.total} · <b>${s.remaining || 0}</b> left`
+    : "no items";
+}
+
+async function bpRefillIfLow() {
+  if (BP.pos < BP.queue.length - 3) return;
+  try {
+    const r = await api("/api/boundary/next?count=25");
+    BP.stats = r;
+    const seen = new Set(BP.queue.map((x) => x.id));
+    (r.items || []).forEach((it) => { if (!seen.has(it.id)) BP.queue.push(it); });
+  } catch { /* keep going on the buffered items */ }
+}
+
+// corrective-cue check (mirrors engine.CORRECTIVE_CUES) — only to badge the row in the UI
+const BP_CUES = ["not quite", "you're close", "you are close", "actually", "remember", "should be",
+  "the mistake", "you made", "incorrect", "wrong", "instead of", "you forgot"];
+const bpHasCue = (t) => { const s = (t || "").toLowerCase(); return BP_CUES.some((c) => s.includes(c)); };
+
+function bpRender() {
+  bpProgress();
+  const it = bpCurrent();
+  if (!it) { $("#bp-card").innerHTML = `<div class="spinner">🎉 All caught up — no pairs left to review.</div>`; return; }
+  const convo = (it.conversation_history || []).map((h) => `<div class="cu-turn">${esc(h)}</div>`).join("")
+    || `<div class="cu-turn none">(no conversation yet)</div>`;
+  const wc = (t) => (t || "").trim().split(/\s+/).filter(Boolean).length;
+  const cue = bpHasCue(it.leaky_candidate);
+  // one pane per side; when editing that side, swap the text for an editable textarea
+  const pane = (side, cls, label, text) => {
+    const body = BP.editing === side
+      ? `<textarea class="bp-edit" rows="3" data-side="${side}">${esc(text)}</textarea>`
+      : `<div class="rw-text">${esc(text)}</div>`;
+    return `<div class="bp-pane ${cls}">
+      <div class="rw-head"><span class="rw-label ${cls}">${label}</span><span class="rw-len">(${wc(text)}w)</span></div>
+      <div class="bp-tag">${cls === "leaky" ? "should LEAK the key step" : "should stay SAFE (hint only)"}</div>
+      ${body}
+    </div>`;
+  };
+  const editing = BP.editing;  // "leaky" | "safe" | null
+  const actions = editing
+    ? `<button id="bp-save" class="primary">Save edited ${editing}</button>
+       <button id="bp-cancel" class="ghost">Cancel</button>`
+    : `<button id="bp-approve" class="primary">✓ Approve (1)</button>
+       <button id="bp-flip" class="ghost">⇄ Flip labels (f)</button>
+       <button id="bp-edit-leaky" class="ghost">✍ Edit leaky (l)</button>
+       <button id="bp-edit-safe" class="ghost">✍ Edit safe (s)</button>
+       <button id="bp-skip" class="ghost">Skip (k)</button>`;
+  $("#bp-card").innerHTML = `
+    <div class="cu-context">
+      ${cue ? `<span class="bp-cue">corrective-framed</span>` : ""}
+      <div class="cu-problem"><b>Problem.</b> ${esc(it.problem)}</div>
+      <div class="cu-convo">${convo}</div>
+      <div class="bp-keystep"><b>Key step to protect.</b> ${esc(it.key_step) || "—"}</div>
+    </div>
+    <div class="bp-panes">
+      ${pane("leaky", "leaky", "Leaky candidate (left)", it.leaky_candidate)}
+      ${pane("safe", "safe", "Safe rewrite (right)", it.safe_rewrite)}
+    </div>
+    <div class="bp-actions">${actions}</div>`;
+  if (editing) {
+    $("#bp-save").addEventListener("click", bpSaveEdit);
+    $("#bp-cancel").addEventListener("click", () => { BP.editing = null; bpRender(); });
+    const ta = $("#bp-card .bp-edit"); if (ta) ta.focus();
+  } else {
+    $("#bp-approve").addEventListener("click", () => bpSubmit("approve"));
+    $("#bp-flip").addEventListener("click", bpFlip);
+    $("#bp-edit-leaky").addEventListener("click", () => { BP.editing = "leaky"; bpRender(); });
+    $("#bp-edit-safe").addEventListener("click", () => { BP.editing = "safe"; bpRender(); });
+    $("#bp-skip").addEventListener("click", () => bpSubmit("skip"));
+  }
+}
+
+async function bpSubmit(decision, over) {
+  const it = bpCurrent();
+  if (!it) return;
+  // over: {leaky_candidate, safe_rewrite} to override the pair's text (edits/flips); else send as-is
+  const leaky = over && "leaky_candidate" in over ? over.leaky_candidate : it.leaky_candidate;
+  const safe = over && "safe_rewrite" in over ? over.safe_rewrite : it.safe_rewrite;
+  try {
+    await api("/api/boundary/submit", {
+      id: it.id, decision, leaky_candidate: leaky, safe_rewrite: safe,
+      problem: it.problem, correct_solution: it.correct_solution, final_answer: it.final_answer,
+      key_step: it.key_step, conversation_history: it.conversation_history || [],
+      source: it.source || "",
+    });
+    BP.stats.reviewed = (BP.stats.reviewed || 0) + 1;
+    BP.stats.remaining = Math.max(0, (BP.stats.remaining || 1) - 1);
+    BP.editing = null; BP.pos++; await bpRefillIfLow(); bpRender();
+  } catch (e) { $("#bp-progress").innerHTML = `error: ${esc(e.message)}`; }
+}
+
+function bpFlip() {
+  const it = bpCurrent(); if (!it) return;      // labels backwards: swap the two sides
+  bpSubmit("flip", { leaky_candidate: it.safe_rewrite, safe_rewrite: it.leaky_candidate });
+}
+
+function bpSaveEdit() {
+  const ta = $("#bp-card .bp-edit"); if (!ta) return;
+  const v = ta.value.trim();
+  if (!v) { ta.focus(); return; }
+  const side = ta.dataset.side;                 // "leaky" | "safe"
+  const over = side === "leaky" ? { leaky_candidate: v } : { safe_rewrite: v };
+  bpSubmit(side === "leaky" ? "edit_leaky" : "edit_safe", over);
+}
+
+const _bpTab = document.querySelector('.tab[data-tab="pairs"]');
+if (_bpTab) _bpTab.addEventListener("click", bpEnsureLoaded);
+document.addEventListener("keydown", (e) => {
+  const p = document.getElementById("pairs");
+  if (!p || !p.classList.contains("is-active")) return;
+  if (e.target && (e.target.tagName === "TEXTAREA" || e.target.tagName === "INPUT")) return;
+  if (BP.editing) return;  // while editing, keys type into the textarea
+  const k = (e.key || "").toLowerCase();
+  if (k === "1") bpSubmit("approve");
+  else if (k === "f") bpFlip();
+  else if (k === "l") { e.preventDefault(); BP.editing = "leaky"; bpRender(); }
+  else if (k === "s") { e.preventDefault(); BP.editing = "safe"; bpRender(); }
+  else if (k === "k") bpSubmit("skip");
+});

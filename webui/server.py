@@ -5,6 +5,10 @@ Endpoints:
   POST /api/tutor         -> a frontier LLM plays the Socratic tutor -> next candidate message
   POST /api/judge_suite   -> grade a candidate with every (or a subset of) registry judge
   POST /api/contribute    -> append a human-approved datapoint to data/raw/human_contributions.jsonl
+  GET  /api/curate/next   -> next unreviewed rewrite-feed item(s), fuzziest-first
+  POST /api/curate/submit -> append a curated gold rewrite to data/raw/human_rewrites.jsonl
+  GET  /api/boundary/next -> next unreviewed leaky/safe pair(s), corrective-framed leaks first
+  POST /api/boundary/submit -> append a pair decision to data/raw/human_boundary.jsonl
 """
 
 import sys
@@ -72,6 +76,19 @@ class CurateReq(BaseModel):
     source: str = ""
 
 
+class BoundaryReq(BaseModel):
+    id: str = ""
+    decision: str = ""          # "approve" | "flip" | "edit_leaky" | "edit_safe" | "skip"
+    leaky_candidate: str = ""   # the (possibly edited) genuinely-leaky example
+    safe_rewrite: str = ""      # the (possibly edited) genuinely-safe hint
+    problem: str = ""
+    correct_solution: str = ""
+    final_answer: str = ""
+    key_step: str = ""
+    conversation_history: list[str] = []
+    source: str = ""
+
+
 @app.get("/api/health")
 def health():
     import os
@@ -113,6 +130,16 @@ def curate_next(count: int = 1):
 @app.post("/api/curate/submit")
 def curate_submit(r: CurateReq):
     return engine.curate_submit(r.model_dump())
+
+
+@app.get("/api/boundary/next")
+def boundary_next(count: int = 1):
+    return engine.boundary_next(count)
+
+
+@app.post("/api/boundary/submit")
+def boundary_submit(r: BoundaryReq):
+    return engine.boundary_submit(r.model_dump())
 
 
 # Static frontend at / (registered last so /api/* takes precedence).
