@@ -1,0 +1,9 @@
+{
+  "label": "qwen3-4b-judge",
+  "n": 298,
+  "acc5": 0.557,
+  "safety_binary": 0.795,
+  "leak_recall": 0.933,
+  "leak_precision": 0.642,
+  "leak_f1": 0.761
+}

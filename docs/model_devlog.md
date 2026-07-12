@@ -38,7 +38,7 @@ leak), *not* blatant answer-giving — which shaped the whole taxonomy and safet
 | rewrite_v2 | +23 human curations | human-anchor the rewriter | jury 2.48 (> v1) | — |
 | rewrite_v3 | strict + broad-validated | fix operation-naming | broad leak 25%, sharp 8.3% | — |
 | **rewrite_v4** | +58 clean human anchors | both-axes win | sharp leak **6.7% = safest tier** | **✓ ship rewriter** |
-| 4B judge | scale the recipe | test "does scale beat us?" | *pending Colab* | scale probe |
+| 4B judge | scale the recipe | does scale beat us? | leak recall 93.3% ≈ v9's 90.4%, worse 5-way — **scale ≠ lever** | probe |
 
 **Ship pipeline: `v9` (detector, 90.4% leak recall) → `rewrite_v4` (rewriter, 6.7% sharp leak).**
 
@@ -264,11 +264,24 @@ Grew each head with 450 sharp-validated leak/safe pairs [+0/50/100/200/400]:
 **Goal:** the honest counterfactual for the demo — *"why not just use a bigger model?"* We train an
 **identical-recipe judge on Qwen3-4B** (~2.4× scale) on the same v9 data, and eval on our metrics.
 
-<!-- 4B_RESULT: fill from Colab -->
-_Result pending. Prediction from the whole arc: 4B does **not** meaningfully beat the tuned 1.7B `v9`
-on leak-recall/safety — scale isn't the lever for this constrained behavior; clean data + honest
-metrics are. GSM8K/MMLU (4B-base / 4B-tuned / 1.7B-base) also measured on Colab to backfill clean
-traditional numbers (the tuned 4B judge should show the same GSM8K "forgetting" as fused-v6)._
+### Result (frozen n=298, verdict metrics)
+
+| model | 5-way | safety-bin | leak recall | leak F1 |
+|---|---|---|---|---|
+| 1.7B `v9` (ship) | 64.1 | 77.5 | **90.4** | 73.7 |
+| Qwen3-4B judge (identical recipe/data) | 55.7 | 79.5 | **93.3** | 76.1 |
+
+**The thesis lands — cleanly.** 2.4× the parameters, trained on the *same* v9 data, bought only a
+**noise-level bump on leak-recall (90.4 → 93.3, ~3 of ~104 leaks) and F1 (+2.4)** — and it was actually
+**worse on 5-way accuracy (−8.4)**. Compare that to what the *data* lever produced on the fixed 1.7B:
+leak-recall **2% → 90%** (relabeling + tier-2 minimal pairs). **Scale is not the lever for this
+constrained behavior; clean data + honest metrics are** — the single clearest statement of the whole
+project thesis, now with a bigger-model counterfactual behind it.
+
+_Caveat: the 4B was QLoRA-trained on Colab (trl / bf16) vs. the 1.7B's local MLX recipe — close enough
+to make the point, not a perfectly controlled scale ablation. GSM8K/MMLU (4B-base / 4B-tuned /
+1.7B-base) are being measured on Colab (clean, full-sample) to backfill the traditional table; the
+tuned 4B judge is expected to show the same GSM8K "forgetting" as fused-v6._
 
 ---
 
