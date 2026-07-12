@@ -16,8 +16,8 @@ with a question or calibrated hint instead. The rewriter turns any flagged messa
 
 | # | Deliverable | Where | Status |
 |---|---|---|---|
-| 1 | **Dataset published** (the real artifact) | `data/raw/` (v9 judge data, `rewrite_train_v4`, `boundary_pairs`, human curations) → HF dataset | ⏳ **publish pending** (T80) |
-| 2 | **Model on HF + running demo** | HF `atakle/socratic-judge-4b` (scale probe); **ship 1.7B publish pending** (T81). Demo: `webui/` on :8010, **Ship pipeline** judge | 🟡 demo ✅, ship-model publish pending |
+| 1 | **Dataset published** (the real artifact) | **[atakle/socratic-tutor-data](https://huggingface.co/datasets/atakle/socratic-tutor-data)** (6 files, 3,157 rows + card) | ✅ **published** |
+| 2 | **Model on HF + running demo** | ship: **[judge-v9](https://huggingface.co/atakle/socratic-tutor-judge-v9-1.7b)** + **[rewriter-v4](https://huggingface.co/atakle/socratic-tutor-rewriter-v4-1.7b)** (+ `atakle/socratic-judge-4b` scale probe); demo: `webui/` :8010 Ship pipeline | ✅ **published + demo** |
 | 3 | **Eval harness + results table** (base vs tuned vs frontier) | `scripts/overnight/{eval_verdict,eval_rewrite,eval_sharp,stress_ship,bench_run}.py`; results in `docs/eval_review.md` + `eval/results/overnight/` | ✅ **done** |
 | 4 | **Brainlift** (thesis + evidence) | `docs/` brainlift | 🟡 **revamp pending** (T82) |
 | 5 | **3–5 min demo video** | shotlist `docs/demo_shotlist.md` → record | ⏳ **record pending** (T83) |
@@ -58,9 +58,9 @@ it and rewrite_v4 fix it. (Base/v6/frontier judges available for side-by-side.)
 - `scripts/overnight/` — eval + data-gen + scaling pipeline. `webui/` — the inference demo.
 - `adapters/` — trained adapters (gitignored; regenerable). Ship: `v9`, `rewrite_v4`.
 
-## Remaining to ship (tasksheet T80–T84)
+## Remaining to ship (tasksheet)
 
-1. **T81 / T80** — publish ship 1.7B (fuse v9 + rewrite_v4) + the dataset to HF Hub *(needs HF token)*.
-2. **T82** — brainlift Part 2 revamp (draft w/ this week's findings → finalize voice).
-3. **T83** — record the demo video (shotlist ready).
+1. ✅ **Dataset + ship models published to HF** (T80/T81 — links above).
+2. **T82** — brainlift Part 2 revamp (I draft w/ this week's findings → you finalize voice).
+3. **T83** — record the demo video (shotlist ready: `docs/demo_shotlist.md`).
 4. **T84** — consolidate branches (`feat/final-day` + stacked) → clean final state.
