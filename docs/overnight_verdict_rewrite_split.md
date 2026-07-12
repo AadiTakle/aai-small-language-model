@@ -261,3 +261,27 @@ LLM detector + cross-family jury):
 - Jury quality dipped slightly (2.56 → 2.73; likely near noise on n=60) — safer at ~no quality cost.
 - Mechanism: train only on broad-clean targets (drop the operation-naming ones). The DATA lever worked.
 - **SHIP pipeline → `v9` (detector) + `rewrite_v3` (rewriter).** Tunable further via more human curation.
+
+### rewrite_v4 — expanded + validated human anchor (below frontier on broad leak)
+
+58 web-UI curations (up from v3's 23), each validated against the broad detector (`validate_human.py`):
+**27 clean → few-shot steering + gold; 31 flagged** — of which **27 were approved-*teacher* rewrites,
+only 4 the user's own hints** (human hinting is 78% clean; the shrinkage is benched gpt-5.6 rewrites,
+not the curator). Strict teacher + broad-validation → 958 targets. Eval (held-out 60):
+
+| model | broad leak (key-step) | jury rank | win-rate vs teacher | len |
+|---|---|---|---|---|
+| base | 48.3% | 3.28 | 4.2% | 14.3 |
+| rewrite_v3 | 23.3% | 2.72 | 15.8% | 22.1 |
+| **rewrite_v4** | **16.7%** | **2.66** | 13.3% | 23.8 |
+| gpt-5.6 (frontier) | 20.0% | 1.34 | — | 18.1 |
+
+- **rewrite_v4 broad leak 16.7% — AT/BELOW frontier gpt-5.6 (20.0%), below v3 (23.3%).** Best 1.7B on
+  the spec's headline metric; the both-axes win — jury quality held (rank 2.66 ~ v3's 2.72, a wash),
+  and not vaguer (23.8w, longest of the SLMs → safer without going terse).
+- **SHIP rewriter → `rewrite_v4`.** Pipeline: `v9` (detector) + `rewrite_v4` (rewriter).
+- **CAVEAT (eval integrity, being fixed next):** the broad detector (gpt-4.1) **OVER-FLAGS** —
+  validate-human exposed it counting *restated student-found values* and *"why does this completed
+  step work"* questions as leaks. So all broad absolutes (v4 16.7%, frontier 20%) are inflated; the
+  RANKING is fair (same detector both sides). Next: sharpen the detector to flag only the *next
+  unsolved step* (not restated student work), then re-measure v3/v4/frontier for honest absolutes.
