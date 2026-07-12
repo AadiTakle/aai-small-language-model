@@ -85,8 +85,12 @@ beats gpt-5.6/4o/4.1.
 **Scale thesis (4B judge, identical recipe, frozen):** leak-recall 93.3% vs v9's 90.4% (~noise),
 *worse* 5-way (55.7 vs 64.1) — **2.4× params bought a noise-level bump; the data lever bought 2%→90%.**
 
-**Traditional benchmarks:** base GSM8K **46.7%** flexible; fused-SFT collapses to **6.7%** — an honest
-**cost-of-specialization** (our model is a safety specialist, not a general solver).
+**Traditional benchmarks** (clean lm-eval, full-sample, non-thinking): 1.7B base GSM8K 17.6% / **MMLU
+63.2%** (matches Qwen3-1.7B's published ~62% — validates the harness); 4B base 22.8% / 72.1%; 4B
+**tuned judge 24.8% / 73.9%**. Two reads: **(a) no forgetting** — the verdict-only SFT *preserved*
+general ability (both up vs base), so specialization didn't cost capability; **(b) scale helps
+*general* ability (4B > 1.7B on both) but NOT the constrained safety behavior (leak-recall 93.3 ≈
+90.4)** → **the safety behavior is a *data* property, not a *scale* property.**
 
 **The honest split:** we *nail* the learnable **safety axis**; we *trail* frontier on the **fuzzy
 quality axis** — but that axis is near-irreducibly ambiguous (GPT-4o and Claude disagree on it ~60% of

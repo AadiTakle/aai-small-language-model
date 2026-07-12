@@ -18,10 +18,17 @@ from pathlib import Path
 WEBUI_DIR = Path(__file__).resolve().parent
 REPO = WEBUI_DIR.parent
 sys.path.insert(0, str(REPO))
+sys.path.insert(0, str(REPO / "scripts"))
 
 from socratic_tutor import config  # noqa: E402
 from socratic_tutor.prompts import SYSTEM_PROMPT, build_user_prompt, build_inference_prompt  # noqa: E402
-from socratic_tutor.schema import parse_model_json  # noqa: E402
+from socratic_tutor.schema import VERDICTS, parse_model_json  # noqa: E402
+# Split (verdict-only judge + separate rewriter) helpers — the ship architecture. These build the
+# SAME task-specific prompts the split adapters (v9, rewrite_v4) were trained with, so the UI runs
+# them identically to the offline harness.
+from overnight.split_common import (  # noqa: E402
+    LEAK, SAFE_FALLBACK, clean_hint, infer_rewrite_prompt, infer_verdict_prompt,
+)
 
 REGISTRY = json.load(open(WEBUI_DIR / "models.json"))
 CONTRIB_PATH = REPO / "data" / "raw" / "human_contributions.jsonl"
@@ -58,6 +65,10 @@ def judges():
 
 def tutors():
     return REGISTRY["tutors"]
+
+
+def rewriters():
+    return REGISTRY.get("rewriters", [])
 
 
 def _input(problem, solution, conversation, candidate):
@@ -104,24 +115,61 @@ def _get_mlx(adapter):
         return _mlx_cache[key]
 
 
-def _mlx_generate(adapter, inp, max_tokens):
+def _mlx_run(adapter, prompt, max_tokens):
+    """Greedy-decode `prompt` with `adapter`, serializing GPU use across requests."""
     from mlx_lm import generate
     from mlx_lm.sample_utils import make_sampler
     model, tok = _get_mlx(adapter)
-    prompt = build_inference_prompt(tok, inp)
     with _mlx_lock:  # serialize GPU use across requests
         return generate(model, tok, prompt=prompt, max_tokens=max_tokens,
                         sampler=make_sampler(temp=0.0), verbose=False)
 
 
+def _mlx_generate(adapter, inp, max_tokens):
+    """Combined judge: one adapter -> {verdict, reasoning, rewritten_message} (the standard SYSTEM_PROMPT)."""
+    _, tok = _get_mlx(adapter)
+    return _mlx_run(adapter, build_inference_prompt(tok, inp), max_tokens)
+
+
+def _mlx_generate_verdict(adapter, inp, max_tokens):
+    """Verdict-only judge (e.g. v9): verdict-task system prompt -> {verdict, reasoning} (no rewrite)."""
+    _, tok = _get_mlx(adapter)
+    return _mlx_run(adapter, infer_verdict_prompt(tok, inp), max_tokens)
+
+
+def _mlx_rewrite(adapter, inp, verdict, reason, max_tokens):
+    """Rewriter (e.g. rewrite_v4): rewrite-task system prompt (+verdict/reason) -> a plain-text hint."""
+    _, tok = _get_mlx(adapter)
+    return _mlx_run(adapter, infer_rewrite_prompt(tok, inp, verdict, reason), max_tokens)
+
+
+def _err(entry, msg):
+    return {"model": entry["id"], "label": entry.get("label", entry["id"]), "error": msg}
+
+
+def _adapter_missing(adapter):
+    """Adapter path (relative to REPO) that doesn't exist yet, or None if it's present/base."""
+    return adapter if (adapter and not (REPO / adapter).exists()) else None
+
+
 def _judge_entry(entry, inp):
-    """Grade one candidate with one model -> {model, label, verdict, reasoning, rewritten_message, error}."""
+    """Grade one candidate with one model -> {model, label, verdict, reasoning, rewritten_message, error}.
+
+    Routes by kind: mlx (combined OR verdict-only via `mode`), gateway (combined), pipeline
+    (verdict-only judge -> separate rewriter — the ship architecture)."""
     try:
+        if entry.get("kind") == "pipeline":
+            return _pipeline_entry(entry, inp)
         if entry["kind"] == "mlx":
             adapter = entry.get("adapter")
-            if adapter and not (REPO / adapter).exists():
+            if _adapter_missing(adapter):
+                return _err(entry, "adapter not found (this SLM version isn't trained yet)")
+            if entry.get("mode", "combined") == "verdict":
+                raw = _mlx_generate_verdict(adapter, inp, entry.get("max_tokens", 512))
+                o = parse_model_json(THINK_RE.sub("", raw)) or {}
                 return {"model": entry["id"], "label": entry.get("label", entry["id"]),
-                        "error": "adapter not found (this SLM version isn't trained yet)"}
+                        "verdict": o.get("verdict"), "reasoning": o.get("reasoning", ""),
+                        "rewritten_message": None}
             raw = _mlx_generate(adapter, inp, entry.get("max_tokens", 512))
         else:
             raw = _gate_chat(entry["model"], SYSTEM_PROMPT, build_user_prompt(inp))
@@ -130,8 +178,42 @@ def _judge_entry(entry, inp):
                 "verdict": o.get("verdict"), "reasoning": o.get("reasoning", ""),
                 "rewritten_message": o.get("rewritten_message")}
     except Exception as e:  # noqa: BLE001
-        return {"model": entry["id"], "label": entry.get("label", entry["id"]),
-                "error": f"{type(e).__name__}: {e}"}
+        return _err(entry, f"{type(e).__name__}: {e}")
+
+
+def _pipeline_entry(entry, inp):
+    """Ship architecture: run the verdict-only judge; if it flags a leak (or any non-adequate valid
+    verdict), run the separate rewriter to produce a safe Socratic hint. Returns the SAME shape as a
+    combined judge -> {model, label, verdict, reasoning, rewritten_message} plus judged_by/rewritten_by."""
+    judge = next((j for j in REGISTRY["judges"] if j["id"] == entry.get("judge")), None)
+    rw = next((r for r in rewriters() if r["id"] == entry.get("rewriter")), None)
+    if not judge:
+        return _err(entry, f"pipeline judge '{entry.get('judge')}' not in registry")
+    if not rw:
+        return _err(entry, f"pipeline rewriter '{entry.get('rewriter')}' not in registry")
+    # Guard adapters-missing (adapters/v9, adapters/rewrite_v4) exactly like the mlx path.
+    for a in (judge.get("adapter"), rw.get("adapter")):
+        if _adapter_missing(a):
+            return _err(entry, f"adapter not found: {a} (pipeline model isn't trained yet)")
+
+    label = entry.get("label", entry["id"])
+    # Stage 1: verdict-only judge (v9).
+    raw = _mlx_generate_verdict(judge["adapter"], inp, judge.get("max_tokens", 512))
+    o = parse_model_json(THINK_RE.sub("", raw)) or {}
+    verdict, reasoning = o.get("verdict"), o.get("reasoning", "")
+
+    out = {"model": entry["id"], "label": label, "verdict": verdict, "reasoning": reasoning,
+           "rewritten_message": None, "judged_by": judge["id"]}
+
+    # Stage 2: rewrite only when the judge flagged a real problem (a leak, or any non-adequate
+    # valid verdict). Adequate / unknown-verdict -> nothing to fix, no rewrite.
+    flagged = verdict in LEAK or (verdict in VERDICTS and verdict != "adequate")
+    if flagged:
+        raw_rw = _mlx_rewrite(rw["adapter"], inp, verdict, reasoning, rw.get("max_tokens", 128))
+        hint = clean_hint(raw_rw)
+        out["rewritten_message"] = hint if hint else SAFE_FALLBACK
+        out["rewritten_by"] = rw["id"]
+    return out
 
 
 def judge_suite(problem, solution, conversation, candidate, model_ids=None):
@@ -140,10 +222,10 @@ def judge_suite(problem, solution, conversation, candidate, model_ids=None):
     entries = [j for j in REGISTRY["judges"] if (model_ids is None or j["id"] in model_ids)]
     results = {}
     gw = [e for e in entries if e["kind"] == "gateway"]
-    mlx = [e for e in entries if e["kind"] == "mlx"]
+    local = [e for e in entries if e["kind"] != "gateway"]  # mlx + pipeline: all GPU-backed
     with ThreadPoolExecutor(max_workers=6) as ex:
         futs = {ex.submit(_judge_entry, e, inp): e["id"] for e in gw}
-        for e in mlx:  # serialized — shared single GPU
+        for e in local:  # serialized — shared single GPU (pipeline runs two adapters, still serial)
             results[e["id"]] = _judge_entry(e, inp)
         for f in futs:
             results[futs[f]] = f.result()

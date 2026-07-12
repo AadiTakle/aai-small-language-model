@@ -60,7 +60,10 @@ function renderChat() {
           <label class="tl-rw-wrap${dflt === "adequate" ? " hidden" : ""}"><span class="k">rewrite for the student — edit the model's or write your own:</span>
             <textarea class="tl-rewrite" rows="2" placeholder="A calibrated Socratic hint: no final answer, no key step, grounded in the student's last message.">${esc(rwPrefill)}</textarea></label>
         </div>`;
-    return `<div class="turn" data-i="${i}"><div class="who">Tutor · ${esc(t.tutor)} → judged by ${esc(t.judge)}</div>
+    const judgedBy = t.judged_by
+      ? ` (${esc(t.judged_by)}${t.rewritten_by ? ` → ${esc(t.rewritten_by)}` : ""})`
+      : "";
+    return `<div class="turn" data-i="${i}"><div class="who">Tutor · ${esc(t.tutor)} → judged by ${esc(t.judge)}${judgedBy}</div>
       <div class="tutor-card">
         <div class="shown"><b>shown to student:</b> ${esc(t.shown)}</div>
         <div class="meta">
@@ -128,7 +131,8 @@ $("#s-send").addEventListener("click", async () => {
     const flagged = j.verdict && j.verdict !== "adequate";
     const shown = flagged && j.rewritten_message ? j.rewritten_message : candidate;
     convo.push({ role: "tutor", tutor: tutorId, judge: judgeId, candidate, shown,
-                 verdict: j.verdict, reasoning: j.reasoning || j.error || "" });
+                 verdict: j.verdict, reasoning: j.reasoning || j.error || "",
+                 judged_by: j.judged_by, rewritten_by: j.rewritten_by });
     renderChat();
   } catch (e) {
     convo.push({ role: "tutor", tutor: tutorId, error: e.message });
@@ -173,8 +177,11 @@ function renderResults() {
       ? `<div class="err">${esc(r.error)}</div>`
       : `<div class="field"><span class="k">reasoning</span><br>${esc(r.reasoning) || "—"}</div>
          <div class="field"><span class="k">rewrite</span><br>${r.rewritten_message ? esc(r.rewritten_message) : '<span class="none">— (none / adequate)</span>'}</div>`;
+    const sub = r.judged_by
+      ? `<span class="pipeline-sub">judged by ${esc(r.judged_by)}${r.rewritten_by ? ` → rewritten by ${esc(r.rewritten_by)}` : ""}</span>`
+      : "";
     const head = r.error ? `<span class="name">${esc(r.label)}</span>` :
-      `<span class="name">${esc(r.label)}</span>${badge(r.verdict)}`;
+      `<span class="name">${esc(r.label)}</span>${badge(r.verdict)}${sub}`;
     return `<div class="model-card" data-i="${i}">
       <div class="head">${head}</div>
       ${body}

@@ -279,9 +279,25 @@ constrained behavior; clean data + honest metrics are** — the single clearest 
 project thesis, now with a bigger-model counterfactual behind it.
 
 _Caveat: the 4B was QLoRA-trained on Colab (trl / bf16) vs. the 1.7B's local MLX recipe — close enough
-to make the point, not a perfectly controlled scale ablation. GSM8K/MMLU (4B-base / 4B-tuned /
-1.7B-base) are being measured on Colab (clean, full-sample) to backfill the traditional table; the
-tuned 4B judge is expected to show the same GSM8K "forgetting" as fused-v6._
+to make the point, not a perfectly controlled scale ablation._
+
+**Clean traditional benchmarks** (lm-eval, full-sample, non-thinking):
+
+| model | GSM8K (flex) | MMLU |
+|---|---|---|
+| 1.7B base | 17.6% | 63.2% |
+| 4B base | 22.8% | 72.1% |
+| 4B tuned (judge) | 24.8% | 73.9% |
+
+- **MMLU works here** (native lm-eval on real HF weights): 1.7B **63.2% ≈ published ~62%** — confirming
+  the local MLX MMLU (~24%) was a harness artifact.
+- **No forgetting (correction).** The verdict-only 4B judge *held/rose* on both (GSM8K 22.8→24.8, MMLU
+  72.1→73.9) — a lightweight ship adapter **preserves** general ability. The earlier local "fused-v6 →
+  6.7%" was a *different* model (fully-fused combined 1.7B) on the flaky MLX harness; we do **not**
+  claim catastrophic forgetting.
+- **The sharpened thesis:** scale **helps general capability** (4B > 1.7B on both benchmarks) but **not
+  the constrained safety behavior** (leak-recall 93.3 ≈ 90.4). **Safety is a *data* property, not a
+  *scale* property** — now with benchmark evidence for both halves.
 
 ---
 
