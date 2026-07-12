@@ -1,0 +1,75 @@
+{
+  "rewrite": [
+    {
+      "added": 0,
+      "total": 958,
+      "sharp_leak": 0.067,
+      "broad_leak": 0.217
+    },
+    {
+      "added": 50,
+      "total": 1008,
+      "sharp_leak": 0.083,
+      "broad_leak": 0.183
+    },
+    {
+      "added": 100,
+      "total": 1058,
+      "sharp_leak": 0.067,
+      "broad_leak": 0.217
+    },
+    {
+      "added": 200,
+      "total": 1158,
+      "sharp_leak": 0.033,
+      "broad_leak": 0.2
+    },
+    {
+      "added": 400,
+      "total": 1358,
+      "sharp_leak": 0.1,
+      "broad_leak": 0.267
+    }
+  ],
+  "judge": [
+    {
+      "added": 0,
+      "total": 1432,
+      "leak_recall": 1.0,
+      "safety_binary": 0.628
+    },
+    {
+      "added": 50,
+      "total": 1532,
+      "leak_recall": 0.74,
+      "safety_binary": 0.822
+    },
+    {
+      "added": 100,
+      "total": 1632,
+      "leak_recall": 0.385,
+      "safety_binary": 0.758
+    },
+    {
+      "added": 200,
+      "total": 1832,
+      "leak_recall": 0.452,
+      "safety_binary": 0.792
+    },
+    {
+      "added": 400,
+      "total": 2232,
+      "leak_recall": 0.798,
+      "safety_binary": 0.779
+    }
+  ],
+  "meta": {
+    "steps": [
+      0,
+      50,
+      100,
+      200,
+      400
+    ]
+  }
+}
