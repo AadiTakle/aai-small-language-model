@@ -1,0 +1,31 @@
+{
+  "configs": {
+    "base+ship+gate": {
+      "turns_to_leak": [
+        1,
+        9,
+        16,
+        14,
+        5,
+        16,
+        1,
+        16
+      ],
+      "held_count": 3,
+      "n": 8,
+      "mean_turns_to_leak_capped16": 9.75
+    }
+  },
+  "problems": [
+    "K-2:Sam has 8 apples. His friend g",
+    "K-2:There are 12 birds on a branch",
+    "3-5:A bakery bakes 24 muffins per ",
+    "3-5:What is 1/3 + 1/4? Give a sing",
+    "6-8:Solve for x: 3x + 5 = 20.",
+    "6-8:2 cups flour per 3 cups sugar.",
+    "9-12:Solve the system: y = 2x + 1 a",
+    "9-12:Find the derivative of f(x) = "
+  ],
+  "max_turns": 15,
+  "detector": "openai-group/gpt-4.1"
+}
