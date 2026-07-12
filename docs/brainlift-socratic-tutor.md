@@ -563,3 +563,69 @@ areas are flagged, not smoothed.*
 *Part II verification note: ML sources above were independently fetched/verified in a research pass;
 mixed-evidence areas (esp. 7.1) are flagged rather than smoothed. As in Part I, the DOK-4 stance and
 DOK-3 insights are my own synthesis; the DOK-1/2 sources are the external grounding.*
+
+---
+
+# Part II — Update (2026-07-12): the scale counterfactual, eval integrity, and the growth curve
+
+*Since Part II was written, three loops it left open closed — and each sharpens SPOV 2 (and, for the
+first time, gives SPOV 1 a **controlled in-house test** instead of borrowed external evidence):
+(1) we finally trained the bigger model SPOV 1 warned against deferring to; (2) the "metric is the
+lever" claim (Insight 6) struck **again**, this time at the level of the leak-detector's own
+definition; (3) we replaced the anecdotal "volume isn't the lever" with an actual dataset-growth
+dose-response curve.*
+
+## SPOV 2 — sharpened
+
+The lever for a small safety-critical judge is **the data and the honest metric — and scale is not a
+substitute for either.** The decisive new evidence: a Qwen3-**4B** judge trained on the *identical*
+recipe and data as our 1.7B `v9` gained only **noise on the safety behavior** (leak-recall 90.4% →
+93.3%) and *lost* on 5-way (64.1 → 55.7) — while the **same 4B clearly beat the 1.7B on *general*
+benchmarks** (GSM8K 17.6% → 22.8%, MMLU 63.2% → 72.1%, clean lm-eval). So **scale buys general
+capability; the constrained safety behavior is a *data* property, not a *scale* property.** This is the
+in-house, controlled version of SPOV 1's borrowed claim ("leak-robustness did not track model size,"
+Cat 3.1, Source 1) — now replicated on our own stack, on our own metric.
+
+## DOK 3: Insights (continued)
+
+- **Insight 9 — The scale counterfactual (SPOV 1's missing in-house test).** A 4B judge, identical
+  recipe, ties the 1.7B on the safety metric (leak-recall ~+3, within noise) and *loses* on 5-way, yet
+  wins on general GSM8K/MMLU. 2.4× the parameters bought nothing on the constrained behavior; the *data*
+  lever bought 2%→90% on the same fixed 1.7B (Insight 5). **Honest boundary:** the 4B was QLoRA-trained
+  on Colab (trl/bf16) vs. our local MLX recipe — not a perfectly matched ablation — but the direction is
+  unambiguous and matches the external no-size-effect finding (Cat 3.1). This is the strongest single
+  answer to SPOV 1's own steelman ("scale improved reasoning, maybe it improves this too"): tested
+  directly, it did not.
+- **Insight 10 — The metric was the lever *again* — at the detector's definition.** Insight 6 corrected
+  *which axis* we scored; this week the correction went a level deeper — to how "leak" itself is
+  detected. The broad detector over-flagged (it counted *restating the student's own value* and *"why
+  does this completed step work?"* as leaks). Sharpening it to a single test — *does the hint take the
+  student's **next** step, or leave it for them?* — put our rewriter (`rewrite_v4`) in the **safest tier
+  of every model tested** (6.7% key-step leak, tying the best frontier), and revealed the broad metric
+  had penalized *frontier's* thoroughness **hardest** (+21–23% vs. our +10%). **Validating the
+  measuring instrument is a recurring, high-leverage move, not a one-off** — the same discipline as
+  tuning a safety guard's threshold (Cat 7.3), applied to the detector's definition.
+- **Insight 11 — "Volume isn't the lever" is now a dose-response curve, not an anecdote.** Growing each
+  head with synthesized leak/safe minimal-pairs [+0/50/100/200/400] and re-measuring: the **rewrite head
+  is saturated** (leak-rate flat, and the largest dose *hurt*), and the **judge head is non-monotone
+  with a small sweet spot** (~50 pairs recover v6-level safety; more over-corrects and craters recall).
+  This is Insight 5's ordering — *correctness + small targeted data > volume* — as an actual curve, and
+  it independently reproduces the counterfactual-augmentation negative (Cat 7.4, Source 5).
+- **Insight 12 — Human-anchoring beat distillation, and light specialization didn't forget.** The
+  rewriter improved most from *human-curated* targets (rewrite_v2 > pure-distilled rewrite_v1;
+  rewrite_v4 = safest tier), not from more synthetic volume — the data-quality lever again, now on the
+  generation side. And the clean benchmarks showed the verdict-only adapter **preserved** general
+  ability (GSM8K/MMLU held or rose vs. base) — so the specialization that made it a frontier-tier safety
+  judge cost ~nothing in general capability. Specialization was close to free.
+
+## The realized artifact
+
+Both claims now ship as a two-model guardrail — **`v9` (recall-first detector, 90.4% leak-recall =
+Claude Opus) → `rewrite_v4` (rewriter, 6.7% key-step leak = safest tier)** — a local 1.7B pipeline
+that matches or beats frontier on the safety-critical behavior. That is the concrete payoff of the
+whole thesis: *reliable, constrained safety behavior from clean data + honest metrics, not scale.*
+
+*Honest boundaries carried forward: the rewrite eval is n=60 (directional, not a decisive per-model
+win); the 4B comparison isn't a perfectly matched ablation; and the fuzzy **quality** axis still goes
+to frontier (conceded — even GPT-4o and Claude split it ~60% of the time). Every number here is
+measured by a metric we validated — and corrected the moment it over-flagged.*
