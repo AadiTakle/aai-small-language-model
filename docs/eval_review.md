@@ -121,3 +121,24 @@ Honest, specific, mostly methodology:
 **One-line takeaway for the grader:** *the deliverable isn't the model — it's a rigorously-measured
 account of what makes a small safety judge good (clean, correctly-labeled, balanced data + honest
 metrics) and what doesn't (volume, preference tuning, reasoning, and scale, at this size).*
+
+---
+
+## 4. Anticipated questions (crisp answers)
+
+- **"82.2% safety-binary — isn't that just cherry-picking the easy axis?"** No — we report *both* axes.
+  The fuzzy quality axis is *provably* ambiguous: GPT-4o and Claude disagree on it ~60% of the time,
+  and a blind cross-family jury sided with our *original* gold **16-to-2** over a "corrected" relabel.
+  ~20 pts of the 5-way "error" is that irreducible axis, not safety mistakes.
+- **"How do you know the frozen set isn't leaked into training?"** Different id namespace (real named
+  MRBench models), only ~5 shared candidate texts, all *excluded* from training. Verified.
+- **"Your leak detector is an LLM — isn't grading yourself circular?"** It's a *different family*
+  (gpt-4.1) than what it grades, spec-aligned, and we *validated the detector itself* — caught it
+  over-flagging and sharpened it. The gate detector ≠ the measurement detector (not circular).
+- **"Why not just use a bigger model?"** We tested it: a 4B judge, identical recipe, gained only
+  noise-level recall (90.4→93.3) and *lost* 5-way. 2.4× params ≪ the data lever (2%→90%).
+- **"n=60 rewrite eval is small."** Agreed (retrospective #4). The safest-tier claim is directional;
+  the robust finding is the broad-vs-sharp *gap* (over-flagging), which holds across every model.
+- **"Is a 1.7B actually deployable as a guardrail?"** Yes — recall-first: it only *triggers* a rewrite,
+  so false positives are cheap; at 90.4% leak-recall it catches ~94 of ~104 leaks, the rewriter is
+  frontier-tier safe, and it runs locally with no API.
