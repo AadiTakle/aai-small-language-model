@@ -272,6 +272,18 @@ traditional numbers (the tuned 4B judge should show the same GSM8K "forgetting" 
 
 ---
 
+## Figures for the demo (`docs/figures/`)
+
+- **`detector_broad_vs_sharp.png`** — the money shot: `rewrite_v4` in the safest tier under the honest
+  detector, and the broad metric over-flagged *frontier* hardest. (Act 7)
+- **`dataset_growth_vs_perf.png`** — the scaling curves: rewrite saturated, judge N=50 sweet spot →
+  "more data isn't the lever." (Act 7)
+- **`loss_curves.png`** — training convergence for the rewrite line (v2/v3/v4) + judge. (Acts 2 / 6)
+- **`dataset_rewrite.png`** / **`dataset_judge.png`** — training-set adequacy (verdict balance, source
+  mix, leak/safe split, hint length) — the visual for *"the dataset is the deliverable."* (Acts 1 / 2)
+
+---
+
 ## The through-line (for the video / brainlift)
 
 1. **Relabeling > adding.** Fixing labels on a fixed-size set was the biggest win (2%→35%); adding
