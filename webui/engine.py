@@ -152,6 +152,20 @@ def _adapter_missing(adapter):
     return adapter if (adapter and not (REPO / adapter).exists()) else None
 
 
+def _verdict_from(raw):
+    """Parse {verdict, reasoning}; if the JSON parse drops the verdict, recover it by scanning the raw
+    text for a known verdict label. v9 (verdict-only) occasionally emits a formatting slip that
+    parse_model_json can't read — without this fallback it surfaces in the UI as an 'unknown' verdict.
+    Mirrors the regex fallback the offline eval_verdict uses."""
+    clean = THINK_RE.sub("", raw or "")
+    o = parse_model_json(clean) or {}
+    v = o.get("verdict")
+    if v not in VERDICTS:
+        m = re.search("(" + "|".join(re.escape(x) for x in VERDICTS) + ")", clean)
+        v = m.group(1) if m else v
+    return v, o.get("reasoning", "")
+
+
 def _judge_entry(entry, inp):
     """Grade one candidate with one model -> {model, label, verdict, reasoning, rewritten_message, error}.
 
@@ -166,10 +180,9 @@ def _judge_entry(entry, inp):
                 return _err(entry, "adapter not found (this SLM version isn't trained yet)")
             if entry.get("mode", "combined") == "verdict":
                 raw = _mlx_generate_verdict(adapter, inp, entry.get("max_tokens", 512))
-                o = parse_model_json(THINK_RE.sub("", raw)) or {}
+                verdict, reasoning = _verdict_from(raw)
                 return {"model": entry["id"], "label": entry.get("label", entry["id"]),
-                        "verdict": o.get("verdict"), "reasoning": o.get("reasoning", ""),
-                        "rewritten_message": None}
+                        "verdict": verdict, "reasoning": reasoning, "rewritten_message": None}
             raw = _mlx_generate(adapter, inp, entry.get("max_tokens", 512))
         else:
             raw = _gate_chat(entry["model"], SYSTEM_PROMPT, build_user_prompt(inp))
@@ -199,8 +212,7 @@ def _pipeline_entry(entry, inp):
     label = entry.get("label", entry["id"])
     # Stage 1: verdict-only judge (v9).
     raw = _mlx_generate_verdict(judge["adapter"], inp, judge.get("max_tokens", 512))
-    o = parse_model_json(THINK_RE.sub("", raw)) or {}
-    verdict, reasoning = o.get("verdict"), o.get("reasoning", "")
+    verdict, reasoning = _verdict_from(raw)
 
     out = {"model": entry["id"], "label": label, "verdict": verdict, "reasoning": reasoning,
            "rewritten_message": None, "judged_by": judge["id"]}
