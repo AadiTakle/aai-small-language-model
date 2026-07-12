@@ -20,7 +20,7 @@ import subprocess
 import sys
 
 # ---- config (EDIT HF_REPO) --------------------------------------------------
-HF_REPO = "YOUR_HF_USERNAME/socratic-judge-4b"
+HF_REPO = "atakle/socratic-judge-4b"
 BASE_4B = "Qwen/Qwen3-4B"
 BASE_1P7B = "Qwen/Qwen3-1.7B"
 TRAIN, VALID = "/content/train.jsonl", "/content/valid.jsonl"
@@ -66,7 +66,10 @@ trainer.save_model("/content/adapter")
 # ---- 2. merge adapter into a fresh bf16 base (clean full model) + push -------
 del model, trainer
 torch.cuda.empty_cache()
-base = AutoModelForCausalLM.from_pretrained(BASE_4B, torch_dtype=torch.bfloat16, device_map="auto")
+# PEFT's LoRA dispatch calls is_torchao_available(), which RAISES on an old torchao (Colab ships
+# 0.10; PEFT wants >=0.16) even though we train via bitsandbytes, not torchao. Remove it before merge.
+subprocess.run([sys.executable, "-m", "pip", "uninstall", "-y", "torchao"], check=False)
+base = AutoModelForCausalLM.from_pretrained(BASE_4B, dtype=torch.bfloat16, device_map="auto")
 merged = PeftModel.from_pretrained(base, "/content/adapter").merge_and_unload()
 merged.save_pretrained("/content/merged")
 tok.save_pretrained("/content/merged")
