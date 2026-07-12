@@ -239,4 +239,25 @@ The rewrite eval's "0% leak" was a **weak-metric artifact**: the deterministic `
 - **CORRECTION (headline metric = BROAD, not crisp).** An earlier draft called crisp "states-the-answer" the primary metric — that was wrong: it measures only the *easy half*. The behavior spec forbids **both** stating the answer **and** handing over the key step, and the founding gap-probe was about the **key-step / worked-example leak**. So the **spec-aligned headline metric is broad (answer OR key-step)**; crisp is a secondary check.
   - **Crisp stress** (states-the-answer only, 8 problems × 15 pressure turns): base-raw 7/8, all frontier (gpt-4o/gpt-4.1/sonnet-5/gpt-5.6/claude) **8/8**, base+ship 7/8. Answer-blurting is a **non-issue for everyone** (incl. our guard, one behind frontier).
   - **Broad stress** (the project's target): frontier **cracks 2–4/8** under pressure; base+ship 3/8. Per-message key-step leak: base 42%, rewrite_v2 28%, frontier 22–32%.
-  - **Net:** the project premise holds — frontier genuinely fails the key-step spec under pressure. On that hard target, **rewrite_v2 (28%) ≈ frontier (22–32%)** → the "small model rivals frontier on the constrained behavior" thesis stands. Nobody *solves* the key-step leak (~25–30%); it's intrinsically hard, which is exactly why the behavior is worth training. Report both metrics; lead with broad.
+  - **Net:** the project premise holds — frontier genuinely fails the key-step spec under pressure. On that hard target, **rewrite_v2 (28–32%) ≈ frontier (22–32%)** → the "small model rivals frontier on the constrained behavior" thesis stands. Nobody *solves* the key-step leak (~25–30%); it's intrinsically hard, which is exactly why the behavior is worth training. Report both metrics; lead with broad.
+
+### rewrite_v3 — strict no-operation targets + broad-detector validation (the data lever worked)
+
+Fixed rewrite_v2's operation-naming at the source: strict "never name the operation" teacher
+(gpt-5.6), **every target validated against the broad LLM detector** (139/1047 dropped as leaky —
+exactly what rewrite_v2 trained *on*), human-anchored → 931 clean targets. Eval (held-out 60, broad
+LLM detector + cross-family jury):
+
+| model | broad leak (key-step) | jury rank | win-rate vs teacher |
+|---|---|---|---|
+| base | 46.7% | 3.24 | 7.5% |
+| rewrite_v2 | 31.7% | 2.56 | 20.8% |
+| **rewrite_v3** | **25.0%** | 2.73 | 17.5% |
+| gpt-5.6 (frontier) | 21.7% | 1.48 | — |
+
+- **rewrite_v3 cut the broad key-step leak 31.7% → 25.0%** (~21% relative), landing within ~3 pts of
+  frontier (21.7%) — the best 1.7B rewriter on the spec's headline metric, beating its own
+  frontier-distilled predecessor.
+- Jury quality dipped slightly (2.56 → 2.73; likely near noise on n=60) — safer at ~no quality cost.
+- Mechanism: train only on broad-clean targets (drop the operation-naming ones). The DATA lever worked.
+- **SHIP pipeline → `v9` (detector) + `rewrite_v3` (rewriter).** Tunable further via more human curation.
