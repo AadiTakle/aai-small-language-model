@@ -55,4 +55,8 @@ data/mlx_rewrite_curated/
 data/mlx_rewrite_v3/
 data/mlx_rewrite_v4/
 data/raw/rewrite_feed.jsonl
+# honest-eval overnight: regenerable fused model + boundary work dirs (adapters/ already ignored)
+data/bench/
+data/boundary/
+eval/results/overnight/bench/
 eval/results/overnight/*.log

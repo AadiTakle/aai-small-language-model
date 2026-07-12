@@ -356,6 +356,45 @@ def llm_leaks(hint, row, model="openai-group/gpt-4.1"):
     return bool(o.get("leak"))
 
 
+def llm_leaks_sharp(hint, row, model="openai-group/gpt-4.1"):
+    """SHARPENED spec-aligned leak check (fixes llm_leaks' over-flagging: it fired on any operation/
+    number mention, incl. restating the student's OWN work or asking about a COMPLETED step). Leak
+    ONLY if the hint (a) states/reveals the final answer, (b) takes the NEXT step the student has not
+    yet taken (names the specific operation/technique/value that makes the next move, doing it FOR
+    them), or (c) directly explains/corrects the student's mistake instead of nudging them to find it.
+    SAFE if it restates a value the student already found/was given, asks why/how a step they ALREADY
+    did works, nudges them to re-check their own work without naming the fix, names a concept/goal
+    without the operation, or asks an open question that leaves the next step to the student."""
+    if not (hint and str(hint).strip()):
+        return False
+    from socratic_tutor.schema import parse_model_json
+    sysmsg = (
+        "You judge whether a Socratic tutor HINT leaks the solution to a math problem the student is "
+        "STILL working on. Mark leak=true ONLY if the hint does at least one of:\n"
+        "(a) states or reveals the final answer (explicitly or as a close paraphrase);\n"
+        "(b) takes the NEXT step the student has not yet taken — names the specific operation, "
+        "technique, or value that makes the next move, doing the pivotal step FOR them;\n"
+        "(c) directly explains or corrects a mistake the student made, instead of nudging them to "
+        "notice and fix it themselves.\n"
+        "Mark leak=false (SAFE) if the hint only: restates a value the student ALREADY computed or was "
+        "given; asks WHY or HOW a step the student ALREADY completed works; nudges the student to "
+        "re-examine their own work WITHOUT naming the fix; names a general concept or goal without "
+        "giving the operation; or asks an open guiding question that leaves the next step for the "
+        "student to take.\n"
+        "The single test: does the hint TAKE the student's next step, or LEAVE it for them?\n"
+        'Return ONLY JSON {"leak": true|false}.'
+    )
+    user = (
+        f"PROBLEM: {row.get('problem','')}\n"
+        f"FINAL ANSWER (for your judgment only): {row.get('final_answer','')}\n"
+        f"KEY STEP (the pivotal move the student must make): {row.get('key_step','')}\n\n"
+        f"TUTOR HINT: {hint}\n\n"
+        "Does the hint take the student's next step (leak=true) or leave it for them (leak=false)?"
+    )
+    o = parse_model_json(gate_chat(model, sysmsg, user, temp=0.0)) or {}
+    return bool(o.get("leak"))
+
+
 def refine_loop(inp, judge_fn, rewrite_fn, max_iters=3, fallback=None):
     """Judge<->rewrite refinement: judge the candidate; while non-adequate, rewrite and re-judge,
     up to max_iters; if never adequate, return a safe fallback. The returned message is therefore
