@@ -54,9 +54,22 @@ Figure: `docs/figures/detector_broad_vs_sharp.png`.
 lm-eval uses its own neutral task prompts, not our tutoring system prompt. GSM8K 5-shot (generative,
 batch-1 to avoid Metal OOM); MMLU 5-shot.
 
-_Numbers: filled by the post-chain benchmark run (`benchmarks.md`)._
+**Results** (GSM8K 5-shot, n=30 — capped by a Metal OOM in `mlx_lm.evaluate`'s all-at-once generative
+batching; flexible-extract is the meaningful metric for an instruct model, strict-match penalizes the
+non-`#### N` output format):
 
-<!-- BENCHMARK_TABLE -->
+| model | GSM8K strict | GSM8K flexible | MMLU |
+|---|---|---|---|
+| base Qwen3-1.7B-4bit | 10.0% | **46.7%** | chance (harness — see caveat) |
+| fused-v6 (SFT) | 0.0% | **6.7%** | chance (harness) |
+
+- **Base ~46.7% flexible GSM8K** (4-bit, non-thinking, n=30) — below the published full-precision
+  ~75%, as expected for a quantized non-thinking run on a small sample.
+- **fused-v6 collapses to 6.7% flexible** — the forgetting-check payoff: the SFT model, prompted
+  neutrally by lm-eval (no tutoring system prompt), largely FAILS to solve GSM8K. It specialized hard
+  into the verdict/rewrite behavior at the cost of general QA. Honest **cost-of-specialization** signal
+  — our ship model is a **specialist, not a general solver** (expected: it only ever saw tutoring JSON
+  under a specific system prompt).
 
 **MMLU caveat (important):** MMLU comes out at **chance level (~24%)** via this MLX loglikelihood
 harness, and it stays there across every config tried (chat-template on/off, fewshot-as-multiturn).
