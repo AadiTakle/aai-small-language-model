@@ -53,5 +53,6 @@ data/mlx_combined_bal/
 data/mlx_combined_full/
 data/mlx_rewrite_curated/
 data/mlx_rewrite_v3/
+data/mlx_rewrite_v4/
 data/raw/rewrite_feed.jsonl
 eval/results/overnight/*.log
