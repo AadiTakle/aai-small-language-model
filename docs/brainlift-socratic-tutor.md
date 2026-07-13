@@ -448,7 +448,10 @@ corrections, and small targeted data. The external sources are the grounding.*
   bigger base) each failed to beat, or actively regressed, a 1.7B tutoring judge in controlled
   experiments while **relabeling the same-size dataset produced a ~17× gain in the safety-critical
   metric** (key-step-leak recall 2%→35%) at zero change to model or hyperparameters, and **honest
-  metric design** turned an apparently-mediocre model into a frontier-beater with no retraining at all.
+  metric design** exposed a safety-axis competence the 5-way score had hidden (61.7% → 82.2%) with no
+  retraining at all — and the shipping recall-first judge (`v9`) *beats* the strongest frontier on the
+  metric a guardrail lives on, **leak-recall** (90.4% vs. Opus 82.7% / GPT-5.5 74.0%; frontier stays
+  ahead on precision — the recall-first trade, on purpose).
   The clinching test: a Qwen3-**4B** judge trained on the *identical* recipe gained only noise on the
   safety behavior (leak-recall 90.4→93.3, and *lost* 5-way) while clearly beating the 1.7B on general
   benchmarks — so **scale buys general capability; the constrained safety behavior is a *data*
@@ -493,8 +496,10 @@ corrections, and small targeted data. The external sources are the grounding.*
   high-quality data are the lever; volume and preference optimization are not.
 - **Insight 6:** *The reporting metric was a bigger lever than any model change — and it paid off
   twice.* First, re-scoring the same predictions on an objective safety axis (leak vs. safe) instead of
-  5-way turned a "plateaued" 61.7% model into an 82% safety judge beating GPT-4o and Claude, **zero
-  retraining**. Then the correction went a level deeper — to how "leak" itself is *detected*: the broad
+  5-way turned a "plateaued" 61.7% *5-way* model into an **82% safety-binary** judge — the metric, not
+  the model, had been hiding the competence — with **zero retraining** (above the GPT-4o baseline we
+  first benchmarked; against the *strongest* frontier the durable win is **leak-recall**, where the
+  shipping `v9` leads — 90.4% vs. Opus 82.7% / GPT-5.5 74.0% — trading precision for recall by design). Then the correction went a level deeper — to how "leak" itself is *detected*: the broad
   detector over-flagged (counting *restated student values* and *"why does this completed step work?"*
   questions as leaks), and sharpening it to one test — *does the hint take the student's **next** step,
   or leave it for them?* — put our rewriter in the **safest tier of every model tested**, and revealed
@@ -512,8 +517,8 @@ corrections, and small targeted data. The external sources are the grounding.*
 - **Insight 8:** *A small specialized classifier can match a large generative judge and how you
   validate labels matters as much as the labels themselves.* Controlled studies show a 400M encoder beating a 1B
   decoder on classification (Weller et al., Category 7.3) and a 67M BERT matching a 7B Llama Guard.
-  Our 1.7B beating frontier on the safety axis is consistent with the literature, and points at a
-  discriminative-head option for the leak-recall frontier. Paired with our hardest-won process lesson:
+  Our 1.7B beating frontier on **leak-recall** is consistent with the literature, and points at a
+  discriminative-head option for pushing that frontier further. Paired with our hardest-won process lesson:
   v7 failed because its "verify" pass reused the *same model* as its "guided" pass, so agreement
   rubber-stamped one model's bias; the reframe audit and the leak-recall check succeeded because a
   *cross-family* jury (Claude + GPT-4o) had to agree. **Same-model agreement is not correctness.**
@@ -628,7 +633,7 @@ smoothed.*
          - **DOK 1 - Facts:**
             - Reports F1 0.939 / FPR 0.040 vs. GPT-4's F1 0.805 / FPR 0.152 (~3.8× the false-positive rate) on safety classification.
          - **DOK 2 - Summary:**
-            - A small specialized guard beats a frontier general model on safety classification — the pattern our 1.7B repeats on the safety axis.
+            - A small specialized guard beats a frontier general model on safety classification — the pattern our 1.7B repeats on leak-recall.
          - **Link to source:** https://huggingface.co/meta-llama/Llama-Guard-3-8B
       - **Source 3: Zeng et al. (Google), "ShieldGemma" (2024)**
          - **DOK 1 - Facts:**
@@ -640,7 +645,7 @@ smoothed.*
          - **DOK 1 - Facts:**
             - A controlled same-data / same-recipe comparison in which a 400M encoder outperforms a 1B decoder on classification.
          - **DOK 2 - Summary:**
-            - Architecture (not just scale) drives classification competitiveness — the strongest evidence for a discriminative-head option on the leak-recall frontier, and for why a 1.7B can beat frontier on the safety axis.
+            - Architecture (not just scale) drives classification competitiveness — the strongest evidence for a discriminative-head option on the leak-recall frontier, and for why a 1.7B can beat frontier on leak-recall.
          - **Link to source:** https://arxiv.org/abs/2507.11412
       - **Source 5 (thin, flagged): Zheng, Rana & Stolcke, "Lightweight Safety Guardrails Using Fine-tuned BERT Embeddings" (2024)**
          - **DOK 1 - Facts:**
@@ -684,10 +689,11 @@ smoothed.*
 
 ## Where it stands — the realized artifact
 
-Both claims now ship as a two-model guardrail — **`v9` (recall-first detector, 90.4% leak-recall =
-Claude Opus) → `rewrite_v4` (rewriter, 6.7% key-step leak = safest tier of every model tested)** — a
-local 1.7B pipeline that matches or beats frontier on the safety-critical behavior, and a 2.4×-scale
-4B trained identically did not beat it. That is the concrete payoff of the whole thesis: *reliable,
+Both claims now ship as a two-model guardrail — **`v9` (recall-first detector, 90.4% leak-recall —
+*above* Claude Opus's 82.7% and GPT-5.5's 74.0%) → `rewrite_v4` (rewriter, 6.7% key-step leak = safest
+tier of every model tested)** — a local 1.7B pipeline that *beats* the strongest frontier on the
+recall-first safety metric (while frontier stays ahead on precision), and a 2.4×-scale 4B trained
+identically did not beat it. That is the concrete payoff of the whole thesis: *reliable,
 constrained safety behavior from clean data + honest metrics, not scale.*
 
 ---

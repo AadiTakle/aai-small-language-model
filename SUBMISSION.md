@@ -27,8 +27,10 @@ with a question or calibrated hint instead. The rewriter turns any flagged messa
 
 ## Headline results (all measured base vs tuned vs frontier)
 
-- **Judge safety:** `v6` **82.2% safety-binary — beats GPT-4o (77.5%) & Claude (78.5%)**; `v9` **90.4%
-  leak-recall** (= Opus). Base→tuned leak-recall **2% → 90%**, all from data.
+- **Judge safety:** `v9` **90.4% leak-recall — beats Opus (82.7%) & GPT-5.5 (74.0%)** on the
+  recall-first ship metric (frontier leads safety-binary/precision — the recall-first trade); the
+  safety-axis reframe (`v6` 61.7 → **82.2% safety-binary**) was the metric *lever*. Base→tuned
+  leak-recall **2% → 90%**, all from data.
 - **Rewriter safety (sharpened detector):** `rewrite_v4` **6.7% key-step leak — safest tier of every
   model tested** (ties sonnet-5, beats gpt-5.6/4o/4.1).
 - **Scale isn't the lever:** a 4B judge (identical recipe) ties the 1.7B on safety (recall 93.3 ≈ 90.4)

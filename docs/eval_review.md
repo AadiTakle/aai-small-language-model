@@ -13,10 +13,11 @@ did → what we'd do better. Full history in `docs/model_devlog.md`; figures in 
 2. **Eval philosophy (the differentiator):** we built the eval *before* training, held it out +
    leakage-checked it, always compared base-vs-tuned-vs-frontier, and used a **cross-family jury** (never
    same-model self-agreement). The biggest lever we found was **honest metric design**, twice.
-3. **How we did:** on the safety-critical behavior, the 1.7B **matches or beats frontier** — 82.2%
-   safety-binary (> GPT-4o, Claude), 90.4% leak-recall (= Opus), and the rewriter is in the **safest
-   tier of every model tested** (6.7% key-step leak). A 4B counterfactual confirms **scale isn't the
-   lever**.
+3. **How we did:** on the recall-first safety metric a guardrail lives on, the 1.7B **beats frontier**
+   — **90.4% leak-recall vs. Opus 82.7% / GPT-5.5 74.0%** — and the rewriter is in the **safest tier of
+   every model tested** (6.7% key-step leak, ties GPT-5.5, beats Opus). Frontier stays ahead on
+   *precision* (safety-binary 87–89%, precision 81–93%): we catch more leaks, they raise fewer false
+   flags — the recall-first trade, on purpose. A 4B counterfactual confirms **scale isn't the lever**.
 4. **The honest part:** it trails frontier on the *fuzzy quality axis* (a distinction even GPT-4o and
    Claude split ~60% of the time), and we'd fix several eval-methodology mistakes if we did it again.
 
@@ -50,7 +51,9 @@ did → what we'd do better. Full history in `docs/model_devlog.md`; figures in 
 
 **Two metric-design moments that were bigger than any model change:**
 - **The safety-axis reframe** — re-scoring separated leak-safety from fuzzy quality. Turned v6's
-  "mediocre" 61.7% 5-way into **82.2% safety-binary (best of all models)** with *zero* retraining.
+  "mediocre" 61.7% 5-way into **82.2% safety-binary** with *zero* retraining — the metric, not the
+  model, had been hiding a safety-axis competence (above the GPT-4o baseline; the strongest frontier
+  still leads safety-binary — our durable frontier win is on *recall*, below).
 - **The sharpened leak detector** — the broad detector over-flagged (it counted *restating the
   student's own value* and *"why does this completed step work?"* as leaks). `llm_leaks_sharp` fixed
   it and revealed our rewriter is in the **safest tier**, and that the broad metric had penalized
@@ -62,16 +65,19 @@ did → what we'd do better. Full history in `docs/model_devlog.md`; figures in 
 
 **Judge (frozen set, verdict):**
 
-| model | 5-way | **safety-binary** | leak recall | leak F1 |
-|---|---|---|---|---|
-| base 1.7B | 26.8% | 68.5% | 51% | 53% |
-| **v6** (reframe) | 61.7% | **82.2%** | 60% | 70% |
-| **v9** (ship detector) | 64.1% | 77.5% | **90.4%** | **73.7%** |
-| GPT-4o | — | 77.5% | — | — |
-| Claude | — | 78.5% | 85% | 83% |
+| model | 5-way | safety-binary | leak recall | leak precision | leak F1 |
+|---|---|---|---|---|---|
+| base 1.7B | 26.8% | 68.5% | 51.0% | 55.2% | 53.0% |
+| **v6** (reframe milestone) | 61.7% | 82.2% | 60% | — | 70% |
+| **v9** (ship detector) | 64.1% | 77.5% | **90.4%** | 62.3% | 73.7% |
+| Opus-4.8 | 67.4% | 87.2% | 82.7% | 81.1% | 81.9% |
+| GPT-5.5 | 71.5% | 88.9% | 74.0% | 92.8% | 82.4% |
 
-→ **v6 beats GPT-4o & Claude on safety-binary; v9 ties Opus on leak-recall.** Base→tuned leak-F1
-24%→70%, leak-recall 2%→90% — all from *data*, on a fixed 1.7B.
+→ **v9 beats Opus + GPT-5.5 on leak-recall** (90.4 vs. 82.7 / 74.0) — the recall-first ship metric;
+the **strongest frontier leads safety-binary / precision** (they over-flag less; v9 over-flags by
+design — a false flag just spends a rewrite, a missed leak is the real harm). The reframe
+(v6 61.7 → 82.2 safety-binary) was the metric *lever* that exposed the model's safety-axis competence.
+Base→tuned leak-recall **2% → 90%** — all from *data*, on a fixed 1.7B.
 
 **Rewriter (held-out 60, sharpened detector — key-step leak rate, lower = safer):**
 
