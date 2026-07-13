@@ -525,38 +525,131 @@ experiments are the evidence; the external sources are the grounding.*
   a model's emitted reasoning — the general form of why we don't let a small judge condition its verdict
   on its own shaky trace. **Where:** [Profile](https://aigi.ox.ac.uk/people/fazl-barez/)
 
-## DOK 2: Knowledge Tree — Category 7: Training a small safety-judge
+## DOK 2: Knowledge Tree
 
-*Sources independently fetch-verified in a research pass (one fabricated, future-dated paper was
-caught and excluded). Each entry: what the source says + what it backs for SPOV 2. Mixed-evidence
-areas are flagged, not smoothed.*
+*Continues Part I's tree with Category 7. Sources independently fetch-verified in a research pass
+(one fabricated, future-dated paper was caught and excluded). Mixed-evidence areas are flagged, not
+smoothed.*
 
-- **Category 7.1: Does reasoning help or hurt a small judge? (MIXED — the honest one)**
-   - **Source 1: Tu, Ni & Bi, "How Long Reasoning Chains Influence LLMs' Judgment of Answer Factuality" (Chinese Academy of Sciences; ACL 2026)** — DOK1: weak judges are misled by fluent-but-wrong reasoning; a wrong-but-fluent chain inflated a Qwen3-8B judge's pass rate. DOK2: the *mechanism* of v8's failure, at a model larger than ours. Link: https://arxiv.org/abs/2604.06756
-   - **Source 2: Laddha, Pradhan & Srivastava, "SLMJury: Can Small Language Models Judge as Well as Large Ones?" (2026)** — DOK1: a Qwen2.5-3B judge loses ~10.5% accuracy with more reasoning ("reasoning sycophancy") — but *gains* up to 23% on WinoGrande. DOK2: the core task-dependence evidence — scope the claim. Link: https://arxiv.org/abs/2606.07810
-   - **Source 3 (counter-evidence, kept honestly): Jayarao et al., "Explicit Reasoning Makes Better Judges" (NeurIPS FoRLM 2025)** — DOK1: tests Qwen3 **0.6B/1.7B/4B** (our exact family/size) on RewardBench; thinking mode gives ~10pp *higher* judge accuracy on pairwise preference. DOK2: bounds SPOV 2's reasoning claim to self-verification tasks — cited first so we don't get caught overclaiming. Link: https://arxiv.org/abs/2509.13332
-   - **Source 4: Na, "Do Safety Guardrails Need to Reason? (LeanGuard)" (2026)** — DOK1: a 395M label-only encoder matches larger reasoning-guards at ~100× less compute; CoT is post-hoc, "does not improve moderation accuracy." DOK2: for guard/classification specifically, reasoning isn't the lever. Link: https://arxiv.org/abs/2606.26686
-
-- **Category 7.2: Preference optimization vs. label quality at small scale (WELL-SUPPORTED)**
-   - **Source 1: Ye, Laidlaw & Steinhardt, "Iterative Label Refinement Matters More than Preference Optimization under Weak Supervision" (2025)** — DOK1: under weak supervision, DPO fails to beat SFT; improving the data beats SFT+DPO (incl. safe instruction-following). DOK2: the closest external match to our v5-relabel-beats-DPO result. Link: https://arxiv.org/abs/2501.07886
-   - **Source 2: Razin et al. (Princeton), "Unintentional Unalignment: Likelihood Displacement in DPO" (ICLR 2025)** — DOK1: DPO can shift probability catastrophically toward opposite-meaning tokens. DOK2: mechanism for why our DPO regressed untargeted capabilities. Link: https://arxiv.org/abs/2410.08847
-   - **Source 3: Xu et al., "Is DPO Superior to PPO for LLM Alignment?" (ICML 2024)** — DOK1: well-tuned PPO consistently beats DPO; DPO has "fundamental limitations." DOK2: tempers the DPO-as-default reflex. Link: https://arxiv.org/abs/2404.10719
-   - **Source 4: Ethayarajh et al., "KTO" (ICML 2024)** — DOK1: binary desirable/undesirable alignment matches/exceeds preference methods 1B–30B. DOK2: better-fit alternative for imbalanced safety classes if preference learning is revisited. Link: https://arxiv.org/abs/2402.01306
-   - **Source 5 (scope-flagged): Shi et al., "EASE: Safety Alignment for Small Language Models" (AAAI 2026)** — DOK1: real, but about inference-time reasoning-activation efficiency, *not* a DPO-vs-SFT comparison. DOK2: use only for "SLM safety alignment is hard/costly." Link: https://arxiv.org/abs/2511.06512
-
-- **Category 7.3: Small classifiers vs. large generative judges; safety = a tunable threshold (WELL-SUPPORTED)**
-   - **Source 1: Inan et al. (Meta), "Llama Guard" (2023)** — DOK1: adopts AUPRC to "select the classification threshold that balances precision and recall based on... use cases." DOK2: the operating-point premise of Insight 6. Link: https://arxiv.org/abs/2312.06674
-   - **Source 2: Llama Guard 3 model card (Meta)** — DOK1: F1 0.939 / FPR 0.040 vs GPT-4 F1 0.805 / FPR 0.152 (~3.8× the false-positive rate). DOK2: a small specialized guard beats a frontier general model on safety classification. Link: https://huggingface.co/meta-llama/Llama-Guard-3-8B
-   - **Source 3: Zeng et al. (Google), "ShieldGemma" (2024)** — DOK1: SG-9B beats GPT-4 by 6.4% F1 on safety. DOK2: corroborates specialized-guard > general-frontier. Link: https://arxiv.org/abs/2407.21772
-   - **Source 4: Weller et al. (JHU-CLSP), "Seq vs Seq / Ettin" (ICLR 2026)** — DOK1: controlled same-data/same-recipe comparison; a **400M encoder outperforms a 1B decoder on classification.** DOK2: architecture (not just scale) drives classification competitiveness — strongest evidence for a discriminative-head option and for why our 1.7B beats frontier on the safety axis. Link: https://arxiv.org/abs/2507.11412
-   - **Source 5 (thin, flagged): Zheng, Rana & Stolcke, "Lightweight Safety Guardrails Using Fine-tuned BERT Embeddings" (2024)** — DOK1: a 67M Sentence-BERT matches Llama Guard (7B) on AEGIS. DOK2: cleanest sub-100M data point, but the only one at that exact scale — supporting, not conclusive. Link: https://arxiv.org/abs/2411.14398
-
-- **Category 7.4: Data-centric levers — distillation-on-errors, hard-negative & counterfactual augmentation (WELL-SUPPORTED, with honest counter)**
-   - **Source 1: Hsieh et al. (UW + Google), "Distilling Step-by-Step" (ACL Findings 2023)** — DOK1: 770M + rationale-as-training-signal beats 540B few-shot using 80% of the data. DOK2: the *right* way to use reasoning at small scale — train-time signal, not an inference-time trace (contrast v8). Link: https://arxiv.org/abs/2305.02301
-   - **Source 2: Agarwal et al. (Google DeepMind), "On-Policy Distillation / Learning from Self-Generated Mistakes" (ICLR 2024)** — DOK1: student trains on its own error-prone outputs with teacher correction on exactly those. DOK2: the template for a distill-on-the-leaks-v6-misses loop. Link: https://arxiv.org/abs/2306.13649
-   - **Source 3: Liu et al., "EvoKD" (COLING 2024)** — DOK1: actively analyzes the student's weaknesses and synthesizes labeled samples targeting exactly those. DOK2: closest structural analog to Tier-2's minimal-pair, leak-recall-targeted augmentation. Link: https://arxiv.org/abs/2403.06414
-   - **Source 4: Emi & Spero (Pangram Labs), AI-text-classifier report** — DOK1: hard-negative mining on false positives dropped FPR 2.29%→0.02%. DOK2: quantifies the payoff of targeting the exact error class — the leak-recall plan. Link: https://arxiv.org/html/2402.14873v3
-   - **Source 5 (counter-evidence, kept honestly): Huang, Liu & Bowman, counterfactually-augmented data negative result (2020)** — DOK1: naive counterfactual augmentation did *not* beat unaugmented data on NLI. DOK2: mirrors our own "adding rewrite data hurt" (gap-loop); the matched-pair design + canary in Tier-2 is the guard against this. Link: https://aclanthology.org/2020.insights-1.13/
+- **Category 7: Training a Small Safety-Judge**
+   - **Subcategory 7.1: Does reasoning help or hurt a small judge? (mixed evidence — flagged)**
+      - **Source 1: Tu, Ni & Bi, "How Long Reasoning Chains Influence LLMs' Judgment of Answer Factuality" (Chinese Academy of Sciences; ACL 2026)**
+         - **DOK 1 - Facts:**
+            - Source finds weak judges are misled by fluent-but-wrong reasoning: a wrong-but-fluent reasoning chain inflated a Qwen3-8B judge's pass rate on answer-factuality judgment.
+         - **DOK 2 - Summary:**
+            - Identifies the mechanism behind v8's failure (a small judge talked out of the correct call by its own fluent trace) — observed at a model *larger* than ours, so it isn't a size artifact.
+         - **Link to source:** https://arxiv.org/abs/2604.06756
+      - **Source 2: Laddha, Pradhan & Srivastava, "SLMJury: Can Small Language Models Judge as Well as Large Ones?" (2026)**
+         - **DOK 1 - Facts:**
+            - A Qwen2.5-3B judge loses ~10.5% accuracy with more reasoning ("reasoning sycophancy") on some tasks — but *gains* up to 23% on others (WinoGrande).
+         - **DOK 2 - Summary:**
+            - The core task-dependence evidence: reasoning's effect flips sign by task, so SPOV 2's "CoT hurts" claim must be scoped to self-verification judges, not stated universally.
+         - **Link to source:** https://arxiv.org/abs/2606.07810
+      - **Source 3 (counter-evidence, kept honestly): Jayarao et al., "Explicit Reasoning Makes Better Judges" (NeurIPS FoRLM 2025)**
+         - **DOK 1 - Facts:**
+            - Tests Qwen3 0.6B / 1.7B / 4B (our exact family and sizes) on RewardBench; thinking mode gives ~10pp *higher* judge accuracy on pairwise-preference judging.
+         - **DOK 2 - Summary:**
+            - Directly bounds SPOV 2's reasoning claim to self-verification tasks — cited first, deliberately, so the stance can't be caught overclaiming that CoT is bad for all small judges.
+         - **Link to source:** https://arxiv.org/abs/2509.13332
+      - **Source 4: Na, "Do Safety Guardrails Need to Reason? (LeanGuard)" (2026)**
+         - **DOK 1 - Facts:**
+            - A 395M label-only encoder matches larger reasoning-guards at ~100× less compute; the CoT it produces is post-hoc and "does not improve moderation accuracy."
+         - **DOK 2 - Summary:**
+            - For guard/classification specifically, reasoning is not the lever — supports a discriminative approach over an inference-time reasoning trace.
+         - **Link to source:** https://arxiv.org/abs/2606.26686
+   - **Subcategory 7.2: Preference optimization vs. label quality at small scale (well-supported)**
+      - **Source 1: Ye, Laidlaw & Steinhardt, "Iterative Label Refinement Matters More than Preference Optimization under Weak Supervision" (2025)**
+         - **DOK 1 - Facts:**
+            - Under weak supervision, DPO fails to beat SFT; improving/refining the training labels beats SFT+DPO — demonstrated on tasks including safe instruction-following.
+         - **DOK 2 - Summary:**
+            - The closest external match to our own result that a v5 label-correction pass beat DPO — independent confirmation of the "relabel > preference-optimize" ordering at small scale.
+         - **Link to source:** https://arxiv.org/abs/2501.07886
+      - **Source 2: Razin et al. (Princeton), "Unintentional Unalignment: Likelihood Displacement in DPO" (ICLR 2025)**
+         - **DOK 1 - Facts:**
+            - Shows DPO can catastrophically shift probability mass toward opposite-meaning tokens ("likelihood displacement").
+         - **DOK 2 - Summary:**
+            - A mechanistic account for why our DPO run regressed untargeted capabilities, not just the targeted rewrite behavior.
+         - **Link to source:** https://arxiv.org/abs/2410.08847
+      - **Source 3: Xu et al., "Is DPO Superior to PPO for LLM Alignment?" (ICML 2024)**
+         - **DOK 1 - Facts:**
+            - Finds well-tuned PPO consistently beats DPO, and that DPO has "fundamental limitations."
+         - **DOK 2 - Summary:**
+            - Tempers the reflex to reach for DPO as the default preference-optimization lever.
+         - **Link to source:** https://arxiv.org/abs/2404.10719
+      - **Source 4: Ethayarajh et al., "KTO: Model Alignment as Prospect Theoretic Optimization" (ICML 2024)**
+         - **DOK 1 - Facts:**
+            - Binary desirable/undesirable alignment (KTO) matches or exceeds paired preference methods across 1B–30B models.
+         - **DOK 2 - Summary:**
+            - A better-fit alternative for an imbalanced, safety-critical class if preference learning is ever revisited (unpaired binary labels, asymmetric weighting).
+         - **Link to source:** https://arxiv.org/abs/2402.01306
+      - **Source 5 (scope-flagged): Shi et al., "EASE: Safety Alignment for Small Language Models" (AAAI 2026)**
+         - **DOK 1 - Facts:**
+            - Real and relevant, but about inference-time reasoning-activation *efficiency* — not a DPO-vs-SFT comparison.
+         - **DOK 2 - Summary:**
+            - Used only to support "SLM safety alignment is hard/costly," not the label-vs-optimizer claim.
+         - **Link to source:** https://arxiv.org/abs/2511.06512
+   - **Subcategory 7.3: Small classifiers vs. large generative judges; safety as a tunable threshold (well-supported)**
+      - **Source 1: Inan et al. (Meta), "Llama Guard: LLM-based Input-Output Safeguard" (2023)**
+         - **DOK 1 - Facts:**
+            - Adopts AUPRC to "select the classification threshold that balances precision and recall based on... use cases."
+         - **DOK 2 - Summary:**
+            - The operating-point premise behind Insight 6 — a safety guard is a tunable threshold, not a single "accuracy" number.
+         - **Link to source:** https://arxiv.org/abs/2312.06674
+      - **Source 2: Llama Guard 3 model card (Meta)**
+         - **DOK 1 - Facts:**
+            - Reports F1 0.939 / FPR 0.040 vs. GPT-4's F1 0.805 / FPR 0.152 (~3.8× the false-positive rate) on safety classification.
+         - **DOK 2 - Summary:**
+            - A small specialized guard beats a frontier general model on safety classification — the pattern our 1.7B repeats on the safety axis.
+         - **Link to source:** https://huggingface.co/meta-llama/Llama-Guard-3-8B
+      - **Source 3: Zeng et al. (Google), "ShieldGemma" (2024)**
+         - **DOK 1 - Facts:**
+            - ShieldGemma-9B beats GPT-4 by 6.4% F1 on safety classification.
+         - **DOK 2 - Summary:**
+            - Corroborates the specialized-guard-beats-general-frontier result from a second, independent team.
+         - **Link to source:** https://arxiv.org/abs/2407.21772
+      - **Source 4: Weller et al. (JHU-CLSP), "Seq vs Seq / Ettin" (ICLR 2026)**
+         - **DOK 1 - Facts:**
+            - A controlled same-data / same-recipe comparison in which a 400M encoder outperforms a 1B decoder on classification.
+         - **DOK 2 - Summary:**
+            - Architecture (not just scale) drives classification competitiveness — the strongest evidence for a discriminative-head option on the leak-recall frontier, and for why a 1.7B can beat frontier on the safety axis.
+         - **Link to source:** https://arxiv.org/abs/2507.11412
+      - **Source 5 (thin, flagged): Zheng, Rana & Stolcke, "Lightweight Safety Guardrails Using Fine-tuned BERT Embeddings" (2024)**
+         - **DOK 1 - Facts:**
+            - A 67M Sentence-BERT matches Llama Guard (7B) on the AEGIS safety benchmark.
+         - **DOK 2 - Summary:**
+            - The cleanest sub-100M data point — but the only one at that exact scale, so supporting rather than conclusive.
+         - **Link to source:** https://arxiv.org/abs/2411.14398
+   - **Subcategory 7.4: Data-centric levers — distillation-on-errors, hard-negative & counterfactual augmentation (well-supported, with an honest counter)**
+      - **Source 1: Hsieh et al. (UW + Google), "Distilling Step-by-Step" (ACL Findings 2023)**
+         - **DOK 1 - Facts:**
+            - A 770M model trained with rationale-*as-training-signal* beats a 540B few-shot model using 80% of the data.
+         - **DOK 2 - Summary:**
+            - The *right* way to use reasoning at small scale — a train-time signal, not the inference-time trace that failed us in v8.
+         - **Link to source:** https://arxiv.org/abs/2305.02301
+      - **Source 2: Agarwal et al. (Google DeepMind), "On-Policy Distillation / Learning from Self-Generated Mistakes" (ICLR 2024)**
+         - **DOK 1 - Facts:**
+            - The student trains on its own error-prone outputs with teacher correction applied to exactly those errors.
+         - **DOK 2 - Summary:**
+            - The template for a "distill on the leaks v6 misses" loop — target the model's own failure cases.
+         - **Link to source:** https://arxiv.org/abs/2306.13649
+      - **Source 3: Liu et al., "EvoKD" (COLING 2024)**
+         - **DOK 1 - Facts:**
+            - Actively analyzes the student's weaknesses and synthesizes labeled samples targeting exactly those weaknesses.
+         - **DOK 2 - Summary:**
+            - The closest structural analog to Tier-2's minimal-pair, leak-recall-targeted augmentation (the v9 lever).
+         - **Link to source:** https://arxiv.org/abs/2403.06414
+      - **Source 4: Emi & Spero (Pangram Labs), AI-text-classifier report**
+         - **DOK 1 - Facts:**
+            - Hard-negative mining on false positives dropped the false-positive rate from 2.29% to 0.02%.
+         - **DOK 2 - Summary:**
+            - Quantifies the payoff of targeting the exact error class — the same shape as the leak-recall augmentation plan.
+         - **Link to source:** https://arxiv.org/html/2402.14873v3
+      - **Source 5 (counter-evidence, kept honestly): Huang, Liu & Bowman, "Counterfactually-Augmented Data" negative result (2020)**
+         - **DOK 1 - Facts:**
+            - Naive counterfactual augmentation did *not* beat unaugmented data on NLI.
+         - **DOK 2 - Summary:**
+            - Mirrors our own "adding rewrite data hurt" (the gap-loop); the matched-pair design + safe-corrective canary in Tier-2 are the guard against this failure mode.
+         - **Link to source:** https://aclanthology.org/2020.insights-1.13/
 
 ---
 
