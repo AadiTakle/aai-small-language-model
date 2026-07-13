@@ -47,14 +47,17 @@ scorecard — wins and losses."*
 - **Different:** a **two-model guardrail** — **v9** (recall-first **detector**: catch the leak) →
   **rewrite_v4** (**rewriter**: operation-free Socratic hint). Trained on our data; **runs locally**.
 - **Where it succeeds:**
-  - Catches leaks at **frontier-level recall** (the metric a guardrail lives on — a missed leak is the
-    real harm; a false flag just spends a rewrite).
-  - The rewrite is in the **safest tier of every model tested** — ties/beats Opus + GPT-5.5 on
-    key-step leak.
+  - Catches the **most leaks of any model tested** — **90.4% leak-recall** vs Opus 82.7% / GPT-5.5
+    74.0% (recall is the metric a guardrail lives on: a missed leak is the real harm, a false flag just
+    spends a rewrite).
+  - The rewriter is in the **safest tier** — **6.7% key-step leak**, tying GPT-5.5 (6.7%) and beating
+    Opus (10.0%).
   - Local, cheap, auditable; emits 100% valid schema.
 - **Where it fails (say it honestly):**
-  - Trails frontier on **fine 5-way discrimination** and the **fuzzy "is this a *good* hint" quality
-    axis** (frontier's holistic rewrite quality is higher).
+  - Trails frontier on **precision / F1 / safety-binary** (Opus + GPT-5.5 flag far fewer false
+    positives — our precision 62% vs their 81–93%), on **fine 5-way discrimination**, and on the fuzzy
+    "is this a *good* hint" quality axis. The low precision is the recall-first **trade, on purpose**:
+    v9 over-flags because a false flag is cheap and a missed leak isn't.
   - It's a **specialist, not a generalist** — low GSM8K/MMLU under a neutral prompt (the cost of
     specialization). Show one case where its rewrite is blander than Opus's, or it over-flags.
 
@@ -67,12 +70,15 @@ scorecard — wins and losses."*
 
 | metric | base 1.7B | **our SLM** | Opus | GPT-5.5 |
 |---|---|---|---|---|
-| Judge — 5-way acc | ⟨fill⟩ | ⟨v9⟩ | ⟨fill⟩ | ⟨fill⟩ |
-| Judge — safety-binary | ⟨fill⟩ | ⟨v9⟩ | ⟨fill⟩ | ⟨fill⟩ |
-| **Judge — leak RECALL** (ship metric ↑) | ⟨fill⟩ | ⟨v9⟩ | ⟨fill⟩ | ⟨fill⟩ |
-| Judge — leak precision | ⟨fill⟩ | ⟨v9⟩ | ⟨fill⟩ | ⟨fill⟩ |
-| Judge — leak F1 | ⟨fill⟩ | ⟨v9⟩ | ⟨fill⟩ | ⟨fill⟩ |
-| **Rewrite — key-step leak %** (↓ better) | ⟨fill⟩ | ⟨rewrite_v4⟩ | ⟨fill⟩ | ⟨fill⟩ |
+| Judge — 5-way acc | 26.8% | v9 64.1% | 67.4% | **71.5%** |
+| Judge — safety-binary | 68.5% | v9 77.5% | 87.2% | **88.9%** |
+| **Judge — leak RECALL** (ship metric ↑) | 51.0% | v9 **90.4%** ✅ | 82.7% | 74.0% |
+| Judge — leak precision | 55.2% | v9 62.3% | 81.1% | **92.8%** |
+| Judge — leak F1 | 53.0% | v9 73.7% | 81.9% | **82.4%** |
+| **Rewrite — key-step leak %** (↓ better) | 36.7% | rewrite_v4 **6.7%** ✅ | 10.0% | 6.7% |
+
+*(base = Qwen3-1.7B untuned; our SLM = v9 on judge rows, rewrite_v4 on the rewrite row — the shipping
+pipeline. ✅ = we lead. Frontier leads the unbolded rows.)*
 
 **General capability (the specialization trade):**
 
@@ -81,11 +87,13 @@ scorecard — wins and losses."*
 | GSM8K (flex) | 17.6% | specialist (low under neutral prompt) | high (Opus/GPT-5.5 ≫) |
 | MMLU | 63.2% | — | high |
 
-- **Narrate the honest range:** *"Read left to right. We **win** on leak-recall — the safety-critical
-  metric a guardrail lives on — and we **tie or beat** both Opus and GPT-5.5 on rewrite key-step leak.
-  We **lose** on 5-way discrimination and on general capability — frontier is the better generalist.
-  The claim was never 'we're smarter.' It's: on the narrow safety behavior, a **1.7B rivals frontier**
-  — and it's local, cheap, and auditable."*
+- **Narrate the honest range:** *"Read left to right. We **win exactly where a guardrail must**: leak
+  **recall** — 90.4% vs Opus 82.7% and GPT-5.5 74.0%, i.e. we catch the most leaks — and rewrite
+  **key-step leak** — 6.7%, tying GPT-5.5 and beating Opus. We **lose** on precision, F1,
+  safety-binary, 5-way, and general capability: frontier is more precise and the better generalist.
+  And that's the recall-first design **on purpose** — over-flagging is cheap (it just spends a
+  rewrite), a missed leak is the real harm. The claim was never 'we're smarter'; it's that on the
+  narrow safety-critical axis a **1.7B rivals or beats frontier**, running locally and cheaply."*
 
 ## Close (4:15–4:30)
 

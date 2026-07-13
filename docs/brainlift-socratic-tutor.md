@@ -428,82 +428,111 @@ This BrainLift explores why LLM-based tutors default to giving away answers or k
 
 ---
 
-# Part II — Building the Judge: What the SLM Experiments Taught (added 2026-07-10)
+# Part II — Building the Judge: What the SLM Experiments Taught
 
-*Scope note: Part I deliberately kept the training/eval pipeline out of scope, making the
-learning-science + product case for **why** a state-conditioned judgment layer must exist. Part II
-brings that pipeline in — because actually building the layer produced a second spiky POV, distinct
-enough from the pedagogy cluster to stand on its own and backed by ML literature rather than learning
-science. Part I argues **why** to build a dedicated judge; Part II is **how** to train one at small
-scale — and why the field's default methods are usually the wrong first move there. Our four failed
-experiments are the evidence; the external sources are the grounding.*
+*Scope note: Part I kept the training/eval pipeline out of scope, making the learning-science +
+product case for **why** a state-conditioned judgment layer must exist. Part II brings that pipeline
+in — because building the layer produced a second spiky POV, distinct enough from the pedagogy cluster
+to stand on its own and backed by ML literature rather than learning science. Part I argues **why** to
+build a dedicated judge; Part II is **how** to train one at small scale, and why the field's default
+methods are usually the wrong first move there. The evidence is the build itself: five failed
+enhancement bets (DPO, a bad relabel, chain-of-thought, an add-more-data loop, and a 2.4×-scale bigger
+model), against the levers that actually worked — a label-correction pass, two metric-design
+corrections, and small targeted data. The external sources are the grounding.*
 
 ## DOK 4: Spiky Point of View 2
 
 - **Spiky POV 2:** For a *small* safety-critical judge, almost all the leverage is in the **labels and
-  the metric — not the model or the optimizer.** The techniques the field reaches for by default to
-  improve a model (preference optimization / DPO, chain-of-thought reasoning, and "more data") each
-  failed to beat, or actively regressed, a 1.7B tutoring judge in controlled experiments — while
-  **relabeling the same-size dataset produced a ~17× gain in the safety-critical metric** (key-step-
-  leak recall 2%→35%) at zero change to model or hyperparameters. And the model looked mediocre only
-  because it was scored on a fuzzy *quality* axis that even frontier models disagree on ~60% of the
-  time; measured on the *objective safety axis* it actually mastered, the same 1.7B beats GPT-4o and
-  Claude — with no retraining. The default bet (reach for RLHF/DPO/CoT/scale to improve a judge) is, at
-  this scale, usually aimed at the wrong lever.
+  the metric, not the model, the optimizer, or scale.** The techniques the field reaches for by default
+  to improve a model (preference optimization / DPO, chain-of-thought reasoning, "more data," and a
+  bigger base) each failed to beat, or actively regressed, a 1.7B tutoring judge in controlled
+  experiments while **relabeling the same-size dataset produced a ~17× gain in the safety-critical
+  metric** (key-step-leak recall 2%→35%) at zero change to model or hyperparameters, and **honest
+  metric design** turned an apparently-mediocre model into a frontier-beater with no retraining at all.
+  The clinching test: a Qwen3-**4B** judge trained on the *identical* recipe gained only noise on the
+  safety behavior (leak-recall 90.4→93.3, and *lost* 5-way) while clearly beating the 1.7B on general
+  benchmarks — so **scale buys general capability; the constrained safety behavior is a *data*
+  property, not a *scale* property.** The default bet (reach for RLHF/DPO/CoT/scale to improve a judge)
+  is, at this scale, usually aimed at the wrong lever.
 
    - **Elaboration:** This is not "small models are fine, don't try hard." It's that the *order of
-     operations* is inverted from the field's defaults. Four independent negatives — DPO (verdict
-     −7.3), a single-model relabel that over-flipped (v7, −5.3; a blind cross-family jury sided with the
-     original labels 16-to-2), chain-of-thought (v8, −11.4), and an autonomous add-more-data loop (0
-     accepts; adding rewrites *hurt* rewrite-safety) — sit against one large positive: a label-
-     correction pass (v5) that fixed the safety metric 17×. External evidence converges on the same
-     ordering: Ye, Laidlaw & Steinhardt (2025) find that under weak/noisy supervision *iterative label
-     refinement beats SFT-plus-DPO* — the exact shape of our result, independently, on tasks including
+     operations* is inverted from the field's defaults. Five independent negatives — DPO (verdict −7.3),
+     a single-model relabel that over-flipped (v7, −5.3; a blind cross-family jury sided with the
+     original labels 16-to-2), chain-of-thought (v8, −11.4), an autonomous add-more-data loop (0
+     accepts; adding rewrites *hurt* rewrite-safety), and a 2.4×-scale 4B (no gain on the safety metric)
+     — sit against the levers that *did* work: a label-correction pass (v5) that fixed the safety metric
+     17×, and two metric-design corrections (the safety-axis reframe, then sharpening the leak-detector's
+     own definition, which put our rewriter in the safest tier of every model tested). External evidence
+     converges on the ordering: Ye, Laidlaw & Steinhardt (2025) find that under weak/noisy supervision
+     *iterative label refinement beats SFT-plus-DPO*, the exact shape of our result, on tasks including
      safe instruction-following. DPO's fragility is mechanistically grounded (Razin et al.'s likelihood
-     displacement; the DPO-vs-PPO study), and the metric point is the operating premise of every
-     deployed safety guard (Llama Guard, ShieldGemma report AUPRC and tune a precision/recall
-     *threshold*, because a single "accuracy" hides the tradeoff that matters). **Honest boundary:** the
-     "reasoning hurts small judges" piece is *task-dependent*, not universal — it hurts *self-
-     verification* judges like ours (a shaky internal trace lets the model talk itself out of the right
-     call — documented "reasoning sycophancy"), but a same-size Qwen3 study found reasoning *helps* on
-     pairwise-preference judging. So the claim is scoped to verification-style small judges, stated that
-     way deliberately. The strongest counterargument — "you just didn't tune DPO/CoT well enough" — is
-     answered by the fact that the *positive* lever (relabeling) needed no tuning and worked
-     immediately, and that the honest next step when data is exhausted is a *bigger model*, not a better
-     optimizer — the opposite of what "just DPO it" assumes.
+     displacement; the DPO-vs-PPO study); the metric point is the operating premise of every deployed
+     safety guard (Llama Guard, ShieldGemma tune a precision/recall *threshold*, because a single
+     "accuracy" hides the tradeoff that matters); and leak-robustness not tracking model size (Cat 3.1)
+     is now replicated in-house by the 4B test. **Honest boundary:** the "reasoning hurts small judges"
+     piece is *task-dependent*, not universal — it hurts *self-verification* judges like ours (a shaky
+     internal trace lets the model talk itself out of the right call; documented "reasoning
+     sycophancy"), but a same-size Qwen3 study found reasoning *helps* pairwise-preference judging, so
+     the claim is scoped to verification-style small judges. The strongest counterargument — "you just
+     didn't tune DPO/CoT/the-4B well enough" — is answered by the fact that the *positive* levers
+     (relabeling, metric design) needed no tuning and worked immediately, while the bigger model, tuned
+     on the identical recipe, still didn't move the safety metric: when the small model's data is right,
+     scale is not the missing ingredient.
 
 ## DOK 3: Insights (SLM training)
 
-- **Insight 5:** *Fixing labels beats adding data or changing the optimizer, at small scale.* Our
-  biggest gain (key-step-leak recall 2%→35%) came from relabeling a fixed-size set; a powered loop
-  adding ~80 targeted rows/iteration produced **zero** accepted improvements and imitation-rewrite data
-  regressed rewrite-safety. Independently predicted by Ye et al. (2025) (Category 7.2, Source 1), which
-  finds label refinement outperforms SFT+DPO under exactly the weak-supervision conditions a small
-  synthetic-data project runs in. Two unrelated lines of evidence, one conclusion: correctness is the
-  lever; volume and preference optimization are not.
-- **Insight 6:** *The reporting metric was a bigger lever than any model change.* Re-scoring the same
-  predictions on an objective safety axis (leak vs. safe) instead of 5-way accuracy turned a
-  "plateaued" 61.7% model into an 82% safety judge beating GPT-4o and Claude — **zero retraining.**
-  This is standard safety-classifier practice (report AUPRC, tune a threshold — Category 7.3), not a
-  trick. Decide which of your metric's axes is objective and which is irreducibly fuzzy *before* you
-  trust an accuracy number: ~60% of our "errors" lived in a distinction frontier models can't agree on.
-- **Insight 7:** *Chain-of-thought is not free for a small verification judge — sometimes negative.*
+- **Insight 5:** *Fixing labels beats adding data or changing the optimizer at small scale — and it's a
+  dose-response curve, not an anecdote.* Our biggest gain (key-step-leak recall 2%→35%) came from
+  relabeling a fixed-size set; a powered loop adding ~80 targeted rows/iteration produced **zero**
+  accepted improvements and imitation-rewrite data regressed rewrite-safety. A later dataset-growth
+  experiment made it a curve: growing each head with synthesized leak/safe minimal-pairs
+  [+0/50/100/200/400], the **rewrite head saturated** (leak-rate flat, the largest dose *hurt*) and the
+  **judge head was non-monotone with a small sweet spot** (~50 pairs recover v6-level safety; more
+  over-corrects). Independently predicted by Ye et al. (2025) (Category 7.2, Source 1) and mirrored by
+  the counterfactual-augmentation negative (Category 7.4, Source 5): correctness and small, targeted,
+  high-quality data are the lever; volume and preference optimization are not.
+- **Insight 6:** *The reporting metric was a bigger lever than any model change — and it paid off
+  twice.* First, re-scoring the same predictions on an objective safety axis (leak vs. safe) instead of
+  5-way turned a "plateaued" 61.7% model into an 82% safety judge beating GPT-4o and Claude, **zero
+  retraining**. Then the correction went a level deeper — to how "leak" itself is *detected*: the broad
+  detector over-flagged (counting *restated student values* and *"why does this completed step work?"*
+  questions as leaks), and sharpening it to one test — *does the hint take the student's **next** step,
+  or leave it for them?* — put our rewriter in the **safest tier of every model tested**, and revealed
+  the broad metric had penalized *frontier's* thoroughness hardest (+21–23% vs. our +10%). Deciding
+  which axis is objective vs. irreducibly fuzzy, and validating the measuring instrument itself, is
+  standard safety-classifier discipline (report AUPRC, tune a threshold — Category 7.3), not a trick:
+  ~60% of our original "errors" lived in a distinction frontier models can't agree on.
+- **Insight 7:** *Chain-of-thought is not free for a small verification judge - sometimes negative.*
   Training a 1.7B to reason before its verdict dropped accuracy 11 points (fluent-but-wrong reasoning,
-  talked itself out of correct calls) — matching the "weak judges are swayed by fluent reasoning"
+  talked itself out of correct calls), matching the "weak judges are swayed by fluent reasoning"
   mechanism (Tu et al.) and "reasoning sycophancy" (SLMJury), Category 7.1. **Held honestly against the
   counter-evidence:** a same-size Qwen3 study finds reasoning *helps* pairwise-preference judging, so
-  the insight is scoped — CoT hurts *self-verification* judges specifically. Not "never use CoT on small
+  the insight is scoped: CoT hurts *self-verification* judges specifically. Not "never use CoT on small
   models"; "CoT is a task-dependent bet, and for leak detection it was the wrong one."
-- **Insight 8:** *A small specialized classifier can match a large generative judge — and how you
-  validate labels matters as much as the labels.* Controlled studies show a 400M encoder beating a 1B
-  decoder on classification (Weller et al., Category 7.3) and a 67M BERT matching a 7B Llama Guard —
-  our 1.7B beating frontier on the safety axis is consistent with the literature, and points at a
+- **Insight 8:** *A small specialized classifier can match a large generative judge and how you
+  validate labels matters as much as the labels themselves.* Controlled studies show a 400M encoder beating a 1B
+  decoder on classification (Weller et al., Category 7.3) and a 67M BERT matching a 7B Llama Guard.
+  Our 1.7B beating frontier on the safety axis is consistent with the literature, and points at a
   discriminative-head option for the leak-recall frontier. Paired with our hardest-won process lesson:
   v7 failed because its "verify" pass reused the *same model* as its "guided" pass, so agreement
   rubber-stamped one model's bias; the reframe audit and the leak-recall check succeeded because a
   *cross-family* jury (Claude + GPT-4o) had to agree. **Same-model agreement is not correctness.**
+- **Insight 9:** *Scale is not the lever for the constrained behavior — the in-house test SPOV 1 was
+  missing.* A Qwen3-4B judge, trained on the *identical* recipe and data, ties the 1.7B on the safety
+  metric (leak-recall ~+3, within noise) and *loses* on 5-way, yet clearly wins on general GSM8K/MMLU.
+  2.4× the parameters bought nothing on the constrained behavior; the *data* lever bought 2%→90% on the
+  same fixed 1.7B (Insight 5). **Honest boundary:** the 4B was QLoRA-trained on Colab (trl/bf16) vs. our
+  local MLX recipe — not a perfectly matched ablation — but the direction is unambiguous and replicates
+  the external no-size-effect finding (Category 3.1). The clean split: **scale helps general capability,
+  not the safety behavior, which is a data property.**
+- **Insight 10:** *Human-anchoring beat distillation, and light specialization didn't forget.* The
+  rewriter improved most from *human-curated* targets (rewrite_v2 > pure-distilled rewrite_v1;
+  rewrite_v4 = safest tier), not from more synthetic volume — the data-quality lever again, on the
+  generation side. And the clean benchmarks showed the verdict-only adapter **preserved** general
+  ability (GSM8K/MMLU held or rose vs. base) — the specialization that made it a frontier-tier safety
+  judge cost ~nothing in general capability.
 
-## Experts (SLM training — to follow)
+## Experts (SLM training - to follow)
 
 - **Expert 9 — Kawin Ethayarajh** — Assistant Professor, UChicago Booth; first author of KTO. **Why:**
   KTO aligns from *unpaired* binary desirable/undesirable labels with asymmetric class weights — the
@@ -545,7 +574,7 @@ smoothed.*
          - **DOK 2 - Summary:**
             - The core task-dependence evidence: reasoning's effect flips sign by task, so SPOV 2's "CoT hurts" claim must be scoped to self-verification judges, not stated universally.
          - **Link to source:** https://arxiv.org/abs/2606.07810
-      - **Source 3 (counter-evidence, kept honestly): Jayarao et al., "Explicit Reasoning Makes Better Judges" (NeurIPS FoRLM 2025)**
+      - **Source 3 (counter-evidence): Jayarao et al., "Explicit Reasoning Makes Better Judges" (NeurIPS FoRLM 2025)**
          - **DOK 1 - Facts:**
             - Tests Qwen3 0.6B / 1.7B / 4B (our exact family and sizes) on RewardBench; thinking mode gives ~10pp *higher* judge accuracy on pairwise-preference judging.
          - **DOK 2 - Summary:**
@@ -653,72 +682,21 @@ smoothed.*
 
 ---
 
-*Part II verification note: ML sources above were independently fetched/verified in a research pass;
-mixed-evidence areas (esp. 7.1) are flagged rather than smoothed. As in Part I, the DOK-4 stance and
-DOK-3 insights are my own synthesis; the DOK-1/2 sources are the external grounding.*
+## Where it stands — the realized artifact
+
+Both claims now ship as a two-model guardrail — **`v9` (recall-first detector, 90.4% leak-recall =
+Claude Opus) → `rewrite_v4` (rewriter, 6.7% key-step leak = safest tier of every model tested)** — a
+local 1.7B pipeline that matches or beats frontier on the safety-critical behavior, and a 2.4×-scale
+4B trained identically did not beat it. That is the concrete payoff of the whole thesis: *reliable,
+constrained safety behavior from clean data + honest metrics, not scale.*
 
 ---
 
-# Part II — Update (2026-07-12): the scale counterfactual, eval integrity, and the growth curve
-
-*Since Part II was written, three loops it left open closed — and each sharpens SPOV 2 (and, for the
-first time, gives SPOV 1 a **controlled in-house test** instead of borrowed external evidence):
-(1) we finally trained the bigger model SPOV 1 warned against deferring to; (2) the "metric is the
-lever" claim (Insight 6) struck **again**, this time at the level of the leak-detector's own
-definition; (3) we replaced the anecdotal "volume isn't the lever" with an actual dataset-growth
-dose-response curve.*
-
-## SPOV 2 — sharpened
-
-The lever for a small safety-critical judge is **the data and the honest metric — and scale is not a
-substitute for either.** The decisive new evidence: a Qwen3-**4B** judge trained on the *identical*
-recipe and data as our 1.7B `v9` gained only **noise on the safety behavior** (leak-recall 90.4% →
-93.3%) and *lost* on 5-way (64.1 → 55.7) — while the **same 4B clearly beat the 1.7B on *general*
-benchmarks** (GSM8K 17.6% → 22.8%, MMLU 63.2% → 72.1%, clean lm-eval). So **scale buys general
-capability; the constrained safety behavior is a *data* property, not a *scale* property.** This is the
-in-house, controlled version of SPOV 1's borrowed claim ("leak-robustness did not track model size,"
-Cat 3.1, Source 1) — now replicated on our own stack, on our own metric.
-
-## DOK 3: Insights (continued)
-
-- **Insight 9 — The scale counterfactual (SPOV 1's missing in-house test).** A 4B judge, identical
-  recipe, ties the 1.7B on the safety metric (leak-recall ~+3, within noise) and *loses* on 5-way, yet
-  wins on general GSM8K/MMLU. 2.4× the parameters bought nothing on the constrained behavior; the *data*
-  lever bought 2%→90% on the same fixed 1.7B (Insight 5). **Honest boundary:** the 4B was QLoRA-trained
-  on Colab (trl/bf16) vs. our local MLX recipe — not a perfectly matched ablation — but the direction is
-  unambiguous and matches the external no-size-effect finding (Cat 3.1). This is the strongest single
-  answer to SPOV 1's own steelman ("scale improved reasoning, maybe it improves this too"): tested
-  directly, it did not.
-- **Insight 10 — The metric was the lever *again* — at the detector's definition.** Insight 6 corrected
-  *which axis* we scored; this week the correction went a level deeper — to how "leak" itself is
-  detected. The broad detector over-flagged (it counted *restating the student's own value* and *"why
-  does this completed step work?"* as leaks). Sharpening it to a single test — *does the hint take the
-  student's **next** step, or leave it for them?* — put our rewriter (`rewrite_v4`) in the **safest tier
-  of every model tested** (6.7% key-step leak, tying the best frontier), and revealed the broad metric
-  had penalized *frontier's* thoroughness **hardest** (+21–23% vs. our +10%). **Validating the
-  measuring instrument is a recurring, high-leverage move, not a one-off** — the same discipline as
-  tuning a safety guard's threshold (Cat 7.3), applied to the detector's definition.
-- **Insight 11 — "Volume isn't the lever" is now a dose-response curve, not an anecdote.** Growing each
-  head with synthesized leak/safe minimal-pairs [+0/50/100/200/400] and re-measuring: the **rewrite head
-  is saturated** (leak-rate flat, and the largest dose *hurt*), and the **judge head is non-monotone
-  with a small sweet spot** (~50 pairs recover v6-level safety; more over-corrects and craters recall).
-  This is Insight 5's ordering — *correctness + small targeted data > volume* — as an actual curve, and
-  it independently reproduces the counterfactual-augmentation negative (Cat 7.4, Source 5).
-- **Insight 12 — Human-anchoring beat distillation, and light specialization didn't forget.** The
-  rewriter improved most from *human-curated* targets (rewrite_v2 > pure-distilled rewrite_v1;
-  rewrite_v4 = safest tier), not from more synthetic volume — the data-quality lever again, now on the
-  generation side. And the clean benchmarks showed the verdict-only adapter **preserved** general
-  ability (GSM8K/MMLU held or rose vs. base) — so the specialization that made it a frontier-tier safety
-  judge cost ~nothing in general capability. Specialization was close to free.
-
-## The realized artifact
-
-Both claims now ship as a two-model guardrail — **`v9` (recall-first detector, 90.4% leak-recall =
-Claude Opus) → `rewrite_v4` (rewriter, 6.7% key-step leak = safest tier)** — a local 1.7B pipeline
-that matches or beats frontier on the safety-critical behavior. That is the concrete payoff of the
-whole thesis: *reliable, constrained safety behavior from clean data + honest metrics, not scale.*
-
-*Honest boundaries carried forward: the rewrite eval is n=60 (directional, not a decisive per-model
-win); the 4B comparison isn't a perfectly matched ablation; and the fuzzy **quality** axis still goes
-to frontier (conceded — even GPT-4o and Claude split it ~60% of the time). Every number here is
-measured by a metric we validated — and corrected the moment it over-flagged.*
+*Part II verification note: ML sources were independently fetched/verified (one fabricated,
+future-dated paper was caught and excluded); mixed-evidence areas (esp. 7.1) are flagged rather than
+smoothed. **Honest boundaries:** the rewrite eval is n=60 (directional, not a decisive per-model win);
+the 4B scale comparison isn't a perfectly matched ablation (Colab trl/bf16 vs. local MLX); and the
+fuzzy **quality** axis still goes to frontier (conceded — even GPT-4o and Claude split it ~60% of the
+time). As in Part I, the DOK-4 stance and DOK-3 insights are my own synthesis; the DOK-1/2 sources are
+the external grounding — and every result is measured by a metric we validated and corrected the
+moment it over-flagged.*
