@@ -311,7 +311,7 @@ This BrainLift explores why LLM-based tutors default to giving away answers or k
          - **DOK 2 - Summary:**
             - The tutor-benefit finding is real and specific — tutors themselves gained academically and attitudinally, not just tutees — but I could not verify a specific effect size for it, so none is claimed.
          - **Link to source:** https://eric.ed.gov/?id=EJ272101
-      - **Source 2: Bargh & Schul (1980), "On the Cognitive Benefits of Teaching," *Journal of Educational Psychology*, 73, 593–604**
+      - **Source 2: Bargh & Schul (1980), "On the Cognitive Benefits of Teaching," *Journal of Educational Psychology*, 72(5), 593–604**
          - **DOK 1 - Facts (secondary characterization — I could not access primary full text; not independently verified via direct quote):**
             - Secondary sources describe the paper as arguing teaching's cognitive benefit comes from three separable phases: preparing to teach, the initial presentation to students, and subsequent interaction (answering questions, giving feedback).
             - Secondary sources describe the paper's claim that merely *expecting* to teach changes how someone studies, by "priming students to devote more resources toward selecting the most relevant material and organizing it into a meaningful representation" — i.e., some of the benefit may occur before any teaching interaction happens at all.
@@ -402,23 +402,29 @@ This BrainLift explores why LLM-based tutors default to giving away answers or k
             - The first genuinely independent causal-effectiveness trial of Khanmigo identified — must be treated as pending, not evidence of an effect either way.
          - **Link to source:** https://www.socialscienceregistry.org/trials/13519
    - **Subcategory 6.4: Firsthand classroom accounts**
-      - **Source 1: Chalkbeat, "Why Sal Khan is rethinking how AI will change schools" (2026-04-09)**
+      - **Source 1: Chalkbeat, "Why Sal Khan's AI revolution hasn't happened yet, according to Sal Khan" (2026-04-09)**
          - **DOK 1 - Facts:**
             - Source quotes Kristen DiCerbo offering a distinct root-cause explanation from her "passive interactions" quote already in the brainlift: "Students aren't great at asking questions well."
             - Source reports a geometry teacher (Kristen Musall, Hobart High School, an original 2023 pilot site) stopped using Khanmigo, explaining: "If students don't engage with the material enough to know what they're looking for, then an AI like Khanmigo doesn't necessarily help."
-            - Source reports named students describing attempts to manipulate the tool ("bullying the bot," trying to trick it into giving answers).
+            - Source reports students using AI "to just find answers" rather than to engage with the material, and student/teacher frustration with how the tool helps.
          - **DOK 2 - Summary:**
             - A named teacher at an original pilot site abandoning the tool, plus a second distinct root-cause explanation from Khan Academy's own CAO (not knowing how to ask good questions, versus passive interaction) — two different specific failure mechanisms from two different vantage points, neither reducible to "friction" or "discoverability."
          - **Link to source:** https://www.chalkbeat.org/2026/04/09/sal-khan-reflects-on-ai-in-schools-and-khanmigo/
    - **Subcategory 6.5: Competitive contrast and bias**
-      - **Source 1: Carnegie Learning (Dr. Steve Ritter), "AI Arms Race: Our 25-Year Head Start Keeps Carnegie Learning Invincible"**
-         - **DOK 1 - Facts:**
-            - Source states, of chatbot-style AI tutors like Khanmigo: "AI chatbots display none of that sensitivity, immediately answering a question right when a student types it in."
-            - Source cites a RAND Corporation RCT (18,000+ students, 147 schools) showing MATHia's hint/guardrail design roughly doubled algebra learning growth, meeting ESSA Tier 1 evidence standards.
+      - **Source 1: Pane, Griffin, McCaffrey & Karam (2014), "Effectiveness of Cognitive Tutor Algebra I at Scale," *Educational Evaluation and Policy Analysis*, 36(2), 127–144 (RAND Corporation RCT)**
+         - **DOK 1 - Facts (primary study for the competitor-evidence claim; numbers verified against the paper + Evidence-for-ESSA):**
+            - A randomized controlled trial across **147 schools in 7 states** (~18,700 high-school students; ~25,500 total incl. middle school) of Carnegie Learning's Cognitive Tutor / MATHia Algebra I curriculum.
+            - **No statistically significant effect in Year 1**, but a **significant second-year effect for high schools of ~+0.21 SD** (~8 percentile points for the median student); no significant effect for middle schools. Carnegie's blended *High School Math Solution* is rated **ESSA "Strong" / Tier 1** (Johns Hopkins Evidence for ESSA); MATHia used standalone rates Tier 2 "Moderate."
          - **DOK 2 - Summary:**
-            - A direct competitor argues chatbot-style tutors structurally lack the calibration mechanisms this project targets, and backs its own product with a considerably more rigorous outcome study than anything published for Khanmigo specifically — a real evidentiary asymmetry worth being honest about.
+            - A competing intelligent-tutor product backed by a considerably more rigorous outcome study than anything published for Khanmigo specifically — a real evidentiary asymmetry worth being honest about. **Honest caveat:** the positive effect is **second-year, high-school-only**, and the popular "roughly doubled growth" phrasing is a marketing gloss on that ~0.2 SD effect, not a literal figure in the paper.
+         - **Link to source:** https://journals.sagepub.com/doi/abs/10.3102/0162373713507480 · [ESSA rating](https://www.evidenceforessa.org/program/carnegie-learning-high-school-math-solution/)
+      - **Source 2: Carnegie Learning corporate blog, "AI Arms Race: Our 25-Year Head Start Keeps Carnegie Learning Invincible" (2024)**
+         - **DOK 1 - Facts (marketing source — treated as positioning, not evidence):**
+            - The post (quoting Dan Meyer) characterizes chatbot-style AI tutors like Khanmigo: "AI chatbots display none of that sensitivity, immediately answering a question right when a student types it in."
+         - **DOK 2 - Summary:**
+            - A direct competitor argues chatbot-style tutors structurally lack the calibration mechanisms this project targets. The rigorous outcome claim is cited to the RAND study (Source 1) directly — *not* to this post, which does not contain it.
          - **Link to source:** https://carnegielearning.medium.com/ai-arms-race-our-25-year-head-start-keeps-carnegie-learning-invincible-ac304f0445e9
-      - **Source 2: Chalkbeat, "Annie and Lakeesha struggle in school. AI teacher assistants treated them very differently." (2025-08-06)**
+      - **Source 3: Chalkbeat, "Annie and Lakeesha struggle in school. AI teacher assistants treated them very differently." (2025-08-06)**
          - **DOK 1 - Facts:**
             - Source describes a Common Sense Media controlled study (50 white-coded vs. 50 Black-coded student-name prompts) finding Google Gemini for Education and MagicSchool gave systematically more positive behavior-intervention suggestions for white-coded names.
             - Khanmigo and Curipod were tested under the same protocol but were not implicated in the adverse finding.
@@ -449,21 +455,20 @@ corrections, and small targeted data. The external sources are the grounding.*
   experiments while **relabeling the same-size dataset produced a ~17× gain in the safety-critical
   metric** (key-step-leak recall 2%→35%) at zero change to model or hyperparameters, and **honest
   metric design** exposed a safety-axis competence the 5-way score had hidden (61.7% → 82.2%) with no
-  retraining at all — and the shipping recall-first judge (`v9`) *beats* the strongest frontier on the
+  retraining at all and the shipping recall-first judge (`v9`) *beats* the strongest frontier on the
   metric a guardrail lives on, **leak-recall** (90.4% vs. Opus 82.7% / GPT-5.5 74.0%; frontier stays
-  ahead on precision — the recall-first trade, on purpose).
+  ahead on precision: the recall-first trade, on purpose).
   The clinching test: a Qwen3-**4B** judge trained on the *identical* recipe gained only noise on the
   safety behavior (leak-recall 90.4→93.3, and *lost* 5-way) while clearly beating the 1.7B on general
-  benchmarks — so **scale buys general capability; the constrained safety behavior is a *data*
+  benchmarks. So **scale buys general capability; the constrained safety behavior is a *data*
   property, not a *scale* property.** The default bet (reach for RLHF/DPO/CoT/scale to improve a judge)
   is, at this scale, usually aimed at the wrong lever.
 
    - **Elaboration:** This is not "small models are fine, don't try hard." It's that the *order of
-     operations* is inverted from the field's defaults. Five independent negatives — DPO (verdict −7.3),
+     operations* is inverted from the field's defaults. Five independent negatives, DPO (verdict −7.3),
      a single-model relabel that over-flipped (v7, −5.3; a blind cross-family jury sided with the
      original labels 16-to-2), chain-of-thought (v8, −11.4), an autonomous add-more-data loop (0
-     accepts; adding rewrites *hurt* rewrite-safety), and a 2.4×-scale 4B (no gain on the safety metric)
-     — sit against the levers that *did* work: a label-correction pass (v5) that fixed the safety metric
+     accepts; adding rewrites *hurt* rewrite-safety), and a 2.4×-scale 4B (no gain on the safety metric) sit against the levers that *did* work: a label-correction pass (v5) that fixed the safety metric
      17×, and two metric-design corrections (the safety-axis reframe, then sharpening the leak-detector's
      own definition, which put our rewriter in the safest tier of every model tested). External evidence
      converges on the ordering: Ye, Laidlaw & Steinhardt (2025) find that under weak/noisy supervision
@@ -473,11 +478,11 @@ corrections, and small targeted data. The external sources are the grounding.*
      safety guard (Llama Guard, ShieldGemma tune a precision/recall *threshold*, because a single
      "accuracy" hides the tradeoff that matters); and leak-robustness not tracking model size (Cat 3.1)
      is now replicated in-house by the 4B test. **Honest boundary:** the "reasoning hurts small judges"
-     piece is *task-dependent*, not universal — it hurts *self-verification* judges like ours (a shaky
+     piece is *task-dependent*, not universal. It hurts *self-verification* judges like ours (a shaky
      internal trace lets the model talk itself out of the right call; documented "reasoning
      sycophancy"), but a same-size Qwen3 study found reasoning *helps* pairwise-preference judging, so
-     the claim is scoped to verification-style small judges. The strongest counterargument — "you just
-     didn't tune DPO/CoT/the-4B well enough" — is answered by the fact that the *positive* levers
+     the claim is scoped to verification-style small judges. The strongest counterargument, "you just
+     didn't tune DPO/CoT/the-4B well enough," is answered by the fact that the *positive* levers
      (relabeling, metric design) needed no tuning and worked immediately, while the bigger model, tuned
      on the identical recipe, still didn't move the safety metric: when the small model's data is right,
      scale is not the missing ingredient.
@@ -494,18 +499,18 @@ corrections, and small targeted data. The external sources are the grounding.*
   over-corrects). Independently predicted by Ye et al. (2025) (Category 7.2, Source 1) and mirrored by
   the counterfactual-augmentation negative (Category 7.4, Source 5): correctness and small, targeted,
   high-quality data are the lever; volume and preference optimization are not.
-- **Insight 6:** *The reporting metric was a bigger lever than any model change — and it paid off
+- **Insight 6:** *The reporting metric was a bigger lever than any model change, and it paid off
   twice.* First, re-scoring the same predictions on an objective safety axis (leak vs. safe) instead of
-  5-way turned a "plateaued" 61.7% *5-way* model into an **82% safety-binary** judge — the metric, not
-  the model, had been hiding the competence — with **zero retraining** (above the GPT-4o baseline we
+  5-way turned a "plateaued" 61.7% *5-way* model into an **82% safety-binary** judge. The metric, not
+  the model, had been hiding the competence. With **zero retraining** (above the GPT-4o baseline we
   first benchmarked; against the *strongest* frontier the durable win is **leak-recall**, where the
-  shipping `v9` leads — 90.4% vs. Opus 82.7% / GPT-5.5 74.0% — trading precision for recall by design). Then the correction went a level deeper — to how "leak" itself is *detected*: the broad
+  shipping `v9` leads: 90.4% vs. Opus 82.7% / GPT-5.5 74.0%, trading precision for recall by design). Then the correction went a level deeper to how "leak" itself is *detected*: the broad
   detector over-flagged (counting *restated student values* and *"why does this completed step work?"*
-  questions as leaks), and sharpening it to one test — *does the hint take the student's **next** step,
-  or leave it for them?* — put our rewriter in the **safest tier of every model tested**, and revealed
+  questions as leaks), and sharpening it to one test: *does the hint take the student's **next** step,
+  or leave it for them?* put our rewriter in the **safest tier of every model tested**, and revealed
   the broad metric had penalized *frontier's* thoroughness hardest (+21–23% vs. our +10%). Deciding
   which axis is objective vs. irreducibly fuzzy, and validating the measuring instrument itself, is
-  standard safety-classifier discipline (report AUPRC, tune a threshold — Category 7.3), not a trick:
+  standard safety-classifier discipline (report AUPRC, tune a threshold - Category 7.3), not a trick:
   ~60% of our original "errors" lived in a distinction frontier models can't agree on.
 - **Insight 7:** *Chain-of-thought is not free for a small verification judge - sometimes negative.*
   Training a 1.7B to reason before its verdict dropped accuracy 11 points (fluent-but-wrong reasoning,
@@ -522,19 +527,19 @@ corrections, and small targeted data. The external sources are the grounding.*
   v7 failed because its "verify" pass reused the *same model* as its "guided" pass, so agreement
   rubber-stamped one model's bias; the reframe audit and the leak-recall check succeeded because a
   *cross-family* jury (Claude + GPT-4o) had to agree. **Same-model agreement is not correctness.**
-- **Insight 9:** *Scale is not the lever for the constrained behavior — the in-house test SPOV 1 was
+- **Insight 9:** *Scale is not the lever for the constrained behavior, the in-house test SPOV 1 was
   missing.* A Qwen3-4B judge, trained on the *identical* recipe and data, ties the 1.7B on the safety
   metric (leak-recall ~+3, within noise) and *loses* on 5-way, yet clearly wins on general GSM8K/MMLU.
   2.4× the parameters bought nothing on the constrained behavior; the *data* lever bought 2%→90% on the
   same fixed 1.7B (Insight 5). **Honest boundary:** the 4B was QLoRA-trained on Colab (trl/bf16) vs. our
-  local MLX recipe — not a perfectly matched ablation — but the direction is unambiguous and replicates
+  local MLX recipe (not a perfectly matched ablation), but the direction is unambiguous and replicates
   the external no-size-effect finding (Category 3.1). The clean split: **scale helps general capability,
   not the safety behavior, which is a data property.**
 - **Insight 10:** *Human-anchoring beat distillation, and light specialization didn't forget.* The
   rewriter improved most from *human-curated* targets (rewrite_v2 > pure-distilled rewrite_v1;
-  rewrite_v4 = safest tier), not from more synthetic volume — the data-quality lever again, on the
+  rewrite_v4 = safest tier), not from more synthetic volume; the data-quality lever again, on the
   generation side. And the clean benchmarks showed the verdict-only adapter **preserved** general
-  ability (GSM8K/MMLU held or rose vs. base) — the specialization that made it a frontier-tier safety
+  ability (GSM8K/MMLU held or rose vs. base). The specialization that made it a frontier-tier safety
   judge cost ~nothing in general capability.
 
 ## Experts (SLM training - to follow)
@@ -637,7 +642,7 @@ smoothed.*
          - **Link to source:** https://huggingface.co/meta-llama/Llama-Guard-3-8B
       - **Source 3: Zeng et al. (Google), "ShieldGemma" (2024)**
          - **DOK 1 - Facts:**
-            - ShieldGemma-9B beats GPT-4 by 6.4% F1 on safety classification.
+            - ShieldGemma (a Gemma-based content-moderation guard) outperforms Llama Guard by ~+10.8% mean AU-PRC on safety-classification benchmarks — a specialized guard beating a strong prior open baseline.
          - **DOK 2 - Summary:**
             - Corroborates the specialized-guard-beats-general-frontier result from a second, independent team.
          - **Link to source:** https://arxiv.org/abs/2407.21772
