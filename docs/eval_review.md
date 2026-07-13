@@ -63,6 +63,8 @@ did → what we'd do better. Full history in `docs/model_devlog.md`; figures in 
 
 ## 2. How well we performed (results)
 
+*Full head-to-head vs. Opus-4.8 & GPT-5.5 (every metric, one place): [`frontier_comparison.md`](frontier_comparison.md).*
+
 **Judge (frozen set, verdict):**
 
 | model | 5-way | safety-binary | leak recall | leak precision | leak F1 |

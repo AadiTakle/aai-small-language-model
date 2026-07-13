@@ -18,7 +18,7 @@ with a question or calibrated hint instead. The rewriter turns any flagged messa
 |---|---|---|---|
 | 1 | **Dataset published** (the real artifact) | **[atakle/socratic-tutor-data](https://huggingface.co/datasets/atakle/socratic-tutor-data)** (6 files, 3,157 rows + card) | ✅ **published** |
 | 2 | **Model on HF + running demo** | ship: **[judge-v9](https://huggingface.co/atakle/socratic-tutor-judge-v9-1.7b)** + **[rewriter-v4](https://huggingface.co/atakle/socratic-tutor-rewriter-v4-1.7b)** (+ `atakle/socratic-judge-4b` scale probe); demo: `webui/` :8010 Ship pipeline | ✅ **published + demo** |
-| 3 | **Eval harness + results table** (base vs tuned vs frontier) | `scripts/overnight/{eval_verdict,eval_rewrite,eval_sharp,stress_ship,bench_run}.py`; results in `docs/eval_review.md` + `eval/results/overnight/` | ✅ **done** |
+| 3 | **Eval harness + results table** (base vs tuned vs frontier) | `scripts/overnight/{eval_verdict,eval_rewrite,eval_sharp,stress_ship,bench_run}.py`; results in `docs/eval_review.md` + **`docs/frontier_comparison.md`** (head-to-head vs Opus-4.8/GPT-5.5) + `eval/results/overnight/` | ✅ **done** |
 | 4 | **Brainlift** (thesis + evidence) | `docs/` brainlift | 🟡 **revamp pending** (T82) |
 | 5 | **3–5 min demo video** | shotlist `docs/demo_shotlist.md` → record | ⏳ **record pending** (T83) |
 | + | **Stretch ladder** (bonus) | DPO (regressed, `dpo_v1`), adversarial stress (`stress_ship`), composed behavior (judge+rewriter) | ✅ attempted/done |
@@ -52,6 +52,7 @@ it and rewrite_v4 fix it. (Base/v6/frontier judges available for side-by-side.)
 ## Repo map
 
 - **`docs/eval_review.md`** — eval suite + results + retrospective + anticipated Q&A (start here).
+- **`docs/frontier_comparison.md`** — head-to-head vs **Opus-4.8 & GPT-5.5**, the full win/lose range.
 - **`docs/model_devlog.md`** — per-version dev-log (v1 → ship), goal/change/metrics/learned/decision.
 - `docs/honest_eval.md` — detector sharpening + dataset-scaling study.
 - `docs/project_report.md` — full experiment log (the climb, the plateau, the reframe).
