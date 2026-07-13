@@ -28,6 +28,8 @@ FRONTIER_BENCH = {
     "gpt-4.1": "openai-group/gpt-4.1",
     "sonnet-5": "claude-group/claude-sonnet-5",
     "gpt-5.6": "openai-group/gpt-5.6-sol",
+    "opus-4.8": "claude-group/claude-opus-4-8",
+    "gpt-5.5": "openai-group/gpt-5.5",
 }
 
 
