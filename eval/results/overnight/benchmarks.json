@@ -1,0 +1,17 @@
+{
+  "table": {
+    "base (Qwen3-1.7B-4bit)": {
+      "gsm8k_strict": null,
+      "gsm8k_flexible": null,
+      "mmlu_acc": 0.2429770144965391
+    },
+    "fused-v6 (SFT, forgetting check)": {
+      "gsm8k_strict": null,
+      "gsm8k_flexible": null,
+      "mmlu_acc": 0.23938253667667928
+    }
+  },
+  "published": {
+    "note": "Qwen3-1.7B published refs (approx, non-thinking): GSM8K ~75%, MMLU ~62%"
+  }
+}

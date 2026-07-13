@@ -58,5 +58,10 @@ data/raw/rewrite_feed.jsonl
 # honest-eval overnight: regenerable fused model + boundary work dirs (adapters/ already ignored)
 data/bench/
 data/boundary/
+data/scale_4b/
+data/hf/
 eval/results/overnight/bench/
 eval/results/overnight/*.log
+# abandoned human-boundary probe: outputs mis-measure the v9 baseline (inconclusive; advised against using)
+eval/results/overnight/cmp_human_boundary.json
+eval/results/overnight/cmp_human_boundary.md
