@@ -1,5 +1,10 @@
 # Qwen3-4B scale test — falsifying (or refining) the "data, not scale" thesis
 
+> *Superseded framing: the frontier safety-binary comparisons below predate the Opus-4.8/GPT-5.5 suite.
+> Current, consistent numbers are in [`eval_review.md`](eval_review.md) §2 — the durable frontier win is
+> **leak-recall** (v9 90.4% > Opus 82.7% / GPT-5.5 74.0%); frontier leads safety-binary/precision. The
+> scale conclusion here (scale ≠ the lever) is unaffected and stands.*
+
 ## Purpose + honest framing
 Re-run the same data-centric recipe on a **4B** base instead of 1.7B and see whether scale materially
 changes the result. Thesis prediction: **little/no difference on the metrics that matter** → confirms

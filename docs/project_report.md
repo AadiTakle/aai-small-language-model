@@ -277,11 +277,17 @@ genuine, defensible finding — and it reframed the question from "how do we rai
 
 ## 7. Where the model stands
 
-- **Ship model: v6** — a data-centric 1.7B judge that **beats GPT-4o and Claude on the safety axis
-  (82%)**, with a tunable high-recall safety mode available for free.
-- **Open problem:** leak recall (60% at high precision) — being attacked by Tier-2 minimal-pair
-  augmentation (result pending); if that plateaus, the honest next levers are a discriminative
-  classifier head or a scale step to Qwen3-4B/8B.
+- **Ship pipeline: `v9` → `rewrite_v4`** — a data-centric 1.7B **two-model guardrail**: `v9` a
+  recall-first detector (**90.4% leak-recall — above Opus 82.7% / GPT-5.5 74.0%**, the metric a
+  guardrail lives on), `rewrite_v4` a rewriter in the **safest tier of every model tested** (6.7%
+  key-step leak). Frontier stays ahead on precision/safety-binary — the recall-first trade, on purpose.
+  *(The safety-axis reframe — v6 61.7 → 82.2% safety-binary, beating the GPT-4o baseline — was the
+  metric lever that first exposed the model's safety competence; v6 was the interim ship judge before
+  the recall-first retune.)*
+- **The former open problem — leak recall — is closed:** Tier-2 minimal-pair augmentation moved it
+  60% → **90.4%** (v9), and the scale step we'd deferred to was tested directly — a Qwen3-**4B** on the
+  identical recipe gained only noise on the safety metric (93.3 ≈ 90.4) while winning on general
+  benchmarks: **scale buys general capability, not the constrained safety behavior.**
 - **The real deliverable** is this understanding: a rigorously-mapped account of *what makes a small
   safety judge good* (clean, balanced, correctly-labeled data; honest metric design) and *what
   doesn't* (volume, preference optimization, reasoning, at this scale) — most of it learned from

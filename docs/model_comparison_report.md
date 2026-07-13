@@ -1,5 +1,11 @@
 # Comprehensive Model Report — Socratic Tutor Judge/Rewriter vs. Frontier
 
+> *Superseded framing: this is a **v4-era** comparison against GPT-4o/Claude on the verdict+schema
+> criteria; it predates the current ship pipeline (`v9`→`rewrite_v4`) and the Opus-4.8/GPT-5.5 suite.
+> For current, consistent frontier numbers see [`eval_review.md`](eval_review.md) §2. The finding here —
+> a small tuned judge ties frontier on structured verdict/schema and trails on the generative axes —
+> is unaffected and stands.*
+
 **Task under test:** given a math problem, its solution (internal ground truth), the conversation so far, and a candidate tutor message, emit a single JSON object `{verdict, reasoning, rewritten_message}` classifying the message against the 5-verdict taxonomy and rewriting it safely if inadequate (see [`behavior_spec.md`](behavior_spec.md)).
 
 **Contestants:** `base` (Qwen3-1.7B-4bit, untuned) · `v2`/`v3`/`v4` (our QLoRA fine-tunes) · `gpt4o` (GPT-4o) · `claude` (Claude, in-session). Frontier models run the **same** judge task with the **same** system prompt.

@@ -1,5 +1,9 @@
 # v8 thinking — finding (clear negative: thinking HURTS a 1.7B here)
 
+> *Superseded framing: the "v6 beats GPT-4o/Claude" aside predates the Opus-4.8/GPT-5.5 suite; see
+> [`eval_review.md`](eval_review.md) §2 for current frontier numbers (the durable win is leak-recall).
+> The v8 finding itself — thinking hurts a 1.7B verification judge — is unaffected and stands.*
+
 ## What v8 is
 The cleanest experiment of the four: **thinking is the ONLY variable vs v6.** Same v6 labels,
 same v6 prompt (the v7 decision tree reverted), same training config + 687 iters. The only change:

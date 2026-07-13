@@ -30,7 +30,7 @@ leak), *not* blatant answer-giving — which shaped the whole taxonomy and safet
 | DPO v1 | preference tuning | push rewrite-safety | **regressed** −7.3 verdict | ✗ |
 | v7 | decision-tree relabel | fix quality axis | **regressed** 61.7→56.4 | ✗ |
 | v8 | thinking / CoT | reason before verdict | **regressed hardest** 61.7→50.3 | ✗ |
-| *(reframe)* | metric, not model | measure the right axis | v6 = **82.2% safety-binary, beats GPT-4o/Claude** | — |
+| *(reframe)* | metric, not model | measure the right axis | v6 = **82.2% safety-binary** (metric lever; > GPT-4o baseline) | — |
 | judge_full | verdict-only, natural mix | recall-first judge | leak recall **84.6%** (=opus) | — |
 | combined_full | combined obj, natural mix | best balanced judge | **83.2% safety-binary** | — |
 | **v9** | tier-2 minimal pairs | move the recall frontier | **leak recall 90.4%** (best SLM) | **✓ ship detector** |
